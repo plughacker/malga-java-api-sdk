@@ -13,47 +13,19 @@
 
 package com.malga.client.api;
 
-import com.malga.client.ApiClient;
 import com.malga.client.ApiException;
-import com.malga.client.Configuration;
 import com.malga.client.api.model.*;
-import com.malga.client.auth.ApiKeyAuth;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 /**
  * API tests for ChargesApi
  */
-public class ChargesApiTest {
+public class ChargesApiTest extends BaseApiTest{
 
-    /**
-     * Returns a sample ChargeRequest object with full card data
-     */
-    protected ChargeRequest createCardChargeRequest() {
-        SourceTypeCard cardOneShot = ((new SourceTypeCard())
-                .sourceType("card")
-                .card((new TokenRequest())
-                    .cardExpirationDate("12/2025")
-                    .cardHolderName("John Doe")
-                    .cardNumber("4929564637987814")
-                    .cardCvv("410")
-        ));
-
-        PaymentMethodCard paymentMethodCard =  (new PaymentMethodCard())
-                .paymentType(PaymentMethodCard.PaymentTypeEnum.CREDIT)
-                .installments(1);
-
-        return (new ChargeRequest())
-                .capture(false)
-                .statementDescriptor("should be statement descriptor")
-                .merchantId(System.getenv("MERCHANT_ID"))
-                .amount(1000)
-                .orderId("1234567890")
-                .capture(false)
-                .paymentSource((new ChargeRequestPaymentSource(cardOneShot)))
-                .paymentMethod((new ChargeRequestPaymentMethod(paymentMethodCard)));
-    }
 
     /**
      * Realizar nova cobrança
@@ -63,25 +35,16 @@ public class ChargesApiTest {
     @Test
     public void chargePreAuthorizationTest() throws ApiException {
 
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://sandbox-api.malga.io");
+        ChargesApi chargesApi = new ChargesApi(this.getDefaulClientApi());
 
-        ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-ID");
-        clientID.setApiKey(System.getenv("CLIENT_ID"));
-
-        ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("X-Api-Key");
-        apiKey.setApiKey(System.getenv("API_KEY"));
-
-        ChargesApi chargesApi = new ChargesApi(defaultClient);
-
-        ChargeRequest chargeRequest = createCardChargeRequest();
+        ChargeRequest chargeRequest = this.createCardChargeRequest();
         ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
 
         assertNotNull(chargeResponse.getId());
 
         assertEquals(1000, chargeResponse.getAmount());
-        assertEquals("523afbe7-36dc-4654-9dba-e7167d0e5e2d", chargeResponse.getClientId());
-        assertEquals("f18eb60d-89cc-419d-a7fc-204a6298421d", chargeResponse.getMerchantId());
+        assertNotNull(chargeResponse.getClientId());
+        assertNotNull(chargeResponse.getMerchantId());
         assertEquals("should be statement descriptor", chargeResponse.getStatementDescriptor());
 
         assertEquals("card", chargeResponse.getPaymentSource().getSourceTypeCard().getSourceType());
@@ -93,6 +56,102 @@ public class ChargesApiTest {
         assertEquals("1234567890", chargeResponse.getOrderId());
 
         assertEquals(ChargeResponse.StatusEnum.PRE_AUTHORIZED, chargeResponse.getStatus());
+    }
+
+    @Test
+    public void chargeAuthorizationTest() throws ApiException {
+
+        ChargesApi chargesApi = new ChargesApi(this.getDefaulClientApi());
+
+        ChargeRequest chargeRequest = this.createCardChargeRequest();
+        chargeRequest.capture(true);
+
+        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+
+        assertNotNull(chargeResponse.getId());
+
+        assertEquals(1000, chargeResponse.getAmount());
+        assertEquals(ChargeResponse.StatusEnum.AUTHORIZED, chargeResponse.getStatus());
+    }
+
+    @Test
+    public void chargeGetByIdTest() throws ApiException {
+
+        ChargesApi chargesApi = new ChargesApi(this.getDefaulClientApi());
+
+        ChargeRequest chargeRequest = this.createCardChargeRequest();
+        chargeRequest.capture(true);
+
+        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+
+        ChargeResponse chargeResponseById = chargesApi.getChargeByid(chargeResponse.getId());
+        assertNotNull(chargeResponseById.getId());
+
+        assertEquals(1000, chargeResponseById.getAmount());
+        assertNotNull(chargeResponse.getClientId());
+        assertNotNull(chargeResponse.getMerchantId());
+        assertEquals("should be statement descriptor", chargeResponseById.getStatementDescriptor());
+
+        assertEquals("card", chargeResponseById.getPaymentSource().getSourceTypeCard().getSourceType());
+        assertNotNull(chargeResponseById.getPaymentSource().getSourceTypeCard().getCardId());
+
+        assertEquals(PaymentMethodCard.PaymentTypeEnum.CREDIT, chargeResponseById.getPaymentMethod().getPaymentMethodCard().getPaymentType());
+        assertEquals(1, chargeResponseById.getPaymentMethod().getPaymentMethodCard().getInstallments());
+
+        assertEquals("1234567890", chargeResponseById.getOrderId());
+
+        assertEquals(ChargeResponse.StatusEnum.AUTHORIZED, chargeResponseById.getStatus());
+    }
+
+    @Test
+    public void chargeCaptureTest() throws ApiException {
+
+        ChargesApi chargesApi = new ChargesApi(this.getDefaulClientApi());
+
+        ChargeRequest chargeRequest = this.createCardChargeRequest();
+
+        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+        assertEquals(ChargeResponse.StatusEnum.PRE_AUTHORIZED, chargeResponse.getStatus());
+
+        ChargeResponse chargeCaptureResponse = chargesApi.captureCharge(chargeResponse.getId(), (new CaptureRequest()).amount(100));
+        assertNotNull(chargeCaptureResponse.getId());
+
+        assertEquals(100, chargeCaptureResponse.getAmount());
+        assertEquals(1000, chargeCaptureResponse.getOriginalAmount());
+
+        assertEquals(ChargeResponse.StatusEnum.AUTHORIZED, chargeCaptureResponse.getStatus());
+    }
+
+    @Test
+    public void chargePartialRefundTest() throws ApiException {
+
+        ChargesApi chargesApi = new ChargesApi(this.getDefaulClientApi());
+
+        ChargeRequest chargeRequest = this.createCardChargeRequest();
+
+        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+        assertEquals(ChargeResponse.StatusEnum.PRE_AUTHORIZED, chargeResponse.getStatus());
+
+        ChargeResponse chargeCaptureResponse = chargesApi.refundCharge(chargeResponse.getId(), (new VoidRequest()).amount(100));
+        assertNotNull(chargeCaptureResponse.getId());
+
+        assertEquals(900, chargeCaptureResponse.getAmount());
+        assertEquals(1000, chargeCaptureResponse.getOriginalAmount());
+
+        assertEquals(ChargeResponse.StatusEnum.PRE_AUTHORIZED, chargeCaptureResponse.getStatus());
+    }
+
+    @Test
+    public void chargeFailedTest() throws ApiException {
+
+        ChargesApi chargesApi = new ChargesApi(this.getDefaulClientApi());
+
+        ChargeRequest chargeRequest = this.createCardChargeNotAuthorizedRequest();
+
+        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+        assertEquals(ChargeResponse.StatusEnum.FAILED, chargeResponse.getStatus());
+
+        System.out.println(chargeResponse.toString());
     }
 
 }
