@@ -14,21 +14,12 @@
 package com.malga.client.api;
 
 import com.malga.client.ApiException;
-import com.malga.client.api.model.CancelSessionResponse;
-import com.malga.client.api.model.SessionChargeRequest;
-import com.malga.client.api.model.SessionChargeResponse;
-import com.malga.client.api.model.SessionHistoryItem;
-import com.malga.client.api.model.SessionRequest;
-import com.malga.client.api.model.SessionResponse;
-import com.malga.client.api.model.SessionSettingsResponse;
-import java.util.UUID;
+import com.malga.client.api.model.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 
 /**
  * API tests for SessionsApi
@@ -107,19 +98,6 @@ public class SessionsApiTest {
     public void patchSessionTest() throws ApiException {
         UUID id = null;
         SessionResponse response = api.patchSession(id);
-        // TODO: test validations
-    }
-
-    /**
-     * Pay session
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void paySessionTest() throws ApiException {
-        UUID id = null;
-        SessionChargeRequest sessionChargeRequest = null;
-        SessionChargeResponse response = api.paySession(id, sessionChargeRequest);
         // TODO: test validations
     }
 

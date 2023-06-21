@@ -44,107 +44,88 @@ import java.util.Set;
 import com.malga.client.JSON;
 
 /**
- * SessionSourceTypeToken
+ * CustomerResponseDocument
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T00:10:35.774518-03:00[America/Sao_Paulo]")
-public class SessionSourceTypeToken {
-  /**
-   * tipo da origem da cobrança, usar &#x60;token&#x60; para cobrança no token gerado
-   */
-  @JsonAdapter(SourceTypeEnum.Adapter.class)
-  public enum SourceTypeEnum {
-    TOKEN("token");
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
+public class CustomerResponseDocument {
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
-    private String value;
+  public static final String SERIALIZED_NAME_NUMBER = "number";
+  @SerializedName(SERIALIZED_NAME_NUMBER)
+  private String number;
 
-    SourceTypeEnum(String value) {
-      this.value = value;
-    }
+  public static final String SERIALIZED_NAME_COUNTRY = "country";
+  @SerializedName(SERIALIZED_NAME_COUNTRY)
+  private String country = "BR";
 
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SourceTypeEnum fromValue(String value) {
-      for (SourceTypeEnum b : SourceTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SourceTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SourceTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SourceTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SourceTypeEnum.fromValue(value);
-      }
-    }
+  public CustomerResponseDocument() {
   }
 
-  public static final String SERIALIZED_NAME_SOURCE_TYPE = "sourceType";
-  @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
-  private SourceTypeEnum sourceType;
-
-  public static final String SERIALIZED_NAME_TOKEN_ID = "tokenId";
-  @SerializedName(SERIALIZED_NAME_TOKEN_ID)
-  private String tokenId;
-
-  public SessionSourceTypeToken() {
-  }
-
-  public SessionSourceTypeToken sourceType(SourceTypeEnum sourceType) {
+  public CustomerResponseDocument type(String type) {
     
-    this.sourceType = sourceType;
+    this.type = type;
     return this;
   }
 
    /**
-   * tipo da origem da cobrança, usar &#x60;token&#x60; para cobrança no token gerado
-   * @return sourceType
+   * tipo de documento, consultar tabela de tipos suportados
+   * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public SourceTypeEnum getSourceType() {
-    return sourceType;
+  public String getType() {
+    return type;
   }
 
 
-  public void setSourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
+  public void setType(String type) {
+    this.type = type;
   }
 
 
-  public SessionSourceTypeToken tokenId(String tokenId) {
+  public CustomerResponseDocument number(String number) {
     
-    this.tokenId = tokenId;
+    this.number = number;
     return this;
   }
 
    /**
-   * Identificador do token quando source tipo token (opcional)
-   * @return tokenId
+   * numero do documento formato conforme tipo selecionado
+   * @return number
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public String getTokenId() {
-    return tokenId;
+  public String getNumber() {
+    return number;
   }
 
 
-  public void setTokenId(String tokenId) {
-    this.tokenId = tokenId;
+  public void setNumber(String number) {
+    this.number = number;
+  }
+
+
+  public CustomerResponseDocument country(String country) {
+    
+    this.country = country;
+    return this;
+  }
+
+   /**
+   * pais de emissão do documento, Padrão ISO 3166-1 alpha-2, consultar tabela de tipos suportados
+   * @return country
+  **/
+  @javax.annotation.Nullable
+
+  public String getCountry() {
+    return country;
+  }
+
+
+  public void setCountry(String country) {
+    this.country = country;
   }
 
   /**
@@ -160,9 +141,9 @@ public class SessionSourceTypeToken {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the SessionSourceTypeToken instance itself
+   * @return the CustomerResponseDocument instance itself
    */
-  public SessionSourceTypeToken putAdditionalProperty(String key, Object value) {
+  public CustomerResponseDocument putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -201,23 +182,25 @@ public class SessionSourceTypeToken {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SessionSourceTypeToken sessionSourceTypeToken = (SessionSourceTypeToken) o;
-    return Objects.equals(this.sourceType, sessionSourceTypeToken.sourceType) &&
-        Objects.equals(this.tokenId, sessionSourceTypeToken.tokenId)&&
-        Objects.equals(this.additionalProperties, sessionSourceTypeToken.additionalProperties);
+    CustomerResponseDocument customerResponseDocument = (CustomerResponseDocument) o;
+    return Objects.equals(this.type, customerResponseDocument.type) &&
+        Objects.equals(this.number, customerResponseDocument.number) &&
+        Objects.equals(this.country, customerResponseDocument.country)&&
+        Objects.equals(this.additionalProperties, customerResponseDocument.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, tokenId, additionalProperties);
+    return Objects.hash(type, number, country, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SessionSourceTypeToken {\n");
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
-    sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
+    sb.append("class CustomerResponseDocument {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    number: ").append(toIndentedString(number)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -241,39 +224,34 @@ public class SessionSourceTypeToken {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("sourceType");
-    openapiFields.add("tokenId");
+    openapiFields.add("type");
+    openapiFields.add("number");
+    openapiFields.add("country");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("sourceType");
-    openapiRequiredFields.add("tokenId");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SessionSourceTypeToken
+  * @throws IOException if the JSON Object is invalid with respect to CustomerResponseDocument
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!SessionSourceTypeToken.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SessionSourceTypeToken is not found in the empty JSON string", SessionSourceTypeToken.openapiRequiredFields.toString()));
+        if (!CustomerResponseDocument.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerResponseDocument is not found in the empty JSON string", CustomerResponseDocument.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SessionSourceTypeToken.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      if (!jsonObj.get("sourceType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sourceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceType").toString()));
+      if ((jsonObj.get("number") != null && !jsonObj.get("number").isJsonNull()) && !jsonObj.get("number").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("number").toString()));
       }
-      if (!jsonObj.get("tokenId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tokenId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tokenId").toString()));
+      if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
       }
   }
 
@@ -281,16 +259,16 @@ public class SessionSourceTypeToken {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SessionSourceTypeToken.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SessionSourceTypeToken' and its subtypes
+       if (!CustomerResponseDocument.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CustomerResponseDocument' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SessionSourceTypeToken> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SessionSourceTypeToken.class));
+       final TypeAdapter<CustomerResponseDocument> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CustomerResponseDocument.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SessionSourceTypeToken>() {
+       return (TypeAdapter<T>) new TypeAdapter<CustomerResponseDocument>() {
            @Override
-           public void write(JsonWriter out, SessionSourceTypeToken value) throws IOException {
+           public void write(JsonWriter out, CustomerResponseDocument value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -313,11 +291,11 @@ public class SessionSourceTypeToken {
            }
 
            @Override
-           public SessionSourceTypeToken read(JsonReader in) throws IOException {
+           public CustomerResponseDocument read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             SessionSourceTypeToken instance = thisAdapter.fromJsonTree(jsonObj);
+             CustomerResponseDocument instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -344,18 +322,18 @@ public class SessionSourceTypeToken {
   }
 
  /**
-  * Create an instance of SessionSourceTypeToken given an JSON string
+  * Create an instance of CustomerResponseDocument given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of SessionSourceTypeToken
-  * @throws IOException if the JSON string is invalid with respect to SessionSourceTypeToken
+  * @return An instance of CustomerResponseDocument
+  * @throws IOException if the JSON string is invalid with respect to CustomerResponseDocument
   */
-  public static SessionSourceTypeToken fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SessionSourceTypeToken.class);
+  public static CustomerResponseDocument fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CustomerResponseDocument.class);
   }
 
  /**
-  * Convert an instance of SessionSourceTypeToken to an JSON string
+  * Convert an instance of CustomerResponseDocument to an JSON string
   *
   * @return JSON string
   */

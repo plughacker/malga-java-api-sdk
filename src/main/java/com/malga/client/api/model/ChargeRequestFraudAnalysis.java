@@ -20,6 +20,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.malga.client.api.model.FraudAnalysisRequestCart;
+import com.malga.client.api.model.FraudAnalysisRequestCustomer;
+import com.malga.client.api.model.FraudAnalysisRequestDevice;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -44,88 +47,88 @@ import java.util.Set;
 import com.malga.client.JSON;
 
 /**
- * SourceTypeCustomerOneShotCustomerDocument
+ * Additional parameters for fraud analysis, required by provider&#39;s anti-fraud
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T00:10:35.774518-03:00[America/Sao_Paulo]")
-public class SourceTypeCustomerOneShotCustomerDocument {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
+public class ChargeRequestFraudAnalysis {
+  public static final String SERIALIZED_NAME_CUSTOMER = "customer";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER)
+  private FraudAnalysisRequestCustomer customer;
 
-  public static final String SERIALIZED_NAME_NUMBER = "number";
-  @SerializedName(SERIALIZED_NAME_NUMBER)
-  private String number;
+  public static final String SERIALIZED_NAME_CART = "cart";
+  @SerializedName(SERIALIZED_NAME_CART)
+  private FraudAnalysisRequestCart cart;
 
-  public static final String SERIALIZED_NAME_COUNTRY = "country";
-  @SerializedName(SERIALIZED_NAME_COUNTRY)
-  private String country = "BR";
+  public static final String SERIALIZED_NAME_DEVICE = "device";
+  @SerializedName(SERIALIZED_NAME_DEVICE)
+  private FraudAnalysisRequestDevice device;
 
-  public SourceTypeCustomerOneShotCustomerDocument() {
+  public ChargeRequestFraudAnalysis() {
   }
 
-  public SourceTypeCustomerOneShotCustomerDocument type(String type) {
+  public ChargeRequestFraudAnalysis customer(FraudAnalysisRequestCustomer customer) {
     
-    this.type = type;
+    this.customer = customer;
     return this;
   }
 
    /**
-   * tipo de documento, consultar tabela de tipos suportados
-   * @return type
+   * Get customer
+   * @return customer
   **/
   @javax.annotation.Nullable
 
-  public String getType() {
-    return type;
+  public FraudAnalysisRequestCustomer getCustomer() {
+    return customer;
   }
 
 
-  public void setType(String type) {
-    this.type = type;
+  public void setCustomer(FraudAnalysisRequestCustomer customer) {
+    this.customer = customer;
   }
 
 
-  public SourceTypeCustomerOneShotCustomerDocument number(String number) {
+  public ChargeRequestFraudAnalysis cart(FraudAnalysisRequestCart cart) {
     
-    this.number = number;
+    this.cart = cart;
     return this;
   }
 
    /**
-   * numero do documento formato conforme tipo selecionado
-   * @return number
+   * Get cart
+   * @return cart
   **/
   @javax.annotation.Nullable
 
-  public String getNumber() {
-    return number;
+  public FraudAnalysisRequestCart getCart() {
+    return cart;
   }
 
 
-  public void setNumber(String number) {
-    this.number = number;
+  public void setCart(FraudAnalysisRequestCart cart) {
+    this.cart = cart;
   }
 
 
-  public SourceTypeCustomerOneShotCustomerDocument country(String country) {
+  public ChargeRequestFraudAnalysis device(FraudAnalysisRequestDevice device) {
     
-    this.country = country;
+    this.device = device;
     return this;
   }
 
    /**
-   * pais de emissão do documento, Padrão ISO 3166-1 alpha-2, consultar tabela de tipos suportados
-   * @return country
+   * Get device
+   * @return device
   **/
   @javax.annotation.Nullable
 
-  public String getCountry() {
-    return country;
+  public FraudAnalysisRequestDevice getDevice() {
+    return device;
   }
 
 
-  public void setCountry(String country) {
-    this.country = country;
+  public void setDevice(FraudAnalysisRequestDevice device) {
+    this.device = device;
   }
 
   /**
@@ -141,9 +144,9 @@ public class SourceTypeCustomerOneShotCustomerDocument {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the SourceTypeCustomerOneShotCustomerDocument instance itself
+   * @return the ChargeRequestFraudAnalysis instance itself
    */
-  public SourceTypeCustomerOneShotCustomerDocument putAdditionalProperty(String key, Object value) {
+  public ChargeRequestFraudAnalysis putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -182,25 +185,25 @@ public class SourceTypeCustomerOneShotCustomerDocument {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SourceTypeCustomerOneShotCustomerDocument sourceTypeCustomerOneShotCustomerDocument = (SourceTypeCustomerOneShotCustomerDocument) o;
-    return Objects.equals(this.type, sourceTypeCustomerOneShotCustomerDocument.type) &&
-        Objects.equals(this.number, sourceTypeCustomerOneShotCustomerDocument.number) &&
-        Objects.equals(this.country, sourceTypeCustomerOneShotCustomerDocument.country)&&
-        Objects.equals(this.additionalProperties, sourceTypeCustomerOneShotCustomerDocument.additionalProperties);
+    ChargeRequestFraudAnalysis chargeRequestFraudAnalysis = (ChargeRequestFraudAnalysis) o;
+    return Objects.equals(this.customer, chargeRequestFraudAnalysis.customer) &&
+        Objects.equals(this.cart, chargeRequestFraudAnalysis.cart) &&
+        Objects.equals(this.device, chargeRequestFraudAnalysis.device)&&
+        Objects.equals(this.additionalProperties, chargeRequestFraudAnalysis.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, number, country, additionalProperties);
+    return Objects.hash(customer, cart, device, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SourceTypeCustomerOneShotCustomerDocument {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    number: ").append(toIndentedString(number)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("class ChargeRequestFraudAnalysis {\n");
+    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    cart: ").append(toIndentedString(cart)).append("\n");
+    sb.append("    device: ").append(toIndentedString(device)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -224,9 +227,9 @@ public class SourceTypeCustomerOneShotCustomerDocument {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("number");
-    openapiFields.add("country");
+    openapiFields.add("customer");
+    openapiFields.add("cart");
+    openapiFields.add("device");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -236,22 +239,25 @@ public class SourceTypeCustomerOneShotCustomerDocument {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SourceTypeCustomerOneShotCustomerDocument
+  * @throws IOException if the JSON Object is invalid with respect to ChargeRequestFraudAnalysis
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!SourceTypeCustomerOneShotCustomerDocument.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SourceTypeCustomerOneShotCustomerDocument is not found in the empty JSON string", SourceTypeCustomerOneShotCustomerDocument.openapiRequiredFields.toString()));
+        if (!ChargeRequestFraudAnalysis.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ChargeRequestFraudAnalysis is not found in the empty JSON string", ChargeRequestFraudAnalysis.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      // validate the optional field `customer`
+      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
+        FraudAnalysisRequestCustomer.validateJsonObject(jsonObj.getAsJsonObject("customer"));
       }
-      if ((jsonObj.get("number") != null && !jsonObj.get("number").isJsonNull()) && !jsonObj.get("number").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("number").toString()));
+      // validate the optional field `cart`
+      if (jsonObj.get("cart") != null && !jsonObj.get("cart").isJsonNull()) {
+        FraudAnalysisRequestCart.validateJsonObject(jsonObj.getAsJsonObject("cart"));
       }
-      if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
+      // validate the optional field `device`
+      if (jsonObj.get("device") != null && !jsonObj.get("device").isJsonNull()) {
+        FraudAnalysisRequestDevice.validateJsonObject(jsonObj.getAsJsonObject("device"));
       }
   }
 
@@ -259,16 +265,16 @@ public class SourceTypeCustomerOneShotCustomerDocument {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SourceTypeCustomerOneShotCustomerDocument.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SourceTypeCustomerOneShotCustomerDocument' and its subtypes
+       if (!ChargeRequestFraudAnalysis.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ChargeRequestFraudAnalysis' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SourceTypeCustomerOneShotCustomerDocument> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SourceTypeCustomerOneShotCustomerDocument.class));
+       final TypeAdapter<ChargeRequestFraudAnalysis> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ChargeRequestFraudAnalysis.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SourceTypeCustomerOneShotCustomerDocument>() {
+       return (TypeAdapter<T>) new TypeAdapter<ChargeRequestFraudAnalysis>() {
            @Override
-           public void write(JsonWriter out, SourceTypeCustomerOneShotCustomerDocument value) throws IOException {
+           public void write(JsonWriter out, ChargeRequestFraudAnalysis value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -291,11 +297,11 @@ public class SourceTypeCustomerOneShotCustomerDocument {
            }
 
            @Override
-           public SourceTypeCustomerOneShotCustomerDocument read(JsonReader in) throws IOException {
+           public ChargeRequestFraudAnalysis read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             SourceTypeCustomerOneShotCustomerDocument instance = thisAdapter.fromJsonTree(jsonObj);
+             ChargeRequestFraudAnalysis instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -322,18 +328,18 @@ public class SourceTypeCustomerOneShotCustomerDocument {
   }
 
  /**
-  * Create an instance of SourceTypeCustomerOneShotCustomerDocument given an JSON string
+  * Create an instance of ChargeRequestFraudAnalysis given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of SourceTypeCustomerOneShotCustomerDocument
-  * @throws IOException if the JSON string is invalid with respect to SourceTypeCustomerOneShotCustomerDocument
+  * @return An instance of ChargeRequestFraudAnalysis
+  * @throws IOException if the JSON string is invalid with respect to ChargeRequestFraudAnalysis
   */
-  public static SourceTypeCustomerOneShotCustomerDocument fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SourceTypeCustomerOneShotCustomerDocument.class);
+  public static ChargeRequestFraudAnalysis fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ChargeRequestFraudAnalysis.class);
   }
 
  /**
-  * Convert an instance of SourceTypeCustomerOneShotCustomerDocument to an JSON string
+  * Convert an instance of ChargeRequestFraudAnalysis to an JSON string
   *
   * @return JSON string
   */

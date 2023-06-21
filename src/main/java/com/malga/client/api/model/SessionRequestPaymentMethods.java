@@ -22,9 +22,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.malga.client.api.model.PaymentMethodBoletoFine;
 import com.malga.client.api.model.PaymentMethodBoletoInterest;
+import com.malga.client.api.model.PaymentMethodCard;
+import com.malga.client.api.model.PaymentMethodPix;
 import com.malga.client.api.model.SessionPaymentMethodBoleto;
-import com.malga.client.api.model.SessionPaymentMethodCard;
-import com.malga.client.api.model.SessionPaymentMethodPix;
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -61,7 +61,7 @@ import com.google.gson.JsonParseException;
 
 import com.malga.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T00:10:35.774518-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
 public class SessionRequestPaymentMethods extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(SessionRequestPaymentMethods.class.getName());
 
@@ -73,15 +73,29 @@ public class SessionRequestPaymentMethods extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'SessionRequestPaymentMethods' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PaymentMethodCard> adapterPaymentMethodCard = gson.getDelegateAdapter(this, TypeToken.get(PaymentMethodCard.class));
+            final TypeAdapter<PaymentMethodPix> adapterPaymentMethodPix = gson.getDelegateAdapter(this, TypeToken.get(PaymentMethodPix.class));
             final TypeAdapter<SessionPaymentMethodBoleto> adapterSessionPaymentMethodBoleto = gson.getDelegateAdapter(this, TypeToken.get(SessionPaymentMethodBoleto.class));
-            final TypeAdapter<SessionPaymentMethodCard> adapterSessionPaymentMethodCard = gson.getDelegateAdapter(this, TypeToken.get(SessionPaymentMethodCard.class));
-            final TypeAdapter<SessionPaymentMethodPix> adapterSessionPaymentMethodPix = gson.getDelegateAdapter(this, TypeToken.get(SessionPaymentMethodPix.class));
 
             return (TypeAdapter<T>) new TypeAdapter<SessionRequestPaymentMethods>() {
                 @Override
                 public void write(JsonWriter out, SessionRequestPaymentMethods value) throws IOException {
                     if (value == null || value.getActualInstance() == null) {
                         elementAdapter.write(out, null);
+                        return;
+                    }
+
+                    // check if the actual instance is of the type `PaymentMethodCard`
+                    if (value.getActualInstance() instanceof PaymentMethodCard) {
+                        JsonObject obj = adapterPaymentMethodCard.toJsonTree((PaymentMethodCard)value.getActualInstance()).getAsJsonObject();
+                        elementAdapter.write(out, obj);
+                        return;
+                    }
+
+                    // check if the actual instance is of the type `PaymentMethodPix`
+                    if (value.getActualInstance() instanceof PaymentMethodPix) {
+                        JsonObject obj = adapterPaymentMethodPix.toJsonTree((PaymentMethodPix)value.getActualInstance()).getAsJsonObject();
+                        elementAdapter.write(out, obj);
                         return;
                     }
 
@@ -92,27 +106,39 @@ public class SessionRequestPaymentMethods extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `SessionPaymentMethodCard`
-                    if (value.getActualInstance() instanceof SessionPaymentMethodCard) {
-                        JsonObject obj = adapterSessionPaymentMethodCard.toJsonTree((SessionPaymentMethodCard)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `SessionPaymentMethodPix`
-                    if (value.getActualInstance() instanceof SessionPaymentMethodPix) {
-                        JsonObject obj = adapterSessionPaymentMethodPix.toJsonTree((SessionPaymentMethodPix)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
-                    }
-
-                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: SessionPaymentMethodBoleto, SessionPaymentMethodCard, SessionPaymentMethodPix");
+                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: PaymentMethodCard, PaymentMethodPix, SessionPaymentMethodBoleto");
                 }
 
                 @Override
                 public SessionRequestPaymentMethods read(JsonReader in) throws IOException {
                     Object deserialized = null;
                     JsonObject jsonObject = elementAdapter.read(in).getAsJsonObject();
+
+                    // deserialize PaymentMethodCard
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        PaymentMethodCard.validateJsonObject(jsonObject);
+                        log.log(Level.FINER, "Input data matches schema 'PaymentMethodCard'");
+                        SessionRequestPaymentMethods ret = new SessionRequestPaymentMethods();
+                        ret.setActualInstance(adapterPaymentMethodCard.fromJsonTree(jsonObject));
+                        return ret;
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        log.log(Level.FINER, "Input data does not match schema 'PaymentMethodCard'", e);
+                    }
+
+                    // deserialize PaymentMethodPix
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        PaymentMethodPix.validateJsonObject(jsonObject);
+                        log.log(Level.FINER, "Input data matches schema 'PaymentMethodPix'");
+                        SessionRequestPaymentMethods ret = new SessionRequestPaymentMethods();
+                        ret.setActualInstance(adapterPaymentMethodPix.fromJsonTree(jsonObject));
+                        return ret;
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        log.log(Level.FINER, "Input data does not match schema 'PaymentMethodPix'", e);
+                    }
 
                     // deserialize SessionPaymentMethodBoleto
                     try {
@@ -125,32 +151,6 @@ public class SessionRequestPaymentMethods extends AbstractOpenApiSchema {
                     } catch (Exception e) {
                         // deserialization failed, continue
                         log.log(Level.FINER, "Input data does not match schema 'SessionPaymentMethodBoleto'", e);
-                    }
-
-                    // deserialize SessionPaymentMethodCard
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        SessionPaymentMethodCard.validateJsonObject(jsonObject);
-                        log.log(Level.FINER, "Input data matches schema 'SessionPaymentMethodCard'");
-                        SessionRequestPaymentMethods ret = new SessionRequestPaymentMethods();
-                        ret.setActualInstance(adapterSessionPaymentMethodCard.fromJsonTree(jsonObject));
-                        return ret;
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        log.log(Level.FINER, "Input data does not match schema 'SessionPaymentMethodCard'", e);
-                    }
-
-                    // deserialize SessionPaymentMethodPix
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        SessionPaymentMethodPix.validateJsonObject(jsonObject);
-                        log.log(Level.FINER, "Input data matches schema 'SessionPaymentMethodPix'");
-                        SessionRequestPaymentMethods ret = new SessionRequestPaymentMethods();
-                        ret.setActualInstance(adapterSessionPaymentMethodPix.fromJsonTree(jsonObject));
-                        return ret;
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        log.log(Level.FINER, "Input data does not match schema 'SessionPaymentMethodPix'", e);
                     }
 
 
@@ -167,27 +167,27 @@ public class SessionRequestPaymentMethods extends AbstractOpenApiSchema {
         super("anyOf", Boolean.FALSE);
     }
 
+    public SessionRequestPaymentMethods(PaymentMethodCard o) {
+        super("anyOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public SessionRequestPaymentMethods(PaymentMethodPix o) {
+        super("anyOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public SessionRequestPaymentMethods(SessionPaymentMethodBoleto o) {
         super("anyOf", Boolean.FALSE);
         setActualInstance(o);
     }
 
-    public SessionRequestPaymentMethods(SessionPaymentMethodCard o) {
-        super("anyOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public SessionRequestPaymentMethods(SessionPaymentMethodPix o) {
-        super("anyOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
     static {
+        schemas.put("PaymentMethodCard", new GenericType<PaymentMethodCard>() {
+        });
+        schemas.put("PaymentMethodPix", new GenericType<PaymentMethodPix>() {
+        });
         schemas.put("SessionPaymentMethodBoleto", new GenericType<SessionPaymentMethodBoleto>() {
-        });
-        schemas.put("SessionPaymentMethodCard", new GenericType<SessionPaymentMethodCard>() {
-        });
-        schemas.put("SessionPaymentMethodPix", new GenericType<SessionPaymentMethodPix>() {
         });
     }
 
@@ -199,40 +199,62 @@ public class SessionRequestPaymentMethods extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the anyOf child schema, check
      * the instance parameter is valid against the anyOf child schemas:
-     * SessionPaymentMethodBoleto, SessionPaymentMethodCard, SessionPaymentMethodPix
+     * PaymentMethodCard, PaymentMethodPix, SessionPaymentMethodBoleto
      *
      * It could be an instance of the 'anyOf' schemas.
      * The anyOf child schemas may themselves be a composed schema (allOf, anyOf, anyOf).
      */
     @Override
     public void setActualInstance(Object instance) {
+        if (instance instanceof PaymentMethodCard) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof PaymentMethodPix) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (instance instanceof SessionPaymentMethodBoleto) {
             super.setActualInstance(instance);
             return;
         }
 
-        if (instance instanceof SessionPaymentMethodCard) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof SessionPaymentMethodPix) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be SessionPaymentMethodBoleto, SessionPaymentMethodCard, SessionPaymentMethodPix");
+        throw new RuntimeException("Invalid instance type. Must be PaymentMethodCard, PaymentMethodPix, SessionPaymentMethodBoleto");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * SessionPaymentMethodBoleto, SessionPaymentMethodCard, SessionPaymentMethodPix
+     * PaymentMethodCard, PaymentMethodPix, SessionPaymentMethodBoleto
      *
-     * @return The actual instance (SessionPaymentMethodBoleto, SessionPaymentMethodCard, SessionPaymentMethodPix)
+     * @return The actual instance (PaymentMethodCard, PaymentMethodPix, SessionPaymentMethodBoleto)
      */
     @Override
     public Object getActualInstance() {
         return super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `PaymentMethodCard`. If the actual instance is not `PaymentMethodCard`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `PaymentMethodCard`
+     * @throws ClassCastException if the instance is not `PaymentMethodCard`
+     */
+    public PaymentMethodCard getPaymentMethodCard() throws ClassCastException {
+        return (PaymentMethodCard)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `PaymentMethodPix`. If the actual instance is not `PaymentMethodPix`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `PaymentMethodPix`
+     * @throws ClassCastException if the instance is not `PaymentMethodPix`
+     */
+    public PaymentMethodPix getPaymentMethodPix() throws ClassCastException {
+        return (PaymentMethodPix)super.getActualInstance();
     }
 
     /**
@@ -246,28 +268,6 @@ public class SessionRequestPaymentMethods extends AbstractOpenApiSchema {
         return (SessionPaymentMethodBoleto)super.getActualInstance();
     }
 
-    /**
-     * Get the actual instance of `SessionPaymentMethodCard`. If the actual instance is not `SessionPaymentMethodCard`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `SessionPaymentMethodCard`
-     * @throws ClassCastException if the instance is not `SessionPaymentMethodCard`
-     */
-    public SessionPaymentMethodCard getSessionPaymentMethodCard() throws ClassCastException {
-        return (SessionPaymentMethodCard)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `SessionPaymentMethodPix`. If the actual instance is not `SessionPaymentMethodPix`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `SessionPaymentMethodPix`
-     * @throws ClassCastException if the instance is not `SessionPaymentMethodPix`
-     */
-    public SessionPaymentMethodPix getSessionPaymentMethodPix() throws ClassCastException {
-        return (SessionPaymentMethodPix)super.getActualInstance();
-    }
-
 
  /**
   * Validates the JSON Object and throws an exception if issues found
@@ -278,6 +278,22 @@ public class SessionRequestPaymentMethods extends AbstractOpenApiSchema {
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
     // validate anyOf schemas one by one
     int validCount = 0;
+    // validate the json string with PaymentMethodCard
+    try {
+      PaymentMethodCard.validateJsonObject(jsonObj);
+      return; // return earlier as at least one schema is valid with respect to the Json object
+      //validCount++;
+    } catch (Exception e) {
+      // continue to the next one
+    }
+    // validate the json string with PaymentMethodPix
+    try {
+      PaymentMethodPix.validateJsonObject(jsonObj);
+      return; // return earlier as at least one schema is valid with respect to the Json object
+      //validCount++;
+    } catch (Exception e) {
+      // continue to the next one
+    }
     // validate the json string with SessionPaymentMethodBoleto
     try {
       SessionPaymentMethodBoleto.validateJsonObject(jsonObj);
@@ -286,24 +302,8 @@ public class SessionRequestPaymentMethods extends AbstractOpenApiSchema {
     } catch (Exception e) {
       // continue to the next one
     }
-    // validate the json string with SessionPaymentMethodCard
-    try {
-      SessionPaymentMethodCard.validateJsonObject(jsonObj);
-      return; // return earlier as at least one schema is valid with respect to the Json object
-      //validCount++;
-    } catch (Exception e) {
-      // continue to the next one
-    }
-    // validate the json string with SessionPaymentMethodPix
-    try {
-      SessionPaymentMethodPix.validateJsonObject(jsonObj);
-      return; // return earlier as at least one schema is valid with respect to the Json object
-      //validCount++;
-    } catch (Exception e) {
-      // continue to the next one
-    }
     if (validCount == 0) {
-      throw new IOException(String.format("The JSON string is invalid for SessionRequestPaymentMethods with anyOf schemas: SessionPaymentMethodBoleto, SessionPaymentMethodCard, SessionPaymentMethodPix. JSON: %s", jsonObj.toString()));
+      throw new IOException(String.format("The JSON string is invalid for SessionRequestPaymentMethods with anyOf schemas: PaymentMethodCard, PaymentMethodPix, SessionPaymentMethodBoleto. JSON: %s", jsonObj.toString()));
     }
   }
 

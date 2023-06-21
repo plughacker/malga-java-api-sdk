@@ -46,56 +46,11 @@ import com.malga.client.JSON;
 /**
  * SourceTypeToken
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T00:10:35.774518-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
 public class SourceTypeToken {
-  /**
-   * tipo da origem da cobrança, usar &#x60;token&#x60; para cobrança no token gerado
-   */
-  @JsonAdapter(SourceTypeEnum.Adapter.class)
-  public enum SourceTypeEnum {
-    TOKEN("token");
-
-    private String value;
-
-    SourceTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SourceTypeEnum fromValue(String value) {
-      for (SourceTypeEnum b : SourceTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SourceTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SourceTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SourceTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SourceTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "sourceType";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
-  private SourceTypeEnum sourceType;
+  private String sourceType;
 
   public static final String SERIALIZED_NAME_TOKEN_ID = "tokenId";
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
@@ -104,7 +59,7 @@ public class SourceTypeToken {
   public SourceTypeToken() {
   }
 
-  public SourceTypeToken sourceType(SourceTypeEnum sourceType) {
+  public SourceTypeToken sourceType(String sourceType) {
     
     this.sourceType = sourceType;
     return this;
@@ -116,12 +71,12 @@ public class SourceTypeToken {
   **/
   @javax.annotation.Nonnull
 
-  public SourceTypeEnum getSourceType() {
+  public String getSourceType() {
     return sourceType;
   }
 
 
-  public void setSourceType(SourceTypeEnum sourceType) {
+  public void setSourceType(String sourceType) {
     this.sourceType = sourceType;
   }
 

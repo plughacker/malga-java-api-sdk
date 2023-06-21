@@ -20,8 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.malga.client.api.model.SourceTypeCustomerOneShotCustomerAddress;
-import com.malga.client.api.model.SourceTypeCustomerOneShotCustomerDocument;
+import com.malga.client.api.model.CustomerResponseAddress;
+import com.malga.client.api.model.CustomerResponseDocument;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -48,7 +48,7 @@ import com.malga.client.JSON;
 /**
  * CardResponseCustomer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T00:10:35.774518-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
 public class CardResponseCustomer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -76,11 +76,11 @@ public class CardResponseCustomer {
 
   public static final String SERIALIZED_NAME_DOCUMENT = "document";
   @SerializedName(SERIALIZED_NAME_DOCUMENT)
-  private SourceTypeCustomerOneShotCustomerDocument document;
+  private CustomerResponseDocument document;
 
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
-  private SourceTypeCustomerOneShotCustomerAddress address;
+  private CustomerResponseAddress address;
 
   public CardResponseCustomer() {
   }
@@ -217,7 +217,7 @@ public class CardResponseCustomer {
   }
 
 
-  public CardResponseCustomer document(SourceTypeCustomerOneShotCustomerDocument document) {
+  public CardResponseCustomer document(CustomerResponseDocument document) {
     
     this.document = document;
     return this;
@@ -229,17 +229,17 @@ public class CardResponseCustomer {
   **/
   @javax.annotation.Nullable
 
-  public SourceTypeCustomerOneShotCustomerDocument getDocument() {
+  public CustomerResponseDocument getDocument() {
     return document;
   }
 
 
-  public void setDocument(SourceTypeCustomerOneShotCustomerDocument document) {
+  public void setDocument(CustomerResponseDocument document) {
     this.document = document;
   }
 
 
-  public CardResponseCustomer address(SourceTypeCustomerOneShotCustomerAddress address) {
+  public CardResponseCustomer address(CustomerResponseAddress address) {
     
     this.address = address;
     return this;
@@ -251,12 +251,12 @@ public class CardResponseCustomer {
   **/
   @javax.annotation.Nullable
 
-  public SourceTypeCustomerOneShotCustomerAddress getAddress() {
+  public CustomerResponseAddress getAddress() {
     return address;
   }
 
 
-  public void setAddress(SourceTypeCustomerOneShotCustomerAddress address) {
+  public void setAddress(CustomerResponseAddress address) {
     this.address = address;
   }
 
@@ -411,11 +411,11 @@ public class CardResponseCustomer {
       }
       // validate the optional field `document`
       if (jsonObj.get("document") != null && !jsonObj.get("document").isJsonNull()) {
-        SourceTypeCustomerOneShotCustomerDocument.validateJsonObject(jsonObj.getAsJsonObject("document"));
+        CustomerResponseDocument.validateJsonObject(jsonObj.getAsJsonObject("document"));
       }
       // validate the optional field `address`
       if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
-        SourceTypeCustomerOneShotCustomerAddress.validateJsonObject(jsonObj.getAsJsonObject("address"));
+        CustomerResponseAddress.validateJsonObject(jsonObj.getAsJsonObject("address"));
       }
   }
 

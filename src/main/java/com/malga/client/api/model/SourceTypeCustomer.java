@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.malga.client.api.model.CustomerRequest;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -46,65 +47,24 @@ import com.malga.client.JSON;
 /**
  * SourceTypeCustomer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T00:10:35.774518-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
 public class SourceTypeCustomer {
-  /**
-   * tipo da origem da cobrança, usar &#x60;customer&#x60; para cobrança no cartão default do comprador
-   */
-  @JsonAdapter(SourceTypeEnum.Adapter.class)
-  public enum SourceTypeEnum {
-    CUSTOMER("customer");
-
-    private String value;
-
-    SourceTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SourceTypeEnum fromValue(String value) {
-      for (SourceTypeEnum b : SourceTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SourceTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SourceTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SourceTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SourceTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "sourceType";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
-  private SourceTypeEnum sourceType;
+  private String sourceType;
 
   public static final String SERIALIZED_NAME_CUSTOMER_ID = "customerId";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_ID)
   private String customerId;
 
+  public static final String SERIALIZED_NAME_CUSTOMER = "customer";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER)
+  private CustomerRequest customer;
+
   public SourceTypeCustomer() {
   }
 
-  public SourceTypeCustomer sourceType(SourceTypeEnum sourceType) {
+  public SourceTypeCustomer sourceType(String sourceType) {
     
     this.sourceType = sourceType;
     return this;
@@ -114,14 +74,14 @@ public class SourceTypeCustomer {
    * tipo da origem da cobrança, usar &#x60;customer&#x60; para cobrança no cartão default do comprador
    * @return sourceType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public SourceTypeEnum getSourceType() {
+  public String getSourceType() {
     return sourceType;
   }
 
 
-  public void setSourceType(SourceTypeEnum sourceType) {
+  public void setSourceType(String sourceType) {
     this.sourceType = sourceType;
   }
 
@@ -136,7 +96,7 @@ public class SourceTypeCustomer {
    * Identificador do cliente quando source tipo customer, debitando o cartão default do comprador
    * @return customerId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getCustomerId() {
     return customerId;
@@ -145,6 +105,28 @@ public class SourceTypeCustomer {
 
   public void setCustomerId(String customerId) {
     this.customerId = customerId;
+  }
+
+
+  public SourceTypeCustomer customer(CustomerRequest customer) {
+    
+    this.customer = customer;
+    return this;
+  }
+
+   /**
+   * Get customer
+   * @return customer
+  **/
+  @javax.annotation.Nullable
+
+  public CustomerRequest getCustomer() {
+    return customer;
+  }
+
+
+  public void setCustomer(CustomerRequest customer) {
+    this.customer = customer;
   }
 
   /**
@@ -203,13 +185,14 @@ public class SourceTypeCustomer {
     }
     SourceTypeCustomer sourceTypeCustomer = (SourceTypeCustomer) o;
     return Objects.equals(this.sourceType, sourceTypeCustomer.sourceType) &&
-        Objects.equals(this.customerId, sourceTypeCustomer.customerId)&&
+        Objects.equals(this.customerId, sourceTypeCustomer.customerId) &&
+        Objects.equals(this.customer, sourceTypeCustomer.customer)&&
         Objects.equals(this.additionalProperties, sourceTypeCustomer.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, customerId, additionalProperties);
+    return Objects.hash(sourceType, customerId, customer, additionalProperties);
   }
 
   @Override
@@ -218,6 +201,7 @@ public class SourceTypeCustomer {
     sb.append("class SourceTypeCustomer {\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -241,13 +225,9 @@ public class SourceTypeCustomer {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("sourceType");
-    openapiFields.add("customerId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("sourceType");
-    openapiRequiredFields.add("customerId");
   }
 
  /**
@@ -262,18 +242,15 @@ public class SourceTypeCustomer {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SourceTypeCustomer is not found in the empty JSON string", SourceTypeCustomer.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SourceTypeCustomer.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("sourceType").isJsonPrimitive()) {
+      if ((jsonObj.get("sourceType") != null && !jsonObj.get("sourceType").isJsonNull()) && !jsonObj.get("sourceType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sourceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceType").toString()));
       }
-      if (!jsonObj.get("customerId").isJsonPrimitive()) {
+      if ((jsonObj.get("customerId") != null && !jsonObj.get("customerId").isJsonNull()) && !jsonObj.get("customerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `customerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customerId").toString()));
+      }
+      // validate the optional field `customer`
+      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
+        CustomerRequest.validateJsonObject(jsonObj.getAsJsonObject("customer"));
       }
   }
 

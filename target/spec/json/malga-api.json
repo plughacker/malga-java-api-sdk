@@ -33,7 +33,7 @@
   }, {
     "name" : "Merchants",
     "description" : "\nThrough the merchant’s APIs, it is possible to create and configure sub-accounts on Malga. A sub account, or merchant, is a registry of a commercial business you have with one of Malga's integrated payment providers. "
-  }],
+  } ],
   "x-tagGroups" : [ {
     "name" : "API Key",
     "tags" : [ "Client-token" ]
@@ -49,7 +49,7 @@
   }, {
     "name" : "Providers",
     "tags" : [ "Merchants" ]
-  }],
+  } ],
   "paths" : {
     "/v1/auth" : {
       "post" : {
@@ -804,78 +804,6 @@
         "tags" : [ "Sessions" ]
       }
     },
-    "/v1/sessions/{id}/charge" : {
-      "post" : {
-        "summary" : "Pay session",
-        "operationId" : "paySession",
-        "parameters" : [ {
-          "name" : "id",
-          "required" : true,
-          "description" : "Session ID",
-          "in" : "path",
-          "schema" : {
-            "type" : "string",
-            "format" : "uuid"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/SessionChargeRequest"
-              },
-              "examples" : {
-                "card" : {
-                  "summary" : "Credit card example",
-                  "value" : null,
-                  "$ref" : "#/components/examples/ChargeCardRequest/value"
-                },
-                "pix" : {
-                  "summary" : "PIX example",
-                  "value" : null,
-                  "$ref" : "#/components/examples/ChargePixRequest/value"
-                },
-                "boleto" : {
-                  "summary" : "Boleto example",
-                  "value" : null,
-                  "$ref" : "#/components/examples/ChargeBoletoRequest/value"
-                }
-              }
-            }
-          }
-        },
-        "responses" : {
-          "201" : {
-            "description" : "Created",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/SessionChargeResponse"
-                },
-                "examples" : {
-                  "card" : {
-                    "summary" : "Credit card example",
-                    "value" : null,
-                    "$ref" : "#/components/examples/SessionChargeCardResponse/value"
-                  },
-                  "pix" : {
-                    "summary" : "PIX example",
-                    "value" : null,
-                    "$ref" : "#/components/examples/SessionChargePixResponse/value"
-                  },
-                  "boleto" : {
-                    "summary" : "Boleto example",
-                    "value" : null,
-                    "$ref" : "#/components/examples/SessionChargeBoletoResponse/value"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "tags" : [ "Sessions" ]
-      }
-    },
     "/v1/sessions/{id}/cancel" : {
       "post" : {
         "summary" : "Cancel session",
@@ -1607,156 +1535,6 @@
         },
         "required" : [ "paymentType", "expiresIn" ]
       },
-      "SessionPaymentMethodCard" : {
-        "type" : "object",
-        "properties" : {
-          "paymentType" : {
-            "type" : "string",
-            "enum" : [ "credit", "debit" ],
-            "description" : "Credit/Debit card charge method"
-          },
-          "installments" : {
-            "type" : "integer",
-            "description" : "Installments quantity for credit payments"
-          }
-        },
-        "required" : [ "paymentType" ]
-      },
-      "SessionPaymentMethodPix" : {
-        "properties" : {
-          "paymentType" : {
-            "type" : "string",
-            "enum" : [ "pix" ],
-            "description" : "Pix charge, the source must be a valid customer"
-          },
-          "expiresIn" : {
-            "type" : "number",
-            "description" : "Time in seconds that defines the validity of the charge"
-          }
-        },
-        "required" : [ "paymentType", "expiresIn" ]
-      },
-      "SessionChargeResponse" : {
-        "properties" : {
-          "id" : {
-            "type" : "string",
-            "description" : "ChargeResponse ID"
-          },
-          "clientId" : {
-            "type" : "string",
-            "format" : "uuid",
-            "description" : "Client identification on Malga"
-          },
-          "merchantId" : {
-            "type" : "string",
-            "format" : "uuid",
-            "description" : "Merchant identification used in charge"
-          },
-          "description" : {
-            "type" : "string",
-            "description" : "Short description"
-          },
-          "orderId" : {
-            "type" : "string",
-            "description" : "Unique identification of order in your side to help future conciliation"
-          },
-          "createdAt" : {
-            "type" : "string",
-            "description" : "Created date"
-          },
-          "amount" : {
-            "type" : "integer",
-            "description" : "Transaction amount in cents, example 100 to charge R$ 1.00"
-          },
-          "originalAmount" : {
-            "type" : "integer",
-            "description" : "Transaction original amount in cents, example 100 to charge R$ 1.00"
-          },
-          "currency" : {
-            "type" : "string",
-            "description" : "Currency code to be used in charge, ISO 4217 format (see table of types)",
-            "default" : "BRL"
-          },
-          "statementDescriptor" : {
-            "type" : "string",
-            "description" : "Description to be displayed on the buyer's bank statement"
-          },
-          "status" : {
-            "type" : "string",
-            "enum" : [ "created", "paid", "canceled", "voided" ],
-            "description" : "Session status"
-          },
-          "paymentMethod" : {
-            "oneOf" : [ {
-              "$ref" : "#/components/schemas/PaymentMethodCard"
-            }, {
-              "$ref" : "#/components/schemas/PaymentMethodPixResponse"
-            }, {
-              "$ref" : "#/components/schemas/PaymentMethodBoletoResponse"
-            } ]
-          },
-          "paymentSource" : {
-            "oneOf" : [ {
-              "$ref" : "#/components/schemas/SourceTypeCard"
-            }, {
-              "$ref" : "#/components/schemas/SourceTypeToken"
-            }, {
-              "$ref" : "#/components/schemas/SourceTypeCustomer"
-            } ]
-          },
-          "transactionRequests" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/TransactionRequest"
-            }
-          }
-        }
-      },
-      "SessionChargeRequest" : {
-        "properties" : {
-          "customerId" : {
-            "type" : "string",
-            "format" : "uuid",
-            "description" : "Customer identification"
-          },
-          "paymentMethod" : {
-            "description" : "Payment method to be used",
-            "oneOf" : [ {
-              "$ref" : "#/components/schemas/SessionPaymentMethodCard"
-            }, {
-              "$ref" : "#/components/schemas/SessionPaymentMethodPix"
-            }, {
-              "$ref" : "#/components/schemas/SessionPaymentMethodBoleto"
-            } ]
-          },
-          "paymentSource" : {
-            "oneOf" : [ {
-              "$ref" : "#/components/schemas/SessionSourceTypeCard"
-            }, {
-              "$ref" : "#/components/schemas/SessionSourceTypeCardOneShot"
-            }, {
-              "$ref" : "#/components/schemas/SessionSourceTypeToken"
-            }, {
-              "$ref" : "#/components/schemas/SessionSourceTypeCustomer"
-            }, {
-              "$ref" : "#/components/schemas/SessionSourceTypeCustomerOneShot"
-            } ]
-          },
-          "fraudAnalysis" : {
-            "description" : "Additional parameters for fraud analysis, required by provider's anti-fraud",
-            "allOf" : [ {
-              "$ref" : "#/components/schemas/FraudAnalysisRequest"
-            } ]
-          },
-          "splitRules" : {
-            "description" : "Additional parameters for transacting with Split",
-            "allOf" : [ {
-              "$ref" : "#/components/schemas/SplitRules"
-            } ]
-          }
-        },
-        "required" : [ "paymentMethod", "paymentSource" ]
-      },
       "UpdateSessionResponse" : {
         "properties" : {
           "id" : {
@@ -1832,9 +1610,9 @@
           "paymentMethods" : {
             "description" : "Payment methods available on this session",
             "anyOf" : [ {
-              "$ref" : "#/components/schemas/SessionPaymentMethodCard"
+              "$ref" : "#/components/schemas/PaymentMethodCard"
             }, {
-              "$ref" : "#/components/schemas/SessionPaymentMethodPix"
+              "$ref" : "#/components/schemas/PaymentMethodPix"
             }, {
               "$ref" : "#/components/schemas/SessionPaymentMethodBoleto"
             } ]
@@ -2176,100 +1954,6 @@
           }
         }
       },
-      "ChargeResponse" : {
-        "properties" : {
-          "id" : {
-            "type" : "string",
-            "description" : "Charge ID"
-          },
-          "clientId" : {
-            "type" : "string",
-            "description" : "client identification on Malga"
-          },
-          "merchantId" : {
-            "type" : "string",
-            "description" : "merchant identification used in charge"
-          },
-          "customerId" : {
-            "type" : "string",
-            "description" : "customer identification"
-          },
-          "description" : {
-            "type" : "string",
-            "description" : "short description"
-          },
-          "amount" : {
-            "type" : "integer",
-            "description" : "transaction amount in cents, example 100 to charge R$ 1.00"
-          },
-          "originalAmount" : {
-            "type" : "integer",
-            "description" : "transaction orignal amount in cents, example 100 to charge R$ 1.00"
-          },
-          "currency" : {
-            "type" : "string",
-            "description" : "currency code to be used in charge, ISO 4217 format (see table of types).",
-            "default" : "BRL"
-          },
-          "statementDescriptor" : {
-            "type" : "string",
-            "description" : "description to be displayed on the buyer's bank statement"
-          },
-          "capture" : {
-            "type" : "boolean",
-            "description" : "whether the transaction should be captured automatically"
-          },
-          "status" : {
-            "type" : "string",
-            "description" : "charge status on Malga",
-            "enum" : [ "pending", "pre_authorized", "authorized", "failed", "canceled", "voided", "refund_pending", "charged_back" ]
-          },
-          "orderId" : {
-            "type" : "string",
-            "description" : "Unique identification of order in your side to help future conciliation"
-          },
-          "paymentMethod" : {
-            "oneOf" : [ {
-              "$ref" : "#/components/schemas/PaymentMethodCard"
-            }, {
-              "$ref" : "#/components/schemas/PaymentMethodPixResponse"
-            }, {
-              "$ref" : "#/components/schemas/PaymentMethodBoletoResponse"
-            } ]
-          },
-          "paymentSource" : {
-            "oneOf" : [ {
-              "$ref" : "#/components/schemas/SourceTypeCard"
-            }, {
-              "$ref" : "#/components/schemas/SourceTypeCardOneShot"
-            }, {
-              "$ref" : "#/components/schemas/SourceTypeToken"
-            }, {
-              "$ref" : "#/components/schemas/SourceTypeCustomer"
-            } ]
-          },
-          "createdAt" : {
-            "type" : "string",
-            "description" : "Created date"
-          },
-          "updatedAt" : {
-            "type" : "string",
-            "description" : "Updated date"
-          },
-          "fraudAnalysisMetadata" : {
-            "description" : "Additional parameters for fraud analysis",
-            "allOf" : [ {
-              "$ref" : "#/components/schemas/FraudAnalysisMetadata"
-            } ]
-          },
-          "transactionRequests" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/TransactionRequest"
-            }
-          }
-        }
-      },
       "TransactionRequest" : {
         "properties" : {
           "id" : {
@@ -2411,16 +2095,12 @@
             } ]
           },
           "paymentSource" : {
-            "oneOf" : [ {
+            "anyOf" : [ {
               "$ref" : "#/components/schemas/SourceTypeCard"
-            }, {
-              "$ref" : "#/components/schemas/SourceTypeCardOneShot"
             }, {
               "$ref" : "#/components/schemas/SourceTypeToken"
             }, {
               "$ref" : "#/components/schemas/SourceTypeCustomer"
-            }, {
-              "$ref" : "#/components/schemas/SourceTypeCustomerOneShot"
             } ]
           },
           "fraudAnalysis" : {
@@ -2840,14 +2520,23 @@
           "sourceType" : {
             "type" : "string",
             "description" : "tipo da origem da cobrança, usar `card` para cobrança em cartão tokenizado",
-            "enum" : [ "card" ]
+            "example" : "card"
           },
           "cardId" : {
             "type" : "string",
             "description" : "Identificador do cartão quando source tipo card (opcional)"
+          },
+          "card" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/TokenRequest"
+            } ]
           }
         },
-        "required" : [ "sourceType", "cardId" ]
+        "anyOf" : [ {
+          "required" : [ "sourceType", "cardId" ]
+        }, {
+          "required" : [ "sourceType", "card" ]
+        } ]
       },
       "SourceTypeToken" : {
         "type" : "object",
@@ -2855,7 +2544,7 @@
           "sourceType" : {
             "type" : "string",
             "description" : "tipo da origem da cobrança, usar `token` para cobrança no token gerado",
-            "enum" : [ "token" ]
+            "example" : "token"
           },
           "tokenId" : {
             "type" : "string",
@@ -2870,84 +2559,23 @@
           "sourceType" : {
             "type" : "string",
             "description" : "tipo da origem da cobrança, usar `customer` para cobrança no cartão default do comprador",
-            "enum" : [ "customer" ]
+            "example" : "customer"
           },
           "customerId" : {
             "type" : "string",
             "description" : "Identificador do cliente quando source tipo customer, debitando o cartão default do comprador"
-          }
-        },
-        "required" : [ "sourceType", "customerId" ]
-      },
-      "SourceTypeCustomerOneShot" : {
-        "type" : "object",
-        "properties" : {
-          "sourceType" : {
-            "type" : "string",
-            "description" : "tipo da origem da cobrança, usar `customer` para cobrança no cartão default do comprador",
-            "enum" : [ "customer" ]
           },
           "customer" : {
-            "type" : "object",
-            "properties" : {
-              "name" : {
-                "type" : "string",
-                "description" : "nome do usuario"
-              },
-              "email" : {
-                "type" : "string",
-                "description" : "email do usuario"
-              },
-              "phoneNumber" : {
-                "type" : "string",
-                "description" : "telefone de contato do usuario"
-              },
-              "document" : {
-                "allOf" : [ {
-                  "$ref" : "#/components/schemas/Document"
-                } ]
-              },
-              "address" : {
-                "allOf" : [ {
-                  "$ref" : "#/components/schemas/Address"
-                } ]
-              }
-            }
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/CustomerRequest"
+            } ]
           }
         },
-        "required" : [ "sourceType", "customerId", "email", "phoneNumber", "document" ]
-      },
-      "SourceTypeCardOneShot" : {
-        "type" : "object",
-        "properties" : {
-          "sourceType" : {
-            "type" : "string",
-            "description" : "tipo da origem da cobrança, usar `card` para cobrança direta no cartão",
-            "enum" : [ "card" ]
-          },
-          "card" : {
-            "type" : "object",
-            "properties" : {
-              "cardHolderName" : {
-                "type" : "string",
-                "description" : "Nome do portador do cartão quando cobrança sem tokenização"
-              },
-              "cardNumber" : {
-                "type" : "string",
-                "description" : "Número do cartão quando cobrança sem tokenização"
-              },
-              "cardCvv" : {
-                "type" : "string",
-                "description" : "Código de verificação cobrança sem tokenização"
-              },
-              "cardExpirationDate" : {
-                "type" : "string",
-                "description" : "Mês e ano de validade no formato MM/YYYY quando cobrança sem tokenização"
-              }
-            }
-          }
-        },
-        "required" : [ "sourceType", "cardHolderName", "cardNumber", "cardCvv", "cardExpirationDate" ]
+        "anyOf" : [ {
+          "required" : [ "sourceType", "customerId" ]
+        }, {
+          "required" : [ "sourceType", "customer" ]
+        } ]
       },
       "PaymentMethodBoleto" : {
         "properties" : {
@@ -3069,6 +2697,127 @@
         },
         "required" : [ "paymentType", "expiresIn", "qrCodeData", "qrCodeImageUrl" ]
       },
+      "SessionPaymentMethodCard" : {
+        "type" : "object",
+        "properties" : {
+          "paymentType" : {
+            "type" : "string",
+            "enum" : [ "credit", "debit" ],
+            "description" : "Credit/Debit card charge method"
+          },
+          "installments" : {
+            "type" : "integer",
+            "description" : "Installments quantity for credit payments"
+          }
+        },
+        "required" : [ "paymentType" ]
+      },
+      "ChargeResponse" : {
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Charge ID"
+          },
+          "clientId" : {
+            "type" : "string",
+            "description" : "client identification on Malga"
+          },
+          "merchantId" : {
+            "type" : "string",
+            "description" : "merchant identification used in charge"
+          },
+          "customerId" : {
+            "type" : "string",
+            "description" : "customer identification"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "short description"
+          },
+          "amount" : {
+            "type" : "integer",
+            "description" : "transaction amount in cents, example 100 to charge R$ 1.00"
+          },
+          "originalAmount" : {
+            "type" : "integer",
+            "description" : "transaction orignal amount in cents, example 100 to charge R$ 1.00"
+          },
+          "currency" : {
+            "type" : "string",
+            "description" : "currency code to be used in charge, ISO 4217 format (see table of types).",
+            "default" : "BRL"
+          },
+          "statementDescriptor" : {
+            "type" : "string",
+            "description" : "description to be displayed on the buyer's bank statement"
+          },
+          "capture" : {
+            "type" : "boolean",
+            "description" : "whether the transaction should be captured automatically"
+          },
+          "status" : {
+            "type" : "string",
+            "description" : "charge status on Malga",
+            "enum" : [ "pending", "pre_authorized", "authorized", "failed", "canceled", "voided", "refund_pending", "charged_back" ]
+          },
+          "orderId" : {
+            "type" : "string",
+            "description" : "Unique identification of order in your side to help future conciliation"
+          },
+          "paymentMethod" : {
+            "oneOf" : [ {
+              "$ref" : "#/components/schemas/PaymentMethodCard"
+            }, {
+              "$ref" : "#/components/schemas/PaymentMethodPixResponse"
+            }, {
+              "$ref" : "#/components/schemas/PaymentMethodBoletoResponse"
+            } ]
+          },
+          "paymentSource" : {
+            "anyOf" : [ {
+              "$ref" : "#/components/schemas/SourceTypeCard"
+            }, {
+              "$ref" : "#/components/schemas/SourceTypeToken"
+            }, {
+              "$ref" : "#/components/schemas/SourceTypeCustomer"
+            } ]
+          },
+          "createdAt" : {
+            "type" : "string",
+            "description" : "Created date"
+          },
+          "updatedAt" : {
+            "type" : "string",
+            "description" : "Updated date"
+          },
+          "fraudAnalysisMetadata" : {
+            "description" : "Additional parameters for fraud analysis",
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/FraudAnalysisMetadata"
+            } ]
+          },
+          "transactionRequests" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/TransactionRequest"
+            }
+          }
+        }
+      },
+      "SessionPaymentMethodPix" : {
+        "properties" : {
+          "paymentType" : {
+            "type" : "string",
+            "enum" : [ "pix" ],
+            "description" : "Pix charge, the source must be a valid customer"
+          },
+          "expiresIn" : {
+            "type" : "number",
+            "description" : "Time in seconds that defines the validity of the charge"
+          }
+        },
+        "required" : [ "paymentType", "expiresIn" ]
+      },
       "SessionPaymentMethodBoletoResponse" : {
         "properties" : {
           "paymentType" : {
@@ -3090,122 +2839,6 @@
           }
         },
         "required" : [ "paymentType", "expiresDate", "barcodeData", "barcodeImageUrl" ]
-      },
-      "SessionSourceTypeCard" : {
-        "type" : "object",
-        "description" : "identificação do merchant id a ser utilizado",
-        "properties" : {
-          "sourceType" : {
-            "type" : "string",
-            "description" : "tipo da origem da cobrança, usar `card` para cobrança em cartão tokenizado",
-            "enum" : [ "card" ]
-          },
-          "cardId" : {
-            "type" : "string",
-            "description" : "Identificador do cartão quando source tipo card (opcional)"
-          }
-        },
-        "required" : [ "sourceType", "cardId" ]
-      },
-      "SessionSourceTypeToken" : {
-        "type" : "object",
-        "properties" : {
-          "sourceType" : {
-            "type" : "string",
-            "description" : "tipo da origem da cobrança, usar `token` para cobrança no token gerado",
-            "enum" : [ "token" ]
-          },
-          "tokenId" : {
-            "type" : "string",
-            "description" : "Identificador do token quando source tipo token (opcional)"
-          }
-        },
-        "required" : [ "sourceType", "tokenId" ]
-      },
-      "SessionSourceTypeCustomer" : {
-        "type" : "object",
-        "properties" : {
-          "sourceType" : {
-            "type" : "string",
-            "description" : "tipo da origem da cobrança, usar `customer` para cobrança no cartão default do comprador",
-            "enum" : [ "customer" ]
-          },
-          "customerId" : {
-            "type" : "string",
-            "description" : "Identificador do cliente quando source tipo customer, debitando o cartão default do comprador"
-          }
-        },
-        "required" : [ "sourceType", "customerId" ]
-      },
-      "SessionSourceTypeCustomerOneShot" : {
-        "type" : "object",
-        "properties" : {
-          "sourceType" : {
-            "type" : "string",
-            "description" : "tipo da origem da cobrança, usar `customer` para cobrança no cartão default do comprador",
-            "enum" : [ "customer" ]
-          },
-          "customer" : {
-            "type" : "object",
-            "properties" : {
-              "name" : {
-                "type" : "string",
-                "description" : "nome do usuario"
-              },
-              "email" : {
-                "type" : "string",
-                "description" : "email do usuario"
-              },
-              "phoneNumber" : {
-                "type" : "string",
-                "description" : "telefone de contato do usuario"
-              },
-              "document" : {
-                "allOf" : [ {
-                  "$ref" : "#/components/schemas/Document"
-                } ]
-              },
-              "address" : {
-                "allOf" : [ {
-                  "$ref" : "#/components/schemas/Address"
-                } ]
-              }
-            }
-          }
-        },
-        "required" : [ "sourceType", "customerId", "email", "phoneNumber", "document" ]
-      },
-      "SessionSourceTypeCardOneShot" : {
-        "type" : "object",
-        "properties" : {
-          "sourceType" : {
-            "type" : "string",
-            "description" : "tipo da origem da cobrança, usar `card` para cobrança direta no cartão",
-            "enum" : [ "card" ]
-          },
-          "card" : {
-            "type" : "object",
-            "properties" : {
-              "cardHolderName" : {
-                "type" : "string",
-                "description" : "Nome do portador do cartão quando cobrança sem tokenização"
-              },
-              "cardNumber" : {
-                "type" : "string",
-                "description" : "Número do cartão quando cobrança sem tokenização"
-              },
-              "cardCvv" : {
-                "type" : "string",
-                "description" : "Código de verificação cobrança sem tokenização"
-              },
-              "cardExpirationDate" : {
-                "type" : "string",
-                "description" : "Mês e ano de validade no formato MM/YYYY quando cobrança sem tokenização"
-              }
-            }
-          }
-        },
-        "required" : [ "sourceType", "cardHolderName", "cardNumber", "cardCvv", "cardExpirationDate" ]
       },
       "SessionPaymentMethodBoleto" : {
         "properties" : {
@@ -3261,7 +2894,6 @@
         },
         "required" : [ "paymentType" ]
       },
-
       "TokenRequest" : {
         "required" : [ "cardHolderName", "cardNumber", "cardCvv", "cardExpirationDate" ],
         "properties" : {
@@ -3929,7 +3561,7 @@
       "SplitRules" : {
         "type" : "array",
         "items" : {
-          "type": "object",
+          "type" : "object",
           "properties" : {
             "sellerId" : {
               "type" : "string",

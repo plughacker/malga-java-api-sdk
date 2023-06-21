@@ -59,25 +59,25 @@ import com.google.gson.JsonParseException;
 
 import com.malga.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T00:10:35.774518-03:00[America/Sao_Paulo]")
-public class SessionChargeResponsePaymentMethod extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(SessionChargeResponsePaymentMethod.class.getName());
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
+public class ChargeResponsePaymentMethod extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(ChargeResponsePaymentMethod.class.getName());
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!SessionChargeResponsePaymentMethod.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'SessionChargeResponsePaymentMethod' and its subtypes
+            if (!ChargeResponsePaymentMethod.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ChargeResponsePaymentMethod' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<PaymentMethodBoletoResponse> adapterPaymentMethodBoletoResponse = gson.getDelegateAdapter(this, TypeToken.get(PaymentMethodBoletoResponse.class));
             final TypeAdapter<PaymentMethodCard> adapterPaymentMethodCard = gson.getDelegateAdapter(this, TypeToken.get(PaymentMethodCard.class));
             final TypeAdapter<PaymentMethodPixResponse> adapterPaymentMethodPixResponse = gson.getDelegateAdapter(this, TypeToken.get(PaymentMethodPixResponse.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<SessionChargeResponsePaymentMethod>() {
+            return (TypeAdapter<T>) new TypeAdapter<ChargeResponsePaymentMethod>() {
                 @Override
-                public void write(JsonWriter out, SessionChargeResponsePaymentMethod value) throws IOException {
+                public void write(JsonWriter out, ChargeResponsePaymentMethod value) throws IOException {
                     if (value == null || value.getActualInstance() == null) {
                         elementAdapter.write(out, null);
                         return;
@@ -108,7 +108,7 @@ public class SessionChargeResponsePaymentMethod extends AbstractOpenApiSchema {
                 }
 
                 @Override
-                public SessionChargeResponsePaymentMethod read(JsonReader in) throws IOException {
+                public ChargeResponsePaymentMethod read(JsonReader in) throws IOException {
                     Object deserialized = null;
                     JsonObject jsonObject = elementAdapter.read(in).getAsJsonObject();
 
@@ -156,12 +156,12 @@ public class SessionChargeResponsePaymentMethod extends AbstractOpenApiSchema {
                     }
 
                     if (match == 1) {
-                        SessionChargeResponsePaymentMethod ret = new SessionChargeResponsePaymentMethod();
+                        ChargeResponsePaymentMethod ret = new ChargeResponsePaymentMethod();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonObject));
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for SessionChargeResponsePaymentMethod: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonObject.toString()));
+                    throw new IOException(String.format("Failed deserialization for ChargeResponsePaymentMethod: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonObject.toString()));
                 }
             }.nullSafe();
         }
@@ -170,21 +170,21 @@ public class SessionChargeResponsePaymentMethod extends AbstractOpenApiSchema {
     // store a list of schema names defined in oneOf
     public static final Map<String, GenericType> schemas = new HashMap<String, GenericType>();
 
-    public SessionChargeResponsePaymentMethod() {
+    public ChargeResponsePaymentMethod() {
         super("oneOf", Boolean.FALSE);
     }
 
-    public SessionChargeResponsePaymentMethod(PaymentMethodBoletoResponse o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public SessionChargeResponsePaymentMethod(PaymentMethodCard o) {
+    public ChargeResponsePaymentMethod(PaymentMethodBoletoResponse o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
 
-    public SessionChargeResponsePaymentMethod(PaymentMethodPixResponse o) {
+    public ChargeResponsePaymentMethod(PaymentMethodCard o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public ChargeResponsePaymentMethod(PaymentMethodPixResponse o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -200,7 +200,7 @@ public class SessionChargeResponsePaymentMethod extends AbstractOpenApiSchema {
 
     @Override
     public Map<String, GenericType> getSchemas() {
-        return SessionChargeResponsePaymentMethod.schemas;
+        return ChargeResponsePaymentMethod.schemas;
     }
 
     /**
@@ -280,7 +280,7 @@ public class SessionChargeResponsePaymentMethod extends AbstractOpenApiSchema {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SessionChargeResponsePaymentMethod
+  * @throws IOException if the JSON Object is invalid with respect to ChargeResponsePaymentMethod
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
     // validate oneOf schemas one by one
@@ -311,23 +311,23 @@ public class SessionChargeResponsePaymentMethod extends AbstractOpenApiSchema {
       // continue to the next one
     }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for SessionChargeResponsePaymentMethod with oneOf schemas: PaymentMethodBoletoResponse, PaymentMethodCard, PaymentMethodPixResponse. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
+      throw new IOException(String.format("The JSON string is invalid for ChargeResponsePaymentMethod with oneOf schemas: PaymentMethodBoletoResponse, PaymentMethodCard, PaymentMethodPixResponse. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
     }
   }
 
  /**
-  * Create an instance of SessionChargeResponsePaymentMethod given an JSON string
+  * Create an instance of ChargeResponsePaymentMethod given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of SessionChargeResponsePaymentMethod
-  * @throws IOException if the JSON string is invalid with respect to SessionChargeResponsePaymentMethod
+  * @return An instance of ChargeResponsePaymentMethod
+  * @throws IOException if the JSON string is invalid with respect to ChargeResponsePaymentMethod
   */
-  public static SessionChargeResponsePaymentMethod fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SessionChargeResponsePaymentMethod.class);
+  public static ChargeResponsePaymentMethod fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ChargeResponsePaymentMethod.class);
   }
 
  /**
-  * Convert an instance of SessionChargeResponsePaymentMethod to an JSON string
+  * Convert an instance of ChargeResponsePaymentMethod to an JSON string
   *
   * @return JSON string
   */

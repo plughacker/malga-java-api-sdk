@@ -72,7 +72,7 @@ import com.google.gson.JsonParseException;
 
 import com.malga.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T00:10:35.774518-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
 public class ProviderRequestCredentials extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ProviderRequestCredentials.class.getName());
 

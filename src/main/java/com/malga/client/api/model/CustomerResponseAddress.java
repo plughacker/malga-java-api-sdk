@@ -44,10 +44,10 @@ import java.util.Set;
 import com.malga.client.JSON;
 
 /**
- * SourceTypeCustomerOneShotCustomerAddress
+ * CustomerResponseAddress
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T00:10:35.774518-03:00[America/Sao_Paulo]")
-public class SourceTypeCustomerOneShotCustomerAddress {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
+public class CustomerResponseAddress {
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
   private String country;
@@ -80,10 +80,10 @@ public class SourceTypeCustomerOneShotCustomerAddress {
   @SerializedName(SERIALIZED_NAME_COMPLEMENT)
   private String complement;
 
-  public SourceTypeCustomerOneShotCustomerAddress() {
+  public CustomerResponseAddress() {
   }
 
-  public SourceTypeCustomerOneShotCustomerAddress country(String country) {
+  public CustomerResponseAddress country(String country) {
     
     this.country = country;
     return this;
@@ -105,7 +105,7 @@ public class SourceTypeCustomerOneShotCustomerAddress {
   }
 
 
-  public SourceTypeCustomerOneShotCustomerAddress state(String state) {
+  public CustomerResponseAddress state(String state) {
     
     this.state = state;
     return this;
@@ -127,7 +127,7 @@ public class SourceTypeCustomerOneShotCustomerAddress {
   }
 
 
-  public SourceTypeCustomerOneShotCustomerAddress city(String city) {
+  public CustomerResponseAddress city(String city) {
     
     this.city = city;
     return this;
@@ -149,7 +149,7 @@ public class SourceTypeCustomerOneShotCustomerAddress {
   }
 
 
-  public SourceTypeCustomerOneShotCustomerAddress district(String district) {
+  public CustomerResponseAddress district(String district) {
     
     this.district = district;
     return this;
@@ -171,7 +171,7 @@ public class SourceTypeCustomerOneShotCustomerAddress {
   }
 
 
-  public SourceTypeCustomerOneShotCustomerAddress zipCode(String zipCode) {
+  public CustomerResponseAddress zipCode(String zipCode) {
     
     this.zipCode = zipCode;
     return this;
@@ -193,7 +193,7 @@ public class SourceTypeCustomerOneShotCustomerAddress {
   }
 
 
-  public SourceTypeCustomerOneShotCustomerAddress street(String street) {
+  public CustomerResponseAddress street(String street) {
     
     this.street = street;
     return this;
@@ -215,7 +215,7 @@ public class SourceTypeCustomerOneShotCustomerAddress {
   }
 
 
-  public SourceTypeCustomerOneShotCustomerAddress streetNumber(String streetNumber) {
+  public CustomerResponseAddress streetNumber(String streetNumber) {
     
     this.streetNumber = streetNumber;
     return this;
@@ -237,7 +237,7 @@ public class SourceTypeCustomerOneShotCustomerAddress {
   }
 
 
-  public SourceTypeCustomerOneShotCustomerAddress complement(String complement) {
+  public CustomerResponseAddress complement(String complement) {
     
     this.complement = complement;
     return this;
@@ -271,9 +271,9 @@ public class SourceTypeCustomerOneShotCustomerAddress {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the SourceTypeCustomerOneShotCustomerAddress instance itself
+   * @return the CustomerResponseAddress instance itself
    */
-  public SourceTypeCustomerOneShotCustomerAddress putAdditionalProperty(String key, Object value) {
+  public CustomerResponseAddress putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -312,16 +312,16 @@ public class SourceTypeCustomerOneShotCustomerAddress {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SourceTypeCustomerOneShotCustomerAddress sourceTypeCustomerOneShotCustomerAddress = (SourceTypeCustomerOneShotCustomerAddress) o;
-    return Objects.equals(this.country, sourceTypeCustomerOneShotCustomerAddress.country) &&
-        Objects.equals(this.state, sourceTypeCustomerOneShotCustomerAddress.state) &&
-        Objects.equals(this.city, sourceTypeCustomerOneShotCustomerAddress.city) &&
-        Objects.equals(this.district, sourceTypeCustomerOneShotCustomerAddress.district) &&
-        Objects.equals(this.zipCode, sourceTypeCustomerOneShotCustomerAddress.zipCode) &&
-        Objects.equals(this.street, sourceTypeCustomerOneShotCustomerAddress.street) &&
-        Objects.equals(this.streetNumber, sourceTypeCustomerOneShotCustomerAddress.streetNumber) &&
-        Objects.equals(this.complement, sourceTypeCustomerOneShotCustomerAddress.complement)&&
-        Objects.equals(this.additionalProperties, sourceTypeCustomerOneShotCustomerAddress.additionalProperties);
+    CustomerResponseAddress customerResponseAddress = (CustomerResponseAddress) o;
+    return Objects.equals(this.country, customerResponseAddress.country) &&
+        Objects.equals(this.state, customerResponseAddress.state) &&
+        Objects.equals(this.city, customerResponseAddress.city) &&
+        Objects.equals(this.district, customerResponseAddress.district) &&
+        Objects.equals(this.zipCode, customerResponseAddress.zipCode) &&
+        Objects.equals(this.street, customerResponseAddress.street) &&
+        Objects.equals(this.streetNumber, customerResponseAddress.streetNumber) &&
+        Objects.equals(this.complement, customerResponseAddress.complement)&&
+        Objects.equals(this.additionalProperties, customerResponseAddress.additionalProperties);
   }
 
   @Override
@@ -332,7 +332,7 @@ public class SourceTypeCustomerOneShotCustomerAddress {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SourceTypeCustomerOneShotCustomerAddress {\n");
+    sb.append("class CustomerResponseAddress {\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
@@ -381,12 +381,12 @@ public class SourceTypeCustomerOneShotCustomerAddress {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SourceTypeCustomerOneShotCustomerAddress
+  * @throws IOException if the JSON Object is invalid with respect to CustomerResponseAddress
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!SourceTypeCustomerOneShotCustomerAddress.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SourceTypeCustomerOneShotCustomerAddress is not found in the empty JSON string", SourceTypeCustomerOneShotCustomerAddress.openapiRequiredFields.toString()));
+        if (!CustomerResponseAddress.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerResponseAddress is not found in the empty JSON string", CustomerResponseAddress.openapiRequiredFields.toString()));
         }
       }
       if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
@@ -419,16 +419,16 @@ public class SourceTypeCustomerOneShotCustomerAddress {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SourceTypeCustomerOneShotCustomerAddress.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SourceTypeCustomerOneShotCustomerAddress' and its subtypes
+       if (!CustomerResponseAddress.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CustomerResponseAddress' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SourceTypeCustomerOneShotCustomerAddress> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SourceTypeCustomerOneShotCustomerAddress.class));
+       final TypeAdapter<CustomerResponseAddress> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CustomerResponseAddress.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SourceTypeCustomerOneShotCustomerAddress>() {
+       return (TypeAdapter<T>) new TypeAdapter<CustomerResponseAddress>() {
            @Override
-           public void write(JsonWriter out, SourceTypeCustomerOneShotCustomerAddress value) throws IOException {
+           public void write(JsonWriter out, CustomerResponseAddress value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -451,11 +451,11 @@ public class SourceTypeCustomerOneShotCustomerAddress {
            }
 
            @Override
-           public SourceTypeCustomerOneShotCustomerAddress read(JsonReader in) throws IOException {
+           public CustomerResponseAddress read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             SourceTypeCustomerOneShotCustomerAddress instance = thisAdapter.fromJsonTree(jsonObj);
+             CustomerResponseAddress instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -482,18 +482,18 @@ public class SourceTypeCustomerOneShotCustomerAddress {
   }
 
  /**
-  * Create an instance of SourceTypeCustomerOneShotCustomerAddress given an JSON string
+  * Create an instance of CustomerResponseAddress given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of SourceTypeCustomerOneShotCustomerAddress
-  * @throws IOException if the JSON string is invalid with respect to SourceTypeCustomerOneShotCustomerAddress
+  * @return An instance of CustomerResponseAddress
+  * @throws IOException if the JSON string is invalid with respect to CustomerResponseAddress
   */
-  public static SourceTypeCustomerOneShotCustomerAddress fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SourceTypeCustomerOneShotCustomerAddress.class);
+  public static CustomerResponseAddress fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CustomerResponseAddress.class);
   }
 
  /**
-  * Convert an instance of SourceTypeCustomerOneShotCustomerAddress to an JSON string
+  * Convert an instance of CustomerResponseAddress to an JSON string
   *
   * @return JSON string
   */

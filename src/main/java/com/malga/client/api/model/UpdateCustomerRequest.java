@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.malga.client.api.model.SourceTypeCustomerOneShotCustomerAddress;
+import com.malga.client.api.model.CustomerResponseAddress;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -47,7 +47,7 @@ import com.malga.client.JSON;
 /**
  * UpdateCustomerRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T00:10:35.774518-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
 public class UpdateCustomerRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -59,7 +59,7 @@ public class UpdateCustomerRequest {
 
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
-  private SourceTypeCustomerOneShotCustomerAddress address;
+  private CustomerResponseAddress address;
 
   public UpdateCustomerRequest() {
   }
@@ -108,7 +108,7 @@ public class UpdateCustomerRequest {
   }
 
 
-  public UpdateCustomerRequest address(SourceTypeCustomerOneShotCustomerAddress address) {
+  public UpdateCustomerRequest address(CustomerResponseAddress address) {
     
     this.address = address;
     return this;
@@ -120,12 +120,12 @@ public class UpdateCustomerRequest {
   **/
   @javax.annotation.Nullable
 
-  public SourceTypeCustomerOneShotCustomerAddress getAddress() {
+  public CustomerResponseAddress getAddress() {
     return address;
   }
 
 
-  public void setAddress(SourceTypeCustomerOneShotCustomerAddress address) {
+  public void setAddress(CustomerResponseAddress address) {
     this.address = address;
   }
 
@@ -253,7 +253,7 @@ public class UpdateCustomerRequest {
       }
       // validate the optional field `address`
       if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
-        SourceTypeCustomerOneShotCustomerAddress.validateJsonObject(jsonObj.getAsJsonObject("address"));
+        CustomerResponseAddress.validateJsonObject(jsonObj.getAsJsonObject("address"));
       }
   }
 

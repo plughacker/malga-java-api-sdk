@@ -20,9 +20,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.malga.client.api.model.ChargeRequestPaymentSource;
 import com.malga.client.api.model.ChargeResponseFraudAnalysisMetadata;
-import com.malga.client.api.model.ChargeResponsePaymentSource;
-import com.malga.client.api.model.SessionChargeResponsePaymentMethod;
+import com.malga.client.api.model.ChargeResponsePaymentMethod;
 import com.malga.client.api.model.TransactionRequest;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ import com.malga.client.JSON;
 /**
  * ChargeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T00:10:35.774518-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
 public class ChargeResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -77,6 +77,10 @@ public class ChargeResponse {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private Integer amount;
+
+  public static final String SERIALIZED_NAME_ORIGINAL_AMOUNT = "originalAmount";
+  @SerializedName(SERIALIZED_NAME_ORIGINAL_AMOUNT)
+  private Integer originalAmount;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -159,11 +163,11 @@ public class ChargeResponse {
 
   public static final String SERIALIZED_NAME_PAYMENT_METHOD = "paymentMethod";
   @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD)
-  private SessionChargeResponsePaymentMethod paymentMethod;
+  private ChargeResponsePaymentMethod paymentMethod;
 
   public static final String SERIALIZED_NAME_PAYMENT_SOURCE = "paymentSource";
   @SerializedName(SERIALIZED_NAME_PAYMENT_SOURCE)
-  private ChargeResponsePaymentSource paymentSource;
+  private ChargeRequestPaymentSource paymentSource;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -316,6 +320,28 @@ public class ChargeResponse {
   }
 
 
+  public ChargeResponse originalAmount(Integer originalAmount) {
+    
+    this.originalAmount = originalAmount;
+    return this;
+  }
+
+   /**
+   * transaction orignal amount in cents, example 100 to charge R$ 1.00
+   * @return originalAmount
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getOriginalAmount() {
+    return originalAmount;
+  }
+
+
+  public void setOriginalAmount(Integer originalAmount) {
+    this.originalAmount = originalAmount;
+  }
+
+
   public ChargeResponse currency(String currency) {
     
     this.currency = currency;
@@ -426,7 +452,7 @@ public class ChargeResponse {
   }
 
 
-  public ChargeResponse paymentMethod(SessionChargeResponsePaymentMethod paymentMethod) {
+  public ChargeResponse paymentMethod(ChargeResponsePaymentMethod paymentMethod) {
     
     this.paymentMethod = paymentMethod;
     return this;
@@ -438,17 +464,17 @@ public class ChargeResponse {
   **/
   @javax.annotation.Nullable
 
-  public SessionChargeResponsePaymentMethod getPaymentMethod() {
+  public ChargeResponsePaymentMethod getPaymentMethod() {
     return paymentMethod;
   }
 
 
-  public void setPaymentMethod(SessionChargeResponsePaymentMethod paymentMethod) {
+  public void setPaymentMethod(ChargeResponsePaymentMethod paymentMethod) {
     this.paymentMethod = paymentMethod;
   }
 
 
-  public ChargeResponse paymentSource(ChargeResponsePaymentSource paymentSource) {
+  public ChargeResponse paymentSource(ChargeRequestPaymentSource paymentSource) {
     
     this.paymentSource = paymentSource;
     return this;
@@ -460,12 +486,12 @@ public class ChargeResponse {
   **/
   @javax.annotation.Nullable
 
-  public ChargeResponsePaymentSource getPaymentSource() {
+  public ChargeRequestPaymentSource getPaymentSource() {
     return paymentSource;
   }
 
 
-  public void setPaymentSource(ChargeResponsePaymentSource paymentSource) {
+  public void setPaymentSource(ChargeRequestPaymentSource paymentSource) {
     this.paymentSource = paymentSource;
   }
 
@@ -626,6 +652,7 @@ public class ChargeResponse {
         Objects.equals(this.customerId, chargeResponse.customerId) &&
         Objects.equals(this.description, chargeResponse.description) &&
         Objects.equals(this.amount, chargeResponse.amount) &&
+        Objects.equals(this.originalAmount, chargeResponse.originalAmount) &&
         Objects.equals(this.currency, chargeResponse.currency) &&
         Objects.equals(this.statementDescriptor, chargeResponse.statementDescriptor) &&
         Objects.equals(this.capture, chargeResponse.capture) &&
@@ -642,7 +669,7 @@ public class ChargeResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, clientId, merchantId, customerId, description, amount, currency, statementDescriptor, capture, status, orderId, paymentMethod, paymentSource, createdAt, updatedAt, fraudAnalysisMetadata, transactionRequests, additionalProperties);
+    return Objects.hash(id, clientId, merchantId, customerId, description, amount, originalAmount, currency, statementDescriptor, capture, status, orderId, paymentMethod, paymentSource, createdAt, updatedAt, fraudAnalysisMetadata, transactionRequests, additionalProperties);
   }
 
   @Override
@@ -655,6 +682,7 @@ public class ChargeResponse {
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    originalAmount: ").append(toIndentedString(originalAmount)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    statementDescriptor: ").append(toIndentedString(statementDescriptor)).append("\n");
     sb.append("    capture: ").append(toIndentedString(capture)).append("\n");
@@ -695,6 +723,7 @@ public class ChargeResponse {
     openapiFields.add("customerId");
     openapiFields.add("description");
     openapiFields.add("amount");
+    openapiFields.add("originalAmount");
     openapiFields.add("currency");
     openapiFields.add("statementDescriptor");
     openapiFields.add("capture");
@@ -752,11 +781,11 @@ public class ChargeResponse {
       }
       // validate the optional field `paymentMethod`
       if (jsonObj.get("paymentMethod") != null && !jsonObj.get("paymentMethod").isJsonNull()) {
-        SessionChargeResponsePaymentMethod.validateJsonObject(jsonObj.getAsJsonObject("paymentMethod"));
+        ChargeResponsePaymentMethod.validateJsonObject(jsonObj.getAsJsonObject("paymentMethod"));
       }
       // validate the optional field `paymentSource`
       if (jsonObj.get("paymentSource") != null && !jsonObj.get("paymentSource").isJsonNull()) {
-        ChargeResponsePaymentSource.validateJsonObject(jsonObj.getAsJsonObject("paymentSource"));
+        ChargeRequestPaymentSource.validateJsonObject(jsonObj.getAsJsonObject("paymentSource"));
       }
       if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));

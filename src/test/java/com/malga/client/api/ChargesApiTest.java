@@ -19,6 +19,8 @@ import com.malga.client.Configuration;
 import com.malga.client.api.model.*;
 import com.malga.client.auth.ApiKeyAuth;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 /**
  * API tests for ChargesApi
@@ -29,14 +31,14 @@ public class ChargesApiTest {
      * Returns a sample ChargeRequest object with full card data
      */
     protected ChargeRequest createCardChargeRequest() {
-        SourceTypeCardOneShot cardOneShot = (new SourceTypeCardOneShot())
-                .sourceType(SourceTypeCardOneShot.SourceTypeEnum.CARD)
-                .card((new SourceTypeCardOneShotCard())
-                        .cardExpirationDate("12/2025")
-                        .cardHolderName("John Doe")
-                        .cardNumber("4929564637987814")
-                        .cardCvv("410")
-                );
+        SourceTypeCard cardOneShot = ((new SourceTypeCard())
+                .sourceType("card")
+                .card((new TokenRequest())
+                    .cardExpirationDate("12/2025")
+                    .cardHolderName("John Doe")
+                    .cardNumber("4929564637987814")
+                    .cardCvv("410")
+        ));
 
         PaymentMethodCard paymentMethodCard =  (new PaymentMethodCard())
                 .paymentType(PaymentMethodCard.PaymentTypeEnum.CREDIT)
@@ -47,6 +49,8 @@ public class ChargesApiTest {
                 .statementDescriptor("should be statement descriptor")
                 .merchantId("f18eb60d-89cc-419d-a7fc-204a6298421d")
                 .amount(1000)
+                .orderId("1234567890")
+                .capture(false)
                 .paymentSource((new ChargeRequestPaymentSource(cardOneShot)))
                 .paymentMethod((new ChargeRequestPaymentMethod(paymentMethodCard)));
     }
@@ -57,7 +61,7 @@ public class ChargesApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void chargeTest() throws ApiException {
+    public void chargePreAuthorizationTest() throws ApiException {
 
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://sandbox-api.malga.io");
@@ -71,8 +75,24 @@ public class ChargesApiTest {
         ChargesApi chargesApi = new ChargesApi(defaultClient);
 
         ChargeRequest chargeRequest = createCardChargeRequest();
-        ChargeResponse response = chargesApi.charge(chargeRequest);
+        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
 
+        assertNotNull(chargeResponse.getId());
+
+        assertEquals(1000, chargeResponse.getAmount());
+        assertEquals("523afbe7-36dc-4654-9dba-e7167d0e5e2d", chargeResponse.getClientId());
+        assertEquals("f18eb60d-89cc-419d-a7fc-204a6298421d", chargeResponse.getMerchantId());
+        assertEquals("should be statement descriptor", chargeResponse.getStatementDescriptor());
+
+        assertEquals("card", chargeResponse.getPaymentSource().getSourceTypeCard().getSourceType());
+        assertNotNull(chargeResponse.getPaymentSource().getSourceTypeCard().getCardId());
+
+        assertEquals(PaymentMethodCard.PaymentTypeEnum.CREDIT, chargeResponse.getPaymentMethod().getPaymentMethodCard().getPaymentType());
+        assertEquals(1, chargeResponse.getPaymentMethod().getPaymentMethodCard().getInstallments());
+
+        assertEquals("1234567890", chargeResponse.getOrderId());
+
+        assertEquals(ChargeResponse.StatusEnum.PRE_AUTHORIZED, chargeResponse.getStatus());
     }
 
 }
