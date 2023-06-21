@@ -20,6 +20,7 @@ publishing {
             groupId = 'com.malga'
             artifactId = 'malga-java-api-sdk'
             version = '0.1.0'
+
             from components.java
             versionMapping {
                 usage('java-api') {
@@ -32,6 +33,7 @@ publishing {
             pom {
                 name = "Malga Java Api SDK"
                 description = "Malga Api Client for java"
+                url = "https://github.com/plughacker/malga-java-api-sdk"
                 licenses {
                     license {
                         name = 'The Apache License, Version 2.0'
@@ -53,6 +55,12 @@ publishing {
             }
         }
     }
+//    repositories {
+//        maven {
+//            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+//            name = "Central Repository OSSRH"
+//        }
+//    }
 }
 
 dependencies {

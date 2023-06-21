@@ -47,7 +47,7 @@ public class ChargesApiTest {
         return (new ChargeRequest())
                 .capture(false)
                 .statementDescriptor("should be statement descriptor")
-                .merchantId("f18eb60d-89cc-419d-a7fc-204a6298421d")
+                .merchantId(System.getenv("MERCHANT_ID"))
                 .amount(1000)
                 .orderId("1234567890")
                 .capture(false)
@@ -67,10 +67,10 @@ public class ChargesApiTest {
         defaultClient.setBasePath("https://sandbox-api.malga.io");
 
         ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-ID");
-        clientID.setApiKey("523afbe7-36dc-4654-9dba-e7167d0e5e2d");
+        clientID.setApiKey(System.getenv("CLIENT_ID"));
 
         ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("X-Api-Key");
-        apiKey.setApiKey("d6a2eeb2-46e3-4f5b-a468-3b526df23a51");
+        apiKey.setApiKey(System.getenv("API_KEY"));
 
         ChargesApi chargesApi = new ChargesApi(defaultClient);
 
