@@ -47,3 +47,8 @@ build
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
