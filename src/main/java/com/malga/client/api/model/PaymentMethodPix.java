@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,7 +46,7 @@ import com.malga.client.JSON;
 /**
  * PaymentMethodPix
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
 public class PaymentMethodPix {
   /**
    * Pix charge, the source must be a valid customer
@@ -100,7 +99,7 @@ public class PaymentMethodPix {
 
   public static final String SERIALIZED_NAME_EXPIRES_IN = "expiresIn";
   @SerializedName(SERIALIZED_NAME_EXPIRES_IN)
-  private BigDecimal expiresIn;
+  private Integer expiresIn;
 
   public PaymentMethodPix() {
   }
@@ -127,7 +126,7 @@ public class PaymentMethodPix {
   }
 
 
-  public PaymentMethodPix expiresIn(BigDecimal expiresIn) {
+  public PaymentMethodPix expiresIn(Integer expiresIn) {
     
     this.expiresIn = expiresIn;
     return this;
@@ -139,12 +138,12 @@ public class PaymentMethodPix {
   **/
   @javax.annotation.Nonnull
 
-  public BigDecimal getExpiresIn() {
+  public Integer getExpiresIn() {
     return expiresIn;
   }
 
 
-  public void setExpiresIn(BigDecimal expiresIn) {
+  public void setExpiresIn(Integer expiresIn) {
     this.expiresIn = expiresIn;
   }
 

@@ -1529,7 +1529,7 @@
             "description" : "Pix charge, the source must be a valid customer"
           },
           "expiresIn" : {
-            "type" : "number",
+            "type" : "integer",
             "description" : "Time in seconds that defines the validity of the charge"
           }
         },
@@ -2086,7 +2086,7 @@
           },
           "paymentMethod" : {
             "description" : "Payment method to be used",
-            "oneOf" : [ {
+            "anyOf" : [ {
               "$ref" : "#/components/schemas/PaymentMethodCard"
             }, {
               "$ref" : "#/components/schemas/PaymentMethodPix"
@@ -2098,10 +2098,14 @@
             "anyOf" : [ {
               "$ref" : "#/components/schemas/SourceTypeCard"
             }, {
+              "$ref" : "#/components/schemas/SourceTypeCardOneShot"
+            }, {
               "$ref" : "#/components/schemas/SourceTypeToken"
             }, {
               "$ref" : "#/components/schemas/SourceTypeCustomer"
-            } ]
+            }, {
+              "$ref" : "#/components/schemas/SourceTypeCustomerOneShot"
+            }  ]
           },
           "fraudAnalysis" : {
             "description" : "Additional parameters for fraud analysis, required by provider's anti-fraud",
@@ -2525,6 +2529,18 @@
           "cardId" : {
             "type" : "string",
             "description" : "Identificador do cartão quando source tipo card (opcional)"
+          }
+        },
+        "required" : [ "sourceType", "cardId" ]
+      },
+      "SourceTypeCardOneShot" : {
+        "type" : "object",
+        "description" : "identificação do merchant id a ser utilizado",
+        "properties" : {
+          "sourceType" : {
+            "type" : "string",
+            "description" : "tipo da origem da cobrança, usar `card` para cobrança em cartão tokenizado",
+            "example" : "card"
           },
           "card" : {
             "allOf" : [ {
@@ -2532,11 +2548,7 @@
             } ]
           }
         },
-        "anyOf" : [ {
-          "required" : [ "sourceType", "cardId" ]
-        }, {
-          "required" : [ "sourceType", "card" ]
-        } ]
+        "required" : [ "sourceType", "card" ]
       },
       "SourceTypeToken" : {
         "type" : "object",
@@ -2571,11 +2583,23 @@
             } ]
           }
         },
-        "anyOf" : [ {
-          "required" : [ "sourceType", "customerId" ]
-        }, {
-          "required" : [ "sourceType", "customer" ]
-        } ]
+        "required" : [ "sourceType", "customerId" ]
+      },
+      "SourceTypeCustomerOneShot" : {
+        "type" : "object",
+        "properties" : {
+          "sourceType" : {
+            "type" : "string",
+            "description" : "tipo da origem da cobrança, usar `customer` para cobrança no cartão default do comprador",
+            "example" : "customer"
+          },
+          "customer" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/CustomerRequest"
+            } ]
+          }
+        },
+        "required" : [ "sourceType", "customer" ]
       },
       "PaymentMethodBoleto" : {
         "properties" : {
@@ -2635,11 +2659,11 @@
         "properties" : {
           "paymentType" : {
             "type" : "string",
-            "enum" : [ "pix" ],
+            "enum" : ["pix"],
             "description" : "método da cobrança via PIX, o source deve ser um customer válido."
           },
           "expiresIn" : {
-            "type" : "number",
+            "type" : "integer",
             "description" : "tempo em segundos que define a validade da cobrança."
           },
           "qrCodeData" : {
@@ -2657,7 +2681,7 @@
         "properties" : {
           "paymentType" : {
             "type" : "string",
-            "enum" : [ "boleto" ],
+            "enum" : ["boleto"],
             "description" : "método da cobrança via Boleto, o source deve ser um customer válido"
           },
           "expiresDate" : {
@@ -2683,7 +2707,7 @@
             "description" : "método da cobrança via PIX, o source deve ser um customer válido."
           },
           "expiresIn" : {
-            "type" : "number",
+            "type" : "integer",
             "description" : "tempo em segundos que define a validade da cobrança."
           },
           "qrCodeData" : {
@@ -2765,7 +2789,7 @@
             "description" : "Unique identification of order in your side to help future conciliation"
           },
           "paymentMethod" : {
-            "oneOf" : [ {
+            "anyOf" : [ {
               "$ref" : "#/components/schemas/PaymentMethodCard"
             }, {
               "$ref" : "#/components/schemas/PaymentMethodPixResponse"
@@ -2777,10 +2801,14 @@
             "anyOf" : [ {
               "$ref" : "#/components/schemas/SourceTypeCard"
             }, {
+              "$ref" : "#/components/schemas/SourceTypeCardOneShot"
+            }, {
               "$ref" : "#/components/schemas/SourceTypeToken"
             }, {
               "$ref" : "#/components/schemas/SourceTypeCustomer"
-            } ]
+            }, {
+              "$ref" : "#/components/schemas/SourceTypeCustomerOneShot"
+            }  ]
           },
           "createdAt" : {
             "type" : "string",
@@ -2812,7 +2840,7 @@
             "description" : "Pix charge, the source must be a valid customer"
           },
           "expiresIn" : {
-            "type" : "number",
+            "type" : "integer",
             "description" : "Time in seconds that defines the validity of the charge"
           }
         },
@@ -2945,18 +2973,6 @@
           "items" : {
             "type" : "array",
             "$ref" : "#/components/schemas/ChargeResponse"
-          }
-        }
-      },
-      "CustomerList" : {
-        "properties" : {
-          "meta" : {
-            "type" : "object",
-            "$ref" : "#/components/schemas/MetaPagination"
-          },
-          "items" : {
-            "type" : "array",
-            "$ref" : "#/components/schemas/CustomerResponse"
           }
         }
       },
@@ -3658,6 +3674,34 @@
           }
         }
       },
+      "CustomerRequest" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "nome do usuario"
+          },
+          "email" : {
+            "type" : "string",
+            "description" : "email do usuario"
+          },
+          "phoneNumber" : {
+            "type" : "string",
+            "description" : "telefone de contato do usuario"
+          },
+          "document" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/Document"
+            } ]
+          },
+          "address" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/Address"
+            } ]
+          }
+        },
+        "required" : [ "name", "phoneNumber", "email", "document" ]
+      },
       "CustomerResponse" : {
         "type" : "object",
         "properties" : {
@@ -3697,33 +3741,17 @@
           }
         }
       },
-      "CustomerRequest" : {
-        "type" : "object",
+      "CustomerList" : {
         "properties" : {
-          "name" : {
-            "type" : "string",
-            "description" : "nome do usuario"
+          "meta" : {
+            "type" : "object",
+            "$ref" : "#/components/schemas/MetaPagination"
           },
-          "email" : {
-            "type" : "string",
-            "description" : "email do usuario"
-          },
-          "phoneNumber" : {
-            "type" : "string",
-            "description" : "telefone de contato do usuario"
-          },
-          "document" : {
-            "allOf" : [ {
-              "$ref" : "#/components/schemas/Document"
-            } ]
-          },
-          "address" : {
-            "allOf" : [ {
-              "$ref" : "#/components/schemas/Address"
-            } ]
+          "items" : {
+            "type" : "array",
+            "$ref" : "#/components/schemas/CustomerResponse"
           }
-        },
-        "required" : [ "name", "phoneNumber", "email", "document" ]
+        }
       },
       "UpdateCustomerRequest" : {
         "type" : "object",

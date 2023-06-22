@@ -44,10 +44,10 @@ import java.util.Set;
 import com.malga.client.JSON;
 
 /**
- * CustomerResponseAddress
+ * CustomerRequestAddress
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
-public class CustomerResponseAddress {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
+public class CustomerRequestAddress {
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
   private String country;
@@ -80,10 +80,10 @@ public class CustomerResponseAddress {
   @SerializedName(SERIALIZED_NAME_COMPLEMENT)
   private String complement;
 
-  public CustomerResponseAddress() {
+  public CustomerRequestAddress() {
   }
 
-  public CustomerResponseAddress country(String country) {
+  public CustomerRequestAddress country(String country) {
     
     this.country = country;
     return this;
@@ -105,7 +105,7 @@ public class CustomerResponseAddress {
   }
 
 
-  public CustomerResponseAddress state(String state) {
+  public CustomerRequestAddress state(String state) {
     
     this.state = state;
     return this;
@@ -127,7 +127,7 @@ public class CustomerResponseAddress {
   }
 
 
-  public CustomerResponseAddress city(String city) {
+  public CustomerRequestAddress city(String city) {
     
     this.city = city;
     return this;
@@ -149,7 +149,7 @@ public class CustomerResponseAddress {
   }
 
 
-  public CustomerResponseAddress district(String district) {
+  public CustomerRequestAddress district(String district) {
     
     this.district = district;
     return this;
@@ -171,7 +171,7 @@ public class CustomerResponseAddress {
   }
 
 
-  public CustomerResponseAddress zipCode(String zipCode) {
+  public CustomerRequestAddress zipCode(String zipCode) {
     
     this.zipCode = zipCode;
     return this;
@@ -193,7 +193,7 @@ public class CustomerResponseAddress {
   }
 
 
-  public CustomerResponseAddress street(String street) {
+  public CustomerRequestAddress street(String street) {
     
     this.street = street;
     return this;
@@ -215,7 +215,7 @@ public class CustomerResponseAddress {
   }
 
 
-  public CustomerResponseAddress streetNumber(String streetNumber) {
+  public CustomerRequestAddress streetNumber(String streetNumber) {
     
     this.streetNumber = streetNumber;
     return this;
@@ -237,7 +237,7 @@ public class CustomerResponseAddress {
   }
 
 
-  public CustomerResponseAddress complement(String complement) {
+  public CustomerRequestAddress complement(String complement) {
     
     this.complement = complement;
     return this;
@@ -271,9 +271,9 @@ public class CustomerResponseAddress {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the CustomerResponseAddress instance itself
+   * @return the CustomerRequestAddress instance itself
    */
-  public CustomerResponseAddress putAdditionalProperty(String key, Object value) {
+  public CustomerRequestAddress putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -312,16 +312,16 @@ public class CustomerResponseAddress {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CustomerResponseAddress customerResponseAddress = (CustomerResponseAddress) o;
-    return Objects.equals(this.country, customerResponseAddress.country) &&
-        Objects.equals(this.state, customerResponseAddress.state) &&
-        Objects.equals(this.city, customerResponseAddress.city) &&
-        Objects.equals(this.district, customerResponseAddress.district) &&
-        Objects.equals(this.zipCode, customerResponseAddress.zipCode) &&
-        Objects.equals(this.street, customerResponseAddress.street) &&
-        Objects.equals(this.streetNumber, customerResponseAddress.streetNumber) &&
-        Objects.equals(this.complement, customerResponseAddress.complement)&&
-        Objects.equals(this.additionalProperties, customerResponseAddress.additionalProperties);
+    CustomerRequestAddress customerRequestAddress = (CustomerRequestAddress) o;
+    return Objects.equals(this.country, customerRequestAddress.country) &&
+        Objects.equals(this.state, customerRequestAddress.state) &&
+        Objects.equals(this.city, customerRequestAddress.city) &&
+        Objects.equals(this.district, customerRequestAddress.district) &&
+        Objects.equals(this.zipCode, customerRequestAddress.zipCode) &&
+        Objects.equals(this.street, customerRequestAddress.street) &&
+        Objects.equals(this.streetNumber, customerRequestAddress.streetNumber) &&
+        Objects.equals(this.complement, customerRequestAddress.complement)&&
+        Objects.equals(this.additionalProperties, customerRequestAddress.additionalProperties);
   }
 
   @Override
@@ -332,7 +332,7 @@ public class CustomerResponseAddress {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CustomerResponseAddress {\n");
+    sb.append("class CustomerRequestAddress {\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
@@ -381,12 +381,12 @@ public class CustomerResponseAddress {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CustomerResponseAddress
+  * @throws IOException if the JSON Object is invalid with respect to CustomerRequestAddress
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!CustomerResponseAddress.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerResponseAddress is not found in the empty JSON string", CustomerResponseAddress.openapiRequiredFields.toString()));
+        if (!CustomerRequestAddress.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerRequestAddress is not found in the empty JSON string", CustomerRequestAddress.openapiRequiredFields.toString()));
         }
       }
       if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
@@ -419,16 +419,16 @@ public class CustomerResponseAddress {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CustomerResponseAddress.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CustomerResponseAddress' and its subtypes
+       if (!CustomerRequestAddress.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CustomerRequestAddress' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CustomerResponseAddress> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CustomerResponseAddress.class));
+       final TypeAdapter<CustomerRequestAddress> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CustomerRequestAddress.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CustomerResponseAddress>() {
+       return (TypeAdapter<T>) new TypeAdapter<CustomerRequestAddress>() {
            @Override
-           public void write(JsonWriter out, CustomerResponseAddress value) throws IOException {
+           public void write(JsonWriter out, CustomerRequestAddress value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -451,11 +451,11 @@ public class CustomerResponseAddress {
            }
 
            @Override
-           public CustomerResponseAddress read(JsonReader in) throws IOException {
+           public CustomerRequestAddress read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             CustomerResponseAddress instance = thisAdapter.fromJsonTree(jsonObj);
+             CustomerRequestAddress instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -482,18 +482,18 @@ public class CustomerResponseAddress {
   }
 
  /**
-  * Create an instance of CustomerResponseAddress given an JSON string
+  * Create an instance of CustomerRequestAddress given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of CustomerResponseAddress
-  * @throws IOException if the JSON string is invalid with respect to CustomerResponseAddress
+  * @return An instance of CustomerRequestAddress
+  * @throws IOException if the JSON string is invalid with respect to CustomerRequestAddress
   */
-  public static CustomerResponseAddress fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CustomerResponseAddress.class);
+  public static CustomerRequestAddress fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CustomerRequestAddress.class);
   }
 
  /**
-  * Convert an instance of CustomerResponseAddress to an JSON string
+  * Convert an instance of CustomerRequestAddress to an JSON string
   *
   * @return JSON string
   */

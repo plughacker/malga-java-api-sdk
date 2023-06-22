@@ -20,7 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.malga.client.api.model.TokenRequest;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -47,7 +46,7 @@ import com.malga.client.JSON;
 /**
  * identificação do merchant id a ser utilizado
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
 public class SourceTypeCard {
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "sourceType";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
@@ -56,10 +55,6 @@ public class SourceTypeCard {
   public static final String SERIALIZED_NAME_CARD_ID = "cardId";
   @SerializedName(SERIALIZED_NAME_CARD_ID)
   private String cardId;
-
-  public static final String SERIALIZED_NAME_CARD = "card";
-  @SerializedName(SERIALIZED_NAME_CARD)
-  private TokenRequest card;
 
   public SourceTypeCard() {
   }
@@ -74,7 +69,7 @@ public class SourceTypeCard {
    * tipo da origem da cobrança, usar &#x60;card&#x60; para cobrança em cartão tokenizado
    * @return sourceType
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getSourceType() {
     return sourceType;
@@ -96,7 +91,7 @@ public class SourceTypeCard {
    * Identificador do cartão quando source tipo card (opcional)
    * @return cardId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getCardId() {
     return cardId;
@@ -105,28 +100,6 @@ public class SourceTypeCard {
 
   public void setCardId(String cardId) {
     this.cardId = cardId;
-  }
-
-
-  public SourceTypeCard card(TokenRequest card) {
-    
-    this.card = card;
-    return this;
-  }
-
-   /**
-   * Get card
-   * @return card
-  **/
-  @javax.annotation.Nullable
-
-  public TokenRequest getCard() {
-    return card;
-  }
-
-
-  public void setCard(TokenRequest card) {
-    this.card = card;
   }
 
   /**
@@ -185,14 +158,13 @@ public class SourceTypeCard {
     }
     SourceTypeCard sourceTypeCard = (SourceTypeCard) o;
     return Objects.equals(this.sourceType, sourceTypeCard.sourceType) &&
-        Objects.equals(this.cardId, sourceTypeCard.cardId) &&
-        Objects.equals(this.card, sourceTypeCard.card)&&
+        Objects.equals(this.cardId, sourceTypeCard.cardId)&&
         Objects.equals(this.additionalProperties, sourceTypeCard.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, cardId, card, additionalProperties);
+    return Objects.hash(sourceType, cardId, additionalProperties);
   }
 
   @Override
@@ -201,7 +173,6 @@ public class SourceTypeCard {
     sb.append("class SourceTypeCard {\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    cardId: ").append(toIndentedString(cardId)).append("\n");
-    sb.append("    card: ").append(toIndentedString(card)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -225,9 +196,13 @@ public class SourceTypeCard {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("sourceType");
+    openapiFields.add("cardId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("sourceType");
+    openapiRequiredFields.add("cardId");
   }
 
  /**
@@ -242,15 +217,18 @@ public class SourceTypeCard {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SourceTypeCard is not found in the empty JSON string", SourceTypeCard.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("sourceType") != null && !jsonObj.get("sourceType").isJsonNull()) && !jsonObj.get("sourceType").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : SourceTypeCard.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("sourceType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sourceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceType").toString()));
       }
-      if ((jsonObj.get("cardId") != null && !jsonObj.get("cardId").isJsonNull()) && !jsonObj.get("cardId").isJsonPrimitive()) {
+      if (!jsonObj.get("cardId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cardId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cardId").toString()));
-      }
-      // validate the optional field `card`
-      if (jsonObj.get("card") != null && !jsonObj.get("card").isJsonNull()) {
-        TokenRequest.validateJsonObject(jsonObj.getAsJsonObject("card"));
       }
   }
 

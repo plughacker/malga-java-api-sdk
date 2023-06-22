@@ -21,7 +21,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.malga.client.api.model.SourceTypeCard;
+import com.malga.client.api.model.SourceTypeCardOneShot;
+import com.malga.client.api.model.SourceTypeCardOneShotCard;
 import com.malga.client.api.model.SourceTypeCustomer;
+import com.malga.client.api.model.SourceTypeCustomerCustomer;
+import com.malga.client.api.model.SourceTypeCustomerOneShot;
 import com.malga.client.api.model.SourceTypeToken;
 import java.io.IOException;
 
@@ -58,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import com.malga.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
 public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ChargeRequestPaymentSource.class.getName());
 
@@ -71,7 +75,9 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<SourceTypeCard> adapterSourceTypeCard = gson.getDelegateAdapter(this, TypeToken.get(SourceTypeCard.class));
+            final TypeAdapter<SourceTypeCardOneShot> adapterSourceTypeCardOneShot = gson.getDelegateAdapter(this, TypeToken.get(SourceTypeCardOneShot.class));
             final TypeAdapter<SourceTypeCustomer> adapterSourceTypeCustomer = gson.getDelegateAdapter(this, TypeToken.get(SourceTypeCustomer.class));
+            final TypeAdapter<SourceTypeCustomerOneShot> adapterSourceTypeCustomerOneShot = gson.getDelegateAdapter(this, TypeToken.get(SourceTypeCustomerOneShot.class));
             final TypeAdapter<SourceTypeToken> adapterSourceTypeToken = gson.getDelegateAdapter(this, TypeToken.get(SourceTypeToken.class));
 
             return (TypeAdapter<T>) new TypeAdapter<ChargeRequestPaymentSource>() {
@@ -89,9 +95,23 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
                         return;
                     }
 
+                    // check if the actual instance is of the type `SourceTypeCardOneShot`
+                    if (value.getActualInstance() instanceof SourceTypeCardOneShot) {
+                        JsonObject obj = adapterSourceTypeCardOneShot.toJsonTree((SourceTypeCardOneShot)value.getActualInstance()).getAsJsonObject();
+                        elementAdapter.write(out, obj);
+                        return;
+                    }
+
                     // check if the actual instance is of the type `SourceTypeCustomer`
                     if (value.getActualInstance() instanceof SourceTypeCustomer) {
                         JsonObject obj = adapterSourceTypeCustomer.toJsonTree((SourceTypeCustomer)value.getActualInstance()).getAsJsonObject();
+                        elementAdapter.write(out, obj);
+                        return;
+                    }
+
+                    // check if the actual instance is of the type `SourceTypeCustomerOneShot`
+                    if (value.getActualInstance() instanceof SourceTypeCustomerOneShot) {
+                        JsonObject obj = adapterSourceTypeCustomerOneShot.toJsonTree((SourceTypeCustomerOneShot)value.getActualInstance()).getAsJsonObject();
                         elementAdapter.write(out, obj);
                         return;
                     }
@@ -103,7 +123,7 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: SourceTypeCard, SourceTypeCustomer, SourceTypeToken");
+                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: SourceTypeCard, SourceTypeCardOneShot, SourceTypeCustomer, SourceTypeCustomerOneShot, SourceTypeToken");
                 }
 
                 @Override
@@ -124,6 +144,19 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data does not match schema 'SourceTypeCard'", e);
                     }
 
+                    // deserialize SourceTypeCardOneShot
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        SourceTypeCardOneShot.validateJsonObject(jsonObject);
+                        log.log(Level.FINER, "Input data matches schema 'SourceTypeCardOneShot'");
+                        ChargeRequestPaymentSource ret = new ChargeRequestPaymentSource();
+                        ret.setActualInstance(adapterSourceTypeCardOneShot.fromJsonTree(jsonObject));
+                        return ret;
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        log.log(Level.FINER, "Input data does not match schema 'SourceTypeCardOneShot'", e);
+                    }
+
                     // deserialize SourceTypeCustomer
                     try {
                         // validate the JSON object to see if any exception is thrown
@@ -135,6 +168,19 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
                     } catch (Exception e) {
                         // deserialization failed, continue
                         log.log(Level.FINER, "Input data does not match schema 'SourceTypeCustomer'", e);
+                    }
+
+                    // deserialize SourceTypeCustomerOneShot
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        SourceTypeCustomerOneShot.validateJsonObject(jsonObject);
+                        log.log(Level.FINER, "Input data matches schema 'SourceTypeCustomerOneShot'");
+                        ChargeRequestPaymentSource ret = new ChargeRequestPaymentSource();
+                        ret.setActualInstance(adapterSourceTypeCustomerOneShot.fromJsonTree(jsonObject));
+                        return ret;
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        log.log(Level.FINER, "Input data does not match schema 'SourceTypeCustomerOneShot'", e);
                     }
 
                     // deserialize SourceTypeToken
@@ -169,7 +215,17 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
+    public ChargeRequestPaymentSource(SourceTypeCardOneShot o) {
+        super("anyOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public ChargeRequestPaymentSource(SourceTypeCustomer o) {
+        super("anyOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public ChargeRequestPaymentSource(SourceTypeCustomerOneShot o) {
         super("anyOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -182,7 +238,11 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
     static {
         schemas.put("SourceTypeCard", new GenericType<SourceTypeCard>() {
         });
+        schemas.put("SourceTypeCardOneShot", new GenericType<SourceTypeCardOneShot>() {
+        });
         schemas.put("SourceTypeCustomer", new GenericType<SourceTypeCustomer>() {
+        });
+        schemas.put("SourceTypeCustomerOneShot", new GenericType<SourceTypeCustomerOneShot>() {
         });
         schemas.put("SourceTypeToken", new GenericType<SourceTypeToken>() {
         });
@@ -196,7 +256,7 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the anyOf child schema, check
      * the instance parameter is valid against the anyOf child schemas:
-     * SourceTypeCard, SourceTypeCustomer, SourceTypeToken
+     * SourceTypeCard, SourceTypeCardOneShot, SourceTypeCustomer, SourceTypeCustomerOneShot, SourceTypeToken
      *
      * It could be an instance of the 'anyOf' schemas.
      * The anyOf child schemas may themselves be a composed schema (allOf, anyOf, anyOf).
@@ -208,7 +268,17 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
             return;
         }
 
+        if (instance instanceof SourceTypeCardOneShot) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (instance instanceof SourceTypeCustomer) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof SourceTypeCustomerOneShot) {
             super.setActualInstance(instance);
             return;
         }
@@ -218,14 +288,14 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be SourceTypeCard, SourceTypeCustomer, SourceTypeToken");
+        throw new RuntimeException("Invalid instance type. Must be SourceTypeCard, SourceTypeCardOneShot, SourceTypeCustomer, SourceTypeCustomerOneShot, SourceTypeToken");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * SourceTypeCard, SourceTypeCustomer, SourceTypeToken
+     * SourceTypeCard, SourceTypeCardOneShot, SourceTypeCustomer, SourceTypeCustomerOneShot, SourceTypeToken
      *
-     * @return The actual instance (SourceTypeCard, SourceTypeCustomer, SourceTypeToken)
+     * @return The actual instance (SourceTypeCard, SourceTypeCardOneShot, SourceTypeCustomer, SourceTypeCustomerOneShot, SourceTypeToken)
      */
     @Override
     public Object getActualInstance() {
@@ -244,6 +314,17 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
     }
 
     /**
+     * Get the actual instance of `SourceTypeCardOneShot`. If the actual instance is not `SourceTypeCardOneShot`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `SourceTypeCardOneShot`
+     * @throws ClassCastException if the instance is not `SourceTypeCardOneShot`
+     */
+    public SourceTypeCardOneShot getSourceTypeCardOneShot() throws ClassCastException {
+        return (SourceTypeCardOneShot)super.getActualInstance();
+    }
+
+    /**
      * Get the actual instance of `SourceTypeCustomer`. If the actual instance is not `SourceTypeCustomer`,
      * the ClassCastException will be thrown.
      *
@@ -252,6 +333,17 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
      */
     public SourceTypeCustomer getSourceTypeCustomer() throws ClassCastException {
         return (SourceTypeCustomer)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `SourceTypeCustomerOneShot`. If the actual instance is not `SourceTypeCustomerOneShot`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `SourceTypeCustomerOneShot`
+     * @throws ClassCastException if the instance is not `SourceTypeCustomerOneShot`
+     */
+    public SourceTypeCustomerOneShot getSourceTypeCustomerOneShot() throws ClassCastException {
+        return (SourceTypeCustomerOneShot)super.getActualInstance();
     }
 
     /**
@@ -283,9 +375,25 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
     } catch (Exception e) {
       // continue to the next one
     }
+    // validate the json string with SourceTypeCardOneShot
+    try {
+      SourceTypeCardOneShot.validateJsonObject(jsonObj);
+      return; // return earlier as at least one schema is valid with respect to the Json object
+      //validCount++;
+    } catch (Exception e) {
+      // continue to the next one
+    }
     // validate the json string with SourceTypeCustomer
     try {
       SourceTypeCustomer.validateJsonObject(jsonObj);
+      return; // return earlier as at least one schema is valid with respect to the Json object
+      //validCount++;
+    } catch (Exception e) {
+      // continue to the next one
+    }
+    // validate the json string with SourceTypeCustomerOneShot
+    try {
+      SourceTypeCustomerOneShot.validateJsonObject(jsonObj);
       return; // return earlier as at least one schema is valid with respect to the Json object
       //validCount++;
     } catch (Exception e) {
@@ -300,7 +408,7 @@ public class ChargeRequestPaymentSource extends AbstractOpenApiSchema {
       // continue to the next one
     }
     if (validCount == 0) {
-      throw new IOException(String.format("The JSON string is invalid for ChargeRequestPaymentSource with anyOf schemas: SourceTypeCard, SourceTypeCustomer, SourceTypeToken. JSON: %s", jsonObj.toString()));
+      throw new IOException(String.format("The JSON string is invalid for ChargeRequestPaymentSource with anyOf schemas: SourceTypeCard, SourceTypeCardOneShot, SourceTypeCustomer, SourceTypeCustomerOneShot, SourceTypeToken. JSON: %s", jsonObj.toString()));
     }
   }
 

@@ -44,10 +44,10 @@ import java.util.Set;
 import com.malga.client.JSON;
 
 /**
- * CustomerResponseDocument
+ * CustomerRequestDocument
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
-public class CustomerResponseDocument {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
+public class CustomerRequestDocument {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
@@ -60,10 +60,10 @@ public class CustomerResponseDocument {
   @SerializedName(SERIALIZED_NAME_COUNTRY)
   private String country = "BR";
 
-  public CustomerResponseDocument() {
+  public CustomerRequestDocument() {
   }
 
-  public CustomerResponseDocument type(String type) {
+  public CustomerRequestDocument type(String type) {
     
     this.type = type;
     return this;
@@ -85,7 +85,7 @@ public class CustomerResponseDocument {
   }
 
 
-  public CustomerResponseDocument number(String number) {
+  public CustomerRequestDocument number(String number) {
     
     this.number = number;
     return this;
@@ -107,7 +107,7 @@ public class CustomerResponseDocument {
   }
 
 
-  public CustomerResponseDocument country(String country) {
+  public CustomerRequestDocument country(String country) {
     
     this.country = country;
     return this;
@@ -141,9 +141,9 @@ public class CustomerResponseDocument {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the CustomerResponseDocument instance itself
+   * @return the CustomerRequestDocument instance itself
    */
-  public CustomerResponseDocument putAdditionalProperty(String key, Object value) {
+  public CustomerRequestDocument putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -182,11 +182,11 @@ public class CustomerResponseDocument {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CustomerResponseDocument customerResponseDocument = (CustomerResponseDocument) o;
-    return Objects.equals(this.type, customerResponseDocument.type) &&
-        Objects.equals(this.number, customerResponseDocument.number) &&
-        Objects.equals(this.country, customerResponseDocument.country)&&
-        Objects.equals(this.additionalProperties, customerResponseDocument.additionalProperties);
+    CustomerRequestDocument customerRequestDocument = (CustomerRequestDocument) o;
+    return Objects.equals(this.type, customerRequestDocument.type) &&
+        Objects.equals(this.number, customerRequestDocument.number) &&
+        Objects.equals(this.country, customerRequestDocument.country)&&
+        Objects.equals(this.additionalProperties, customerRequestDocument.additionalProperties);
   }
 
   @Override
@@ -197,7 +197,7 @@ public class CustomerResponseDocument {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CustomerResponseDocument {\n");
+    sb.append("class CustomerRequestDocument {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    number: ").append(toIndentedString(number)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
@@ -236,12 +236,12 @@ public class CustomerResponseDocument {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CustomerResponseDocument
+  * @throws IOException if the JSON Object is invalid with respect to CustomerRequestDocument
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!CustomerResponseDocument.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerResponseDocument is not found in the empty JSON string", CustomerResponseDocument.openapiRequiredFields.toString()));
+        if (!CustomerRequestDocument.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerRequestDocument is not found in the empty JSON string", CustomerRequestDocument.openapiRequiredFields.toString()));
         }
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
@@ -259,16 +259,16 @@ public class CustomerResponseDocument {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CustomerResponseDocument.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CustomerResponseDocument' and its subtypes
+       if (!CustomerRequestDocument.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CustomerRequestDocument' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CustomerResponseDocument> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CustomerResponseDocument.class));
+       final TypeAdapter<CustomerRequestDocument> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CustomerRequestDocument.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CustomerResponseDocument>() {
+       return (TypeAdapter<T>) new TypeAdapter<CustomerRequestDocument>() {
            @Override
-           public void write(JsonWriter out, CustomerResponseDocument value) throws IOException {
+           public void write(JsonWriter out, CustomerRequestDocument value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -291,11 +291,11 @@ public class CustomerResponseDocument {
            }
 
            @Override
-           public CustomerResponseDocument read(JsonReader in) throws IOException {
+           public CustomerRequestDocument read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             CustomerResponseDocument instance = thisAdapter.fromJsonTree(jsonObj);
+             CustomerRequestDocument instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -322,18 +322,18 @@ public class CustomerResponseDocument {
   }
 
  /**
-  * Create an instance of CustomerResponseDocument given an JSON string
+  * Create an instance of CustomerRequestDocument given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of CustomerResponseDocument
-  * @throws IOException if the JSON string is invalid with respect to CustomerResponseDocument
+  * @return An instance of CustomerRequestDocument
+  * @throws IOException if the JSON string is invalid with respect to CustomerRequestDocument
   */
-  public static CustomerResponseDocument fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CustomerResponseDocument.class);
+  public static CustomerRequestDocument fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CustomerRequestDocument.class);
   }
 
  /**
-  * Convert an instance of CustomerResponseDocument to an JSON string
+  * Convert an instance of CustomerRequestDocument to an JSON string
   *
   * @return JSON string
   */

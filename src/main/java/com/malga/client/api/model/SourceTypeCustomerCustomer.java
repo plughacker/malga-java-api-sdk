@@ -20,7 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.malga.client.api.model.SourceTypeCustomerCustomer;
+import com.malga.client.api.model.CustomerRequestAddress;
+import com.malga.client.api.model.CustomerRequestDocument;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -45,88 +46,140 @@ import java.util.Set;
 import com.malga.client.JSON;
 
 /**
- * SourceTypeCustomer
+ * SourceTypeCustomerCustomer
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
-public class SourceTypeCustomer {
-  public static final String SERIALIZED_NAME_SOURCE_TYPE = "sourceType";
-  @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
-  private String sourceType;
+public class SourceTypeCustomerCustomer {
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
-  public static final String SERIALIZED_NAME_CUSTOMER_ID = "customerId";
-  @SerializedName(SERIALIZED_NAME_CUSTOMER_ID)
-  private String customerId;
+  public static final String SERIALIZED_NAME_EMAIL = "email";
+  @SerializedName(SERIALIZED_NAME_EMAIL)
+  private String email;
 
-  public static final String SERIALIZED_NAME_CUSTOMER = "customer";
-  @SerializedName(SERIALIZED_NAME_CUSTOMER)
-  private SourceTypeCustomerCustomer customer;
+  public static final String SERIALIZED_NAME_PHONE_NUMBER = "phoneNumber";
+  @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
+  private String phoneNumber;
 
-  public SourceTypeCustomer() {
+  public static final String SERIALIZED_NAME_DOCUMENT = "document";
+  @SerializedName(SERIALIZED_NAME_DOCUMENT)
+  private CustomerRequestDocument document;
+
+  public static final String SERIALIZED_NAME_ADDRESS = "address";
+  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  private CustomerRequestAddress address;
+
+  public SourceTypeCustomerCustomer() {
   }
 
-  public SourceTypeCustomer sourceType(String sourceType) {
+  public SourceTypeCustomerCustomer name(String name) {
     
-    this.sourceType = sourceType;
+    this.name = name;
     return this;
   }
 
    /**
-   * tipo da origem da cobrança, usar &#x60;customer&#x60; para cobrança no cartão default do comprador
-   * @return sourceType
+   * nome do usuario
+   * @return name
   **/
   @javax.annotation.Nonnull
 
-  public String getSourceType() {
-    return sourceType;
+  public String getName() {
+    return name;
   }
 
 
-  public void setSourceType(String sourceType) {
-    this.sourceType = sourceType;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
-  public SourceTypeCustomer customerId(String customerId) {
+  public SourceTypeCustomerCustomer email(String email) {
     
-    this.customerId = customerId;
+    this.email = email;
     return this;
   }
 
    /**
-   * Identificador do cliente quando source tipo customer, debitando o cartão default do comprador
-   * @return customerId
+   * email do usuario
+   * @return email
   **/
   @javax.annotation.Nonnull
 
-  public String getCustomerId() {
-    return customerId;
+  public String getEmail() {
+    return email;
   }
 
 
-  public void setCustomerId(String customerId) {
-    this.customerId = customerId;
+  public void setEmail(String email) {
+    this.email = email;
   }
 
 
-  public SourceTypeCustomer customer(SourceTypeCustomerCustomer customer) {
+  public SourceTypeCustomerCustomer phoneNumber(String phoneNumber) {
     
-    this.customer = customer;
+    this.phoneNumber = phoneNumber;
     return this;
   }
 
    /**
-   * Get customer
-   * @return customer
+   * telefone de contato do usuario
+   * @return phoneNumber
+  **/
+  @javax.annotation.Nonnull
+
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
+
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
+
+  public SourceTypeCustomerCustomer document(CustomerRequestDocument document) {
+    
+    this.document = document;
+    return this;
+  }
+
+   /**
+   * Get document
+   * @return document
+  **/
+  @javax.annotation.Nonnull
+
+  public CustomerRequestDocument getDocument() {
+    return document;
+  }
+
+
+  public void setDocument(CustomerRequestDocument document) {
+    this.document = document;
+  }
+
+
+  public SourceTypeCustomerCustomer address(CustomerRequestAddress address) {
+    
+    this.address = address;
+    return this;
+  }
+
+   /**
+   * Get address
+   * @return address
   **/
   @javax.annotation.Nullable
 
-  public SourceTypeCustomerCustomer getCustomer() {
-    return customer;
+  public CustomerRequestAddress getAddress() {
+    return address;
   }
 
 
-  public void setCustomer(SourceTypeCustomerCustomer customer) {
-    this.customer = customer;
+  public void setAddress(CustomerRequestAddress address) {
+    this.address = address;
   }
 
   /**
@@ -142,9 +195,9 @@ public class SourceTypeCustomer {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the SourceTypeCustomer instance itself
+   * @return the SourceTypeCustomerCustomer instance itself
    */
-  public SourceTypeCustomer putAdditionalProperty(String key, Object value) {
+  public SourceTypeCustomerCustomer putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -183,25 +236,29 @@ public class SourceTypeCustomer {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SourceTypeCustomer sourceTypeCustomer = (SourceTypeCustomer) o;
-    return Objects.equals(this.sourceType, sourceTypeCustomer.sourceType) &&
-        Objects.equals(this.customerId, sourceTypeCustomer.customerId) &&
-        Objects.equals(this.customer, sourceTypeCustomer.customer)&&
-        Objects.equals(this.additionalProperties, sourceTypeCustomer.additionalProperties);
+    SourceTypeCustomerCustomer sourceTypeCustomerCustomer = (SourceTypeCustomerCustomer) o;
+    return Objects.equals(this.name, sourceTypeCustomerCustomer.name) &&
+        Objects.equals(this.email, sourceTypeCustomerCustomer.email) &&
+        Objects.equals(this.phoneNumber, sourceTypeCustomerCustomer.phoneNumber) &&
+        Objects.equals(this.document, sourceTypeCustomerCustomer.document) &&
+        Objects.equals(this.address, sourceTypeCustomerCustomer.address)&&
+        Objects.equals(this.additionalProperties, sourceTypeCustomerCustomer.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, customerId, customer, additionalProperties);
+    return Objects.hash(name, email, phoneNumber, document, address, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SourceTypeCustomer {\n");
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
-    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
-    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("class SourceTypeCustomerCustomer {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
+    sb.append("    document: ").append(toIndentedString(document)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -225,44 +282,53 @@ public class SourceTypeCustomer {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("sourceType");
-    openapiFields.add("customerId");
-    openapiFields.add("customer");
+    openapiFields.add("name");
+    openapiFields.add("email");
+    openapiFields.add("phoneNumber");
+    openapiFields.add("document");
+    openapiFields.add("address");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("sourceType");
-    openapiRequiredFields.add("customerId");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("email");
+    openapiRequiredFields.add("phoneNumber");
+    openapiRequiredFields.add("document");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SourceTypeCustomer
+  * @throws IOException if the JSON Object is invalid with respect to SourceTypeCustomerCustomer
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!SourceTypeCustomer.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SourceTypeCustomer is not found in the empty JSON string", SourceTypeCustomer.openapiRequiredFields.toString()));
+        if (!SourceTypeCustomerCustomer.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SourceTypeCustomerCustomer is not found in the empty JSON string", SourceTypeCustomerCustomer.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SourceTypeCustomer.openapiRequiredFields) {
+      for (String requiredField : SourceTypeCustomerCustomer.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("sourceType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sourceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceType").toString()));
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (!jsonObj.get("customerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customerId").toString()));
+      if (!jsonObj.get("email").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
       }
-      // validate the optional field `customer`
-      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
-        SourceTypeCustomerCustomer.validateJsonObject(jsonObj.getAsJsonObject("customer"));
+      if (!jsonObj.get("phoneNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNumber").toString()));
+      }
+      // validate the required field `document`
+      CustomerRequestDocument.validateJsonObject(jsonObj.getAsJsonObject("document"));
+      // validate the optional field `address`
+      if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
+        CustomerRequestAddress.validateJsonObject(jsonObj.getAsJsonObject("address"));
       }
   }
 
@@ -270,16 +336,16 @@ public class SourceTypeCustomer {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SourceTypeCustomer.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SourceTypeCustomer' and its subtypes
+       if (!SourceTypeCustomerCustomer.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SourceTypeCustomerCustomer' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SourceTypeCustomer> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SourceTypeCustomer.class));
+       final TypeAdapter<SourceTypeCustomerCustomer> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SourceTypeCustomerCustomer.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SourceTypeCustomer>() {
+       return (TypeAdapter<T>) new TypeAdapter<SourceTypeCustomerCustomer>() {
            @Override
-           public void write(JsonWriter out, SourceTypeCustomer value) throws IOException {
+           public void write(JsonWriter out, SourceTypeCustomerCustomer value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -302,11 +368,11 @@ public class SourceTypeCustomer {
            }
 
            @Override
-           public SourceTypeCustomer read(JsonReader in) throws IOException {
+           public SourceTypeCustomerCustomer read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             SourceTypeCustomer instance = thisAdapter.fromJsonTree(jsonObj);
+             SourceTypeCustomerCustomer instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -333,18 +399,18 @@ public class SourceTypeCustomer {
   }
 
  /**
-  * Create an instance of SourceTypeCustomer given an JSON string
+  * Create an instance of SourceTypeCustomerCustomer given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of SourceTypeCustomer
-  * @throws IOException if the JSON string is invalid with respect to SourceTypeCustomer
+  * @return An instance of SourceTypeCustomerCustomer
+  * @throws IOException if the JSON string is invalid with respect to SourceTypeCustomerCustomer
   */
-  public static SourceTypeCustomer fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SourceTypeCustomer.class);
+  public static SourceTypeCustomerCustomer fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SourceTypeCustomerCustomer.class);
   }
 
  /**
-  * Convert an instance of SourceTypeCustomer to an JSON string
+  * Convert an instance of SourceTypeCustomerCustomer to an JSON string
   *
   * @return JSON string
   */

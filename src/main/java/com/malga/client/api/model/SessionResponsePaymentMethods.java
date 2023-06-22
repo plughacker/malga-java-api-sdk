@@ -24,7 +24,6 @@ import com.malga.client.api.model.SessionPaymentMethodBoletoResponse;
 import com.malga.client.api.model.SessionPaymentMethodCard;
 import com.malga.client.api.model.SessionPaymentMethodPixResponse;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import javax.ws.rs.core.GenericType;
 
@@ -59,7 +58,7 @@ import com.google.gson.JsonParseException;
 
 import com.malga.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T11:28:16.780712-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
 public class SessionResponsePaymentMethods extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(SessionResponsePaymentMethods.class.getName());
 

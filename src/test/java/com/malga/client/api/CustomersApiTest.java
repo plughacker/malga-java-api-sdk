@@ -14,26 +14,15 @@
 package com.malga.client.api;
 
 import com.malga.client.ApiException;
-import com.malga.client.api.model.CustomerCardList;
-import com.malga.client.api.model.CustomerList;
-import com.malga.client.api.model.CustomerRequest;
-import com.malga.client.api.model.CustomerResponse;
-import com.malga.client.api.model.ErrorResponse;
-import com.malga.client.api.model.LinkCardRequest;
-import com.malga.client.api.model.UpdateCustomerRequest;
+import com.malga.client.api.model.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for CustomersApi
  */
 @Disabled
-public class CustomersApiTest {
+public class CustomersApiTest extends BaseApiTest{
 
     private final CustomersApi api = new CustomersApi();
 

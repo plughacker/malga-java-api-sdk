@@ -150,8 +150,69 @@ public class ChargesApiTest extends BaseApiTest{
 
         ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
         assertEquals(ChargeResponse.StatusEnum.FAILED, chargeResponse.getStatus());
+    }
+
+    @Test
+    public void chargePixSuccessTest() throws ApiException {
+
+        ChargesApi chargesApi = new ChargesApi(this.getDefaulClientApi());
+
+        ChargeRequest chargeRequest = this.createPixChargeRequest();
+
+        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
 
         System.out.println(chargeResponse.toString());
+
+        assertNotNull(chargeResponse.getId());
+
+        assertEquals(1000, chargeResponse.getAmount());
+        assertNotNull(chargeResponse.getClientId());
+        assertNotNull(chargeResponse.getMerchantId());
+        assertEquals("should be statement descriptor", chargeResponse.getStatementDescriptor());
+
+        assertEquals("customer", chargeResponse.getPaymentSource().getSourceTypeCustomer().getSourceType());
+        assertNotNull(chargeResponse.getPaymentSource().getSourceTypeCustomer().getCustomerId());
+
+        assertEquals(PaymentMethodPixResponse.PaymentTypeEnum.PIX, chargeResponse.getPaymentMethod().getPaymentMethodPixResponse().getPaymentType());
+        assertNotNull(chargeResponse.getPaymentMethod().getPaymentMethodPixResponse().getQrCodeData());
+        assertNotNull(chargeResponse.getPaymentMethod().getPaymentMethodPixResponse().getQrCodeImageUrl());
+        assertEquals(3600, chargeResponse.getPaymentMethod().getPaymentMethodPixResponse().getExpiresIn());
+
+        assertEquals("1234567890", chargeResponse.getOrderId());
+
+        assertEquals(ChargeResponse.StatusEnum.PENDING, chargeResponse.getStatus());
     }
+
+    @Test
+    public void chargeBoletoSuccessTest() throws ApiException {
+
+        ChargesApi chargesApi = new ChargesApi(this.getDefaulClientApi());
+
+        ChargeRequest chargeRequest = this.createBoletoChargeRequest();
+
+        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+
+        System.out.println(chargeResponse.toString());
+
+        assertNotNull(chargeResponse.getId());
+
+        assertEquals(1000, chargeResponse.getAmount());
+        assertNotNull(chargeResponse.getClientId());
+        assertNotNull(chargeResponse.getMerchantId());
+        assertEquals("should be statement descriptor", chargeResponse.getStatementDescriptor());
+
+        assertEquals("customer", chargeResponse.getPaymentSource().getSourceTypeCustomer().getSourceType());
+        assertNotNull(chargeResponse.getPaymentSource().getSourceTypeCustomer().getCustomerId());
+
+        assertEquals(PaymentMethodBoletoResponse.PaymentTypeEnum.BOLETO, chargeResponse.getPaymentMethod().getPaymentMethodBoletoResponse().getPaymentType());
+        assertNotNull(chargeResponse.getPaymentMethod().getPaymentMethodBoletoResponse().getBarcodeData());
+        assertNotNull(chargeResponse.getPaymentMethod().getPaymentMethodBoletoResponse().getBarcodeImageUrl());
+        assertEquals("2021-12-31", chargeResponse.getPaymentMethod().getPaymentMethodBoletoResponse().getExpiresDate());
+
+        assertEquals("1234567890", chargeResponse.getOrderId());
+
+        assertEquals(ChargeResponse.StatusEnum.PENDING, chargeResponse.getStatus());
+    }
+
 
 }

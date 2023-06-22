@@ -131,9 +131,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.CustomerCardList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.CustomerList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.CustomerRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.CustomerRequestAddress.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.CustomerRequestDocument.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.CustomerResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.CustomerResponseAddress.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.CustomerResponseDocument.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.Document.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.ErrorItem.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.ErrorMessageResponse.CustomTypeAdapterFactory());
@@ -186,7 +186,11 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.SessionResponsePaymentMethods.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.SessionSettingsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.SourceTypeCard.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.SourceTypeCardOneShot.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.SourceTypeCardOneShotCard.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.SourceTypeCustomer.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.SourceTypeCustomerCustomer.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.SourceTypeCustomerOneShot.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.SourceTypeToken.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.SplitRulesFaresSchema.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.malga.client.api.model.SplitRulesInner.CustomTypeAdapterFactory());

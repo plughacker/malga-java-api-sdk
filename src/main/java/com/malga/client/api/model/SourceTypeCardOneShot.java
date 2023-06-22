@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.malga.client.api.model.SourceTypeCustomerCustomer;
+import com.malga.client.api.model.SourceTypeCardOneShotCard;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -45,33 +45,29 @@ import java.util.Set;
 import com.malga.client.JSON;
 
 /**
- * SourceTypeCustomer
+ * identificação do merchant id a ser utilizado
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
-public class SourceTypeCustomer {
+public class SourceTypeCardOneShot {
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "sourceType";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
   private String sourceType;
 
-  public static final String SERIALIZED_NAME_CUSTOMER_ID = "customerId";
-  @SerializedName(SERIALIZED_NAME_CUSTOMER_ID)
-  private String customerId;
+  public static final String SERIALIZED_NAME_CARD = "card";
+  @SerializedName(SERIALIZED_NAME_CARD)
+  private SourceTypeCardOneShotCard card;
 
-  public static final String SERIALIZED_NAME_CUSTOMER = "customer";
-  @SerializedName(SERIALIZED_NAME_CUSTOMER)
-  private SourceTypeCustomerCustomer customer;
-
-  public SourceTypeCustomer() {
+  public SourceTypeCardOneShot() {
   }
 
-  public SourceTypeCustomer sourceType(String sourceType) {
+  public SourceTypeCardOneShot sourceType(String sourceType) {
     
     this.sourceType = sourceType;
     return this;
   }
 
    /**
-   * tipo da origem da cobrança, usar &#x60;customer&#x60; para cobrança no cartão default do comprador
+   * tipo da origem da cobrança, usar &#x60;card&#x60; para cobrança em cartão tokenizado
    * @return sourceType
   **/
   @javax.annotation.Nonnull
@@ -86,47 +82,25 @@ public class SourceTypeCustomer {
   }
 
 
-  public SourceTypeCustomer customerId(String customerId) {
+  public SourceTypeCardOneShot card(SourceTypeCardOneShotCard card) {
     
-    this.customerId = customerId;
+    this.card = card;
     return this;
   }
 
    /**
-   * Identificador do cliente quando source tipo customer, debitando o cartão default do comprador
-   * @return customerId
+   * Get card
+   * @return card
   **/
   @javax.annotation.Nonnull
 
-  public String getCustomerId() {
-    return customerId;
+  public SourceTypeCardOneShotCard getCard() {
+    return card;
   }
 
 
-  public void setCustomerId(String customerId) {
-    this.customerId = customerId;
-  }
-
-
-  public SourceTypeCustomer customer(SourceTypeCustomerCustomer customer) {
-    
-    this.customer = customer;
-    return this;
-  }
-
-   /**
-   * Get customer
-   * @return customer
-  **/
-  @javax.annotation.Nullable
-
-  public SourceTypeCustomerCustomer getCustomer() {
-    return customer;
-  }
-
-
-  public void setCustomer(SourceTypeCustomerCustomer customer) {
-    this.customer = customer;
+  public void setCard(SourceTypeCardOneShotCard card) {
+    this.card = card;
   }
 
   /**
@@ -142,9 +116,9 @@ public class SourceTypeCustomer {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the SourceTypeCustomer instance itself
+   * @return the SourceTypeCardOneShot instance itself
    */
-  public SourceTypeCustomer putAdditionalProperty(String key, Object value) {
+  public SourceTypeCardOneShot putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -183,25 +157,23 @@ public class SourceTypeCustomer {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SourceTypeCustomer sourceTypeCustomer = (SourceTypeCustomer) o;
-    return Objects.equals(this.sourceType, sourceTypeCustomer.sourceType) &&
-        Objects.equals(this.customerId, sourceTypeCustomer.customerId) &&
-        Objects.equals(this.customer, sourceTypeCustomer.customer)&&
-        Objects.equals(this.additionalProperties, sourceTypeCustomer.additionalProperties);
+    SourceTypeCardOneShot sourceTypeCardOneShot = (SourceTypeCardOneShot) o;
+    return Objects.equals(this.sourceType, sourceTypeCardOneShot.sourceType) &&
+        Objects.equals(this.card, sourceTypeCardOneShot.card)&&
+        Objects.equals(this.additionalProperties, sourceTypeCardOneShot.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, customerId, customer, additionalProperties);
+    return Objects.hash(sourceType, card, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SourceTypeCustomer {\n");
+    sb.append("class SourceTypeCardOneShot {\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
-    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
-    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    card: ").append(toIndentedString(card)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -226,30 +198,29 @@ public class SourceTypeCustomer {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("sourceType");
-    openapiFields.add("customerId");
-    openapiFields.add("customer");
+    openapiFields.add("card");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("sourceType");
-    openapiRequiredFields.add("customerId");
+    openapiRequiredFields.add("card");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SourceTypeCustomer
+  * @throws IOException if the JSON Object is invalid with respect to SourceTypeCardOneShot
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!SourceTypeCustomer.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SourceTypeCustomer is not found in the empty JSON string", SourceTypeCustomer.openapiRequiredFields.toString()));
+        if (!SourceTypeCardOneShot.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SourceTypeCardOneShot is not found in the empty JSON string", SourceTypeCardOneShot.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SourceTypeCustomer.openapiRequiredFields) {
+      for (String requiredField : SourceTypeCardOneShot.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -257,29 +228,24 @@ public class SourceTypeCustomer {
       if (!jsonObj.get("sourceType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sourceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceType").toString()));
       }
-      if (!jsonObj.get("customerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customerId").toString()));
-      }
-      // validate the optional field `customer`
-      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
-        SourceTypeCustomerCustomer.validateJsonObject(jsonObj.getAsJsonObject("customer"));
-      }
+      // validate the required field `card`
+      SourceTypeCardOneShotCard.validateJsonObject(jsonObj.getAsJsonObject("card"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SourceTypeCustomer.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SourceTypeCustomer' and its subtypes
+       if (!SourceTypeCardOneShot.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SourceTypeCardOneShot' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SourceTypeCustomer> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SourceTypeCustomer.class));
+       final TypeAdapter<SourceTypeCardOneShot> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SourceTypeCardOneShot.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SourceTypeCustomer>() {
+       return (TypeAdapter<T>) new TypeAdapter<SourceTypeCardOneShot>() {
            @Override
-           public void write(JsonWriter out, SourceTypeCustomer value) throws IOException {
+           public void write(JsonWriter out, SourceTypeCardOneShot value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -302,11 +268,11 @@ public class SourceTypeCustomer {
            }
 
            @Override
-           public SourceTypeCustomer read(JsonReader in) throws IOException {
+           public SourceTypeCardOneShot read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             SourceTypeCustomer instance = thisAdapter.fromJsonTree(jsonObj);
+             SourceTypeCardOneShot instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -333,18 +299,18 @@ public class SourceTypeCustomer {
   }
 
  /**
-  * Create an instance of SourceTypeCustomer given an JSON string
+  * Create an instance of SourceTypeCardOneShot given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of SourceTypeCustomer
-  * @throws IOException if the JSON string is invalid with respect to SourceTypeCustomer
+  * @return An instance of SourceTypeCardOneShot
+  * @throws IOException if the JSON string is invalid with respect to SourceTypeCardOneShot
   */
-  public static SourceTypeCustomer fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SourceTypeCustomer.class);
+  public static SourceTypeCardOneShot fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SourceTypeCardOneShot.class);
   }
 
  /**
-  * Convert an instance of SourceTypeCustomer to an JSON string
+  * Convert an instance of SourceTypeCardOneShot to an JSON string
   *
   * @return JSON string
   */
