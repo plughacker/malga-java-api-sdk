@@ -61,7 +61,7 @@ public class SessionsApiTest {
     @Test
     public void getSessionTest() throws ApiException {
         UUID id = null;
-        SessionResponse response = api.getSession(id);
+        SessionResponse response = api.getSessionById(id);
         // TODO: test validations
     }
 
@@ -97,7 +97,7 @@ public class SessionsApiTest {
     @Test
     public void patchSessionTest() throws ApiException {
         UUID id = null;
-        SessionResponse response = api.patchSession(id);
+        SessionResponse response = api.updateSession(id);
         // TODO: test validations
     }
 

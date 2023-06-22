@@ -76,7 +76,7 @@ public class ClientTokenApi {
     }
 
     /**
-     * Build call for createAuthToken
+     * Build call for createClientToken
      * @param authRequest Creat authentication token (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -89,7 +89,7 @@ public class ClientTokenApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAuthTokenCall(AuthRequest authRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createClientTokenCall(AuthRequest authRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -135,13 +135,13 @@ public class ClientTokenApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAuthTokenValidateBeforeCall(AuthRequest authRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createClientTokenValidateBeforeCall(AuthRequest authRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'authRequest' is set
         if (authRequest == null) {
-            throw new ApiException("Missing the required parameter 'authRequest' when calling createAuthToken(Async)");
+            throw new ApiException("Missing the required parameter 'authRequest' when calling createClientToken(Async)");
         }
 
-        return createAuthTokenCall(authRequest, _callback);
+        return createClientTokenCall(authRequest, _callback);
 
     }
 
@@ -159,8 +159,8 @@ public class ClientTokenApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public AuthResponse createAuthToken(AuthRequest authRequest) throws ApiException {
-        ApiResponse<AuthResponse> localVarResp = createAuthTokenWithHttpInfo(authRequest);
+    public AuthResponse createClientToken(AuthRequest authRequest) throws ApiException {
+        ApiResponse<AuthResponse> localVarResp = createClientTokenWithHttpInfo(authRequest);
         return localVarResp.getData();
     }
 
@@ -178,8 +178,8 @@ public class ClientTokenApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuthResponse> createAuthTokenWithHttpInfo(AuthRequest authRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAuthTokenValidateBeforeCall(authRequest, null);
+    public ApiResponse<AuthResponse> createClientTokenWithHttpInfo(AuthRequest authRequest) throws ApiException {
+        okhttp3.Call localVarCall = createClientTokenValidateBeforeCall(authRequest, null);
         Type localVarReturnType = new TypeToken<AuthResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -199,9 +199,9 @@ public class ClientTokenApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAuthTokenAsync(AuthRequest authRequest, final ApiCallback<AuthResponse> _callback) throws ApiException {
+    public okhttp3.Call createClientTokenAsync(AuthRequest authRequest, final ApiCallback<AuthResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAuthTokenValidateBeforeCall(authRequest, _callback);
+        okhttp3.Call localVarCall = createClientTokenValidateBeforeCall(authRequest, _callback);
         Type localVarReturnType = new TypeToken<AuthResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

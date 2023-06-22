@@ -55,7 +55,7 @@
       "post" : {
         "tags" : [ "Client-token" ],
         "summary" : "Create public key for client-side integration",
-        "operationId" : "create_auth_token",
+        "operationId" : "createClientToken",
         "requestBody" : {
           "description" : "Creat authentication token",
           "required" : true,
@@ -111,7 +111,7 @@
       "post" : {
         "tags" : [ "Tokens" ],
         "summary" : "Create new card token",
-        "operationId" : "create_token",
+        "operationId" : "createToken",
         "requestBody" : {
           "description" : "Tokenize credit card",
           "required" : true,
@@ -167,7 +167,7 @@
       "post" : {
         "tags" : [ "Cards" ],
         "summary" : "Create a new card from card token",
-        "operationId" : "saveCard",
+        "operationId" : "createCard",
         "requestBody" : {
           "description" : "Create credit card",
           "required" : true,
@@ -331,7 +331,7 @@
       "post" : {
         "tags" : [ "Charges" ],
         "summary" : "Create new charge",
-        "operationId" : "charge",
+        "operationId" : "createCharge",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -414,7 +414,7 @@
       "get" : {
         "tags" : [ "Charges" ],
         "summary" : "List charges",
-        "operationId" : "getCharge",
+        "operationId" : "getCharges",
         "parameters" : [ {
           "in" : "query",
           "name" : "page",
@@ -522,7 +522,7 @@
       "post" : {
         "tags" : [ "Charges" ],
         "summary" : "Change the status of a charge in the sandbox environment",
-        "operationId" : "changeStatusTransaction",
+        "operationId" : "updateChargeStatus",
         "parameters" : [ {
           "in" : "path",
           "name" : "id",
@@ -649,7 +649,7 @@
       "post" : {
         "tags" : [ "Charges" ],
         "summary" : "Refund authorized charge",
-        "operationId" : "refundCharge",
+        "operationId" : "voidCharge",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -745,7 +745,7 @@
     "/v1/sessions/{id}" : {
       "get" : {
         "summary" : "Get session details",
-        "operationId" : "getSession",
+        "operationId" : "getSessionById",
         "parameters" : [ {
           "name" : "id",
           "required" : true,
@@ -775,7 +775,7 @@
       },
       "patch" : {
         "summary" : "Update session status",
-        "operationId" : "patchSession",
+        "operationId" : "updateSession",
         "parameters" : [ {
           "name" : "id",
           "required" : true,
@@ -931,7 +931,7 @@
       },
       "get" : {
         "summary" : "List merchants",
-        "operationId" : "listMerchants",
+        "operationId" : "getMerchants",
         "parameters" : [ {
           "in" : "query",
           "name" : "page",
@@ -1021,7 +1021,18 @@
       "post" : {
         "summary" : "Create new customer",
         "operationId" : "createCustomer",
-        "parameters" : [ ],
+        "parameters" : [
+          {
+            "name": "force",
+            "required": false,
+
+            "in": "query",
+            "description": "Force customer create avoiding confit when document number already exists",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
         "requestBody" : {
           "required" : true,
           "content" : {
@@ -1037,14 +1048,54 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Created."
+            "description" : "Created.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CustomerResponse"
+                },
+                "example" : {
+                  "$ref" : "#/components/examples/CustomerResponse/value"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Conflict document number already exists",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         },
         "tags" : [ "Customers" ]
       },
       "get" : {
         "summary" : "List customers",
-        "operationId" : "ListCustomers",
+        "operationId" : "getCustomers",
         "parameters" : [ {
           "in" : "query",
           "name" : "page",
@@ -1136,7 +1187,7 @@
     "/v1/customers/{id}" : {
       "get" : {
         "summary" : "Get customer details",
-        "operationId" : "getCustomer",
+        "operationId" : "getCustomerById",
         "parameters" : [ {
           "name" : "id",
           "required" : true,
@@ -1226,7 +1277,17 @@
         },
         "responses" : {
           "200" : {
-            "description" : "The record has been successfully updated."
+            "description" : "The record has been successfully updated.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CustomerResponse"
+                },
+                "example" : {
+                  "$ref" : "#/components/examples/CustomerResponse/value"
+                }
+              }
+            }
           }
         },
         "tags" : [ "Customers" ]
@@ -1332,7 +1393,7 @@
       },
       "get" : {
         "summary" : "List webhooks",
-        "operationId" : "ListWebhooks",
+        "operationId" : "getWebhooks",
         "parameters" : [ {
           "in" : "query",
           "name" : "page",
@@ -1391,7 +1452,7 @@
     "/v1/webhooks/{id}" : {
       "get" : {
         "summary" : "Get webhook details",
-        "operationId" : "getWebhook",
+        "operationId" : "getWebhookById",
         "parameters" : [ {
           "name" : "id",
           "required" : true,
@@ -1936,21 +1997,9 @@
       },
       "TokenResponse" : {
         "properties" : {
-          "id" : {
+          "tokenId" : {
             "type" : "string",
             "description" : "Token id"
-          },
-          "clientId" : {
-            "type" : "string",
-            "description" : "client identification on Malga"
-          },
-          "createdAt" : {
-            "type" : "string",
-            "description" : "Token created date"
-          },
-          "updatedAt" : {
-            "type" : "string",
-            "description" : "Token updated date"
           }
         }
       },
@@ -2949,6 +2998,14 @@
           "tokenId" : {
             "type" : "string",
             "description" : "Identificador do token gerado"
+          },
+          "merchantId" : {
+            "type" : "string",
+            "description" : "merchant identification used in card validation"
+          },
+          "cvvCheck" : {
+            "type" : "boolean",
+            "description" : "validate cvv using zero dollar authorization from provider"
           }
         }
       },
@@ -3048,22 +3105,24 @@
             "type" : "string",
             "description" : "Data de atualização do cartão"
           },
-          "customer" : {
-            "allOf" : [ {
-              "$ref" : "#/components/schemas/CustomerResponse"
-            } ]
+          "customerId" : {
+            "type" : "string",
+            "description" : "Customer vinculado ao cartão"
           }
         }
       },
       "AuthRequest" : {
         "properties" : {
           "scope" : {
-            "type" : "string",
+            "type" : "array",
             "description" : "determina o escopo de endpoints que a chave terá acesso",
-            "enum" : [ "tokens", "charges", "cards", "webhooks" ]
+            "items": {
+              "type": "string",
+              "enum" : [ "tokens", "charges", "cards", "webhooks" ]
+            }
           },
           "expires" : {
-            "type" : "number",
+            "type" : "integer",
             "description" : "prazo de validade da chave em segundos a partir da criação, zero para não expirar",
             "default" : 0
           }
@@ -3072,9 +3131,12 @@
       "AuthResponse" : {
         "properties" : {
           "scope" : {
-            "type" : "string",
+            "type" : "array",
             "description" : "determina o escopo de endpoints que a chave terá acesso",
-            "enum" : [ "tokens", "charges", "cards", "webhooks" ]
+            "items": {
+              "type": "string",
+              "enum" : [ "tokens", "charges", "cards", "webhooks" ]
+            }
           },
           "expires" : {
             "type" : "number",
@@ -3087,6 +3149,10 @@
           "publicKey" : {
             "type" : "string",
             "description" : "chave pública criada"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "description" : "Data de criação da chave"
           }
         }
       },
@@ -3104,7 +3170,11 @@
         "properties" : {
           "type" : {
             "type" : "string",
-            "enum" : [ "api_error", "bad_request", "invalid_request_error", "card_declined" ]
+            "enum" : [ "api_error", "bad_request", "invalid_request_error", "card_declined", "conflict" ]
+          },
+          "code" : {
+            "type" : "string",
+            "description" : "Código de retorno da erro"
           },
           "declinedCode" : {
             "type" : "string",

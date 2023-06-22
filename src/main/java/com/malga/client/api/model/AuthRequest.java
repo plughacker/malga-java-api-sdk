@@ -21,7 +21,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,10 +48,10 @@ import com.malga.client.JSON;
 /**
  * AuthRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-22T19:10:47.032351-03:00[America/Sao_Paulo]")
 public class AuthRequest {
   /**
-   * determina o escopo de endpoints que a chave terá acesso
+   * Gets or Sets scope
    */
   @JsonAdapter(ScopeEnum.Adapter.class)
   public enum ScopeEnum {
@@ -102,18 +103,26 @@ public class AuthRequest {
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
-  private ScopeEnum scope;
+  private List<ScopeEnum> scope = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
-  private BigDecimal expires = new BigDecimal("0");
+  private Integer expires = 0;
 
   public AuthRequest() {
   }
 
-  public AuthRequest scope(ScopeEnum scope) {
+  public AuthRequest scope(List<ScopeEnum> scope) {
     
     this.scope = scope;
+    return this;
+  }
+
+  public AuthRequest addScopeItem(ScopeEnum scopeItem) {
+    if (this.scope == null) {
+      this.scope = new ArrayList<>();
+    }
+    this.scope.add(scopeItem);
     return this;
   }
 
@@ -123,17 +132,17 @@ public class AuthRequest {
   **/
   @javax.annotation.Nullable
 
-  public ScopeEnum getScope() {
+  public List<ScopeEnum> getScope() {
     return scope;
   }
 
 
-  public void setScope(ScopeEnum scope) {
+  public void setScope(List<ScopeEnum> scope) {
     this.scope = scope;
   }
 
 
-  public AuthRequest expires(BigDecimal expires) {
+  public AuthRequest expires(Integer expires) {
     
     this.expires = expires;
     return this;
@@ -145,12 +154,12 @@ public class AuthRequest {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getExpires() {
+  public Integer getExpires() {
     return expires;
   }
 
 
-  public void setExpires(BigDecimal expires) {
+  public void setExpires(Integer expires) {
     this.expires = expires;
   }
 
@@ -267,8 +276,9 @@ public class AuthRequest {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AuthRequest is not found in the empty JSON string", AuthRequest.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be an array in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
   }
 

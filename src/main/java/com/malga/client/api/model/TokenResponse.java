@@ -46,112 +46,34 @@ import com.malga.client.JSON;
 /**
  * TokenResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-22T19:10:47.032351-03:00[America/Sao_Paulo]")
 public class TokenResponse {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
-  public static final String SERIALIZED_NAME_CLIENT_ID = "clientId";
-  @SerializedName(SERIALIZED_NAME_CLIENT_ID)
-  private String clientId;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
-
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private String updatedAt;
+  public static final String SERIALIZED_NAME_TOKEN_ID = "tokenId";
+  @SerializedName(SERIALIZED_NAME_TOKEN_ID)
+  private String tokenId;
 
   public TokenResponse() {
   }
 
-  public TokenResponse id(String id) {
+  public TokenResponse tokenId(String tokenId) {
     
-    this.id = id;
+    this.tokenId = tokenId;
     return this;
   }
 
    /**
    * Token id
-   * @return id
+   * @return tokenId
   **/
   @javax.annotation.Nullable
 
-  public String getId() {
-    return id;
+  public String getTokenId() {
+    return tokenId;
   }
 
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
-  public TokenResponse clientId(String clientId) {
-    
-    this.clientId = clientId;
-    return this;
-  }
-
-   /**
-   * client identification on Malga
-   * @return clientId
-  **/
-  @javax.annotation.Nullable
-
-  public String getClientId() {
-    return clientId;
-  }
-
-
-  public void setClientId(String clientId) {
-    this.clientId = clientId;
-  }
-
-
-  public TokenResponse createdAt(String createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Token created date
-   * @return createdAt
-  **/
-  @javax.annotation.Nullable
-
-  public String getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public TokenResponse updatedAt(String updatedAt) {
-    
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * Token updated date
-   * @return updatedAt
-  **/
-  @javax.annotation.Nullable
-
-  public String getUpdatedAt() {
-    return updatedAt;
-  }
-
-
-  public void setUpdatedAt(String updatedAt) {
-    this.updatedAt = updatedAt;
+  public void setTokenId(String tokenId) {
+    this.tokenId = tokenId;
   }
 
   /**
@@ -209,26 +131,20 @@ public class TokenResponse {
       return false;
     }
     TokenResponse tokenResponse = (TokenResponse) o;
-    return Objects.equals(this.id, tokenResponse.id) &&
-        Objects.equals(this.clientId, tokenResponse.clientId) &&
-        Objects.equals(this.createdAt, tokenResponse.createdAt) &&
-        Objects.equals(this.updatedAt, tokenResponse.updatedAt)&&
+    return Objects.equals(this.tokenId, tokenResponse.tokenId)&&
         Objects.equals(this.additionalProperties, tokenResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, clientId, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(tokenId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TokenResponse {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -252,10 +168,7 @@ public class TokenResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("clientId");
-    openapiFields.add("createdAt");
-    openapiFields.add("updatedAt");
+    openapiFields.add("tokenId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -273,17 +186,8 @@ public class TokenResponse {
           throw new IllegalArgumentException(String.format("The required field(s) %s in TokenResponse is not found in the empty JSON string", TokenResponse.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("clientId") != null && !jsonObj.get("clientId").isJsonNull()) && !jsonObj.get("clientId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clientId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientId").toString()));
-      }
-      if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
-      }
-      if ((jsonObj.get("updatedAt") != null && !jsonObj.get("updatedAt").isJsonNull()) && !jsonObj.get("updatedAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `updatedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updatedAt").toString()));
+      if ((jsonObj.get("tokenId") != null && !jsonObj.get("tokenId").isJsonNull()) && !jsonObj.get("tokenId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tokenId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tokenId").toString()));
       }
   }
 

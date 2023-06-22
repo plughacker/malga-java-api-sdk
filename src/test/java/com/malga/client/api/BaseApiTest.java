@@ -33,6 +33,13 @@ public class BaseApiTest {
                 .paymentSource((new ChargeRequestPaymentSource(cardOneShot)))
                 .paymentMethod((new ChargeRequestPaymentMethod(paymentMethodCard)));
     }
+    protected TokenRequest createTokenRequest(){
+        return (new TokenRequest())
+                .cardExpirationDate("12/2025")
+                .cardHolderName("John Doe")
+                .cardNumber("4929564637987814")
+                .cardCvv("410");
+    }
 
     protected ChargeRequest createPixChargeRequest(){
         SourceTypeCustomerCustomer customer = ((new SourceTypeCustomerCustomer())
@@ -150,15 +157,47 @@ public class BaseApiTest {
     }
 
     protected ApiClient getDefaulClientApi(){
+        return this.getDefaulClientApi(System.getenv("CLIENT_ID"), System.getenv("API_KEY"));
+    }
+
+    protected ApiClient getDefaulClientApi(String apiKey){
+        return this.getDefaulClientApi(System.getenv("CLIENT_ID"), apiKey);
+    }
+
+    protected ApiClient getDefaulClientApi(String clientID, String apiKey){
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://sandbox-api.malga.io");
 
-        ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-ID");
-        clientID.setApiKey(System.getenv("CLIENT_ID"));
+        ApiKeyAuth authClientID = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-ID");
+        authClientID.setApiKey(clientID);
 
-        ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("X-Api-Key");
-        apiKey.setApiKey(System.getenv("API_KEY"));
+        ApiKeyAuth authApiKey = (ApiKeyAuth) defaultClient.getAuthentication("X-Api-Key");
+        authApiKey.setApiKey(apiKey);
 
         return defaultClient;
+    }
+
+    protected CustomerRequest getCustomerRequest(){
+        CustomerRequest customer = ((new CustomerRequest())
+                .address((new CustomerRequestAddress())
+                        .country("BR")
+                        .city("Rio de Janeiro")
+                        .complement("should be complement")
+                        .district("Leblon")
+                        .state("RJ")
+                        .street("Rua A")
+                        .streetNumber("123")
+                        .zipCode("12345678")
+                )
+                .document((new CustomerRequestDocument())
+                        .country("BR")
+                        .type("cpf")
+                        .number("97055503019")
+                )
+                .email("shouldbe@email.com")
+                .name("should be customer name")
+                .phoneNumber("21999999999")
+        );
+        return customer;
     }
 }

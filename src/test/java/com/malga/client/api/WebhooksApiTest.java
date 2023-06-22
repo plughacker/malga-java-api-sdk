@@ -60,7 +60,7 @@ public class WebhooksApiTest {
     @Test
     public void getWebhookTest() throws ApiException {
         String id = null;
-        WebhookResponse response = api.getWebhook(id);
+        WebhookResponse response = api.getWebhookById(id);
         // TODO: test validations
     }
 
@@ -73,7 +73,7 @@ public class WebhooksApiTest {
     public void listWebhooksTest() throws ApiException {
         String page = null;
         String limit = null;
-        WebhookList response = api.listWebhooks(page, limit);
+        WebhookList response = api.getWebhooks(page, limit);
         // TODO: test validations
     }
 

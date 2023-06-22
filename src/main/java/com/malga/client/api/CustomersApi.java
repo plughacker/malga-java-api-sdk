@@ -82,6 +82,7 @@ public class CustomersApi {
     /**
      * Build call for createCustomer
      * @param customerRequest  (required)
+     * @param force Force customer create avoiding confit when document number already exists (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -89,9 +90,12 @@ public class CustomersApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict document number already exists </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCustomerCall(CustomerRequest customerRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCustomerCall(CustomerRequest customerRequest, Boolean force, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -116,7 +120,12 @@ public class CustomersApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (force != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("force", force));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -136,13 +145,13 @@ public class CustomersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createCustomerValidateBeforeCall(CustomerRequest customerRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createCustomerValidateBeforeCall(CustomerRequest customerRequest, Boolean force, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'customerRequest' is set
         if (customerRequest == null) {
             throw new ApiException("Missing the required parameter 'customerRequest' when calling createCustomer(Async)");
         }
 
-        return createCustomerCall(customerRequest, _callback);
+        return createCustomerCall(customerRequest, force, _callback);
 
     }
 
@@ -150,38 +159,50 @@ public class CustomersApi {
      * Create new customer
      * 
      * @param customerRequest  (required)
+     * @param force Force customer create avoiding confit when document number already exists (optional)
+     * @return CustomerResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict document number already exists </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public void createCustomer(CustomerRequest customerRequest) throws ApiException {
-        createCustomerWithHttpInfo(customerRequest);
+    public CustomerResponse createCustomer(CustomerRequest customerRequest, Boolean force) throws ApiException {
+        ApiResponse<CustomerResponse> localVarResp = createCustomerWithHttpInfo(customerRequest, force);
+        return localVarResp.getData();
     }
 
     /**
      * Create new customer
      * 
      * @param customerRequest  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param force Force customer create avoiding confit when document number already exists (optional)
+     * @return ApiResponse&lt;CustomerResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict document number already exists </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> createCustomerWithHttpInfo(CustomerRequest customerRequest) throws ApiException {
-        okhttp3.Call localVarCall = createCustomerValidateBeforeCall(customerRequest, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CustomerResponse> createCustomerWithHttpInfo(CustomerRequest customerRequest, Boolean force) throws ApiException {
+        okhttp3.Call localVarCall = createCustomerValidateBeforeCall(customerRequest, force, null);
+        Type localVarReturnType = new TypeToken<CustomerResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Create new customer (asynchronously)
      * 
      * @param customerRequest  (required)
+     * @param force Force customer create avoiding confit when document number already exists (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -189,12 +210,16 @@ public class CustomersApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict document number already exists </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCustomerAsync(CustomerRequest customerRequest, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call createCustomerAsync(CustomerRequest customerRequest, Boolean force, final ApiCallback<CustomerResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createCustomerValidateBeforeCall(customerRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = createCustomerValidateBeforeCall(customerRequest, force, _callback);
+        Type localVarReturnType = new TypeToken<CustomerResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -316,7 +341,7 @@ public class CustomersApi {
         return localVarCall;
     }
     /**
-     * Build call for getCustomer
+     * Build call for getCustomerById
      * @param id Customer ID (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -329,7 +354,7 @@ public class CustomersApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomerCall(String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCustomerByIdCall(String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -375,13 +400,13 @@ public class CustomersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomerValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCustomerByIdValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getCustomer(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getCustomerById(Async)");
         }
 
-        return getCustomerCall(id, _callback);
+        return getCustomerByIdCall(id, _callback);
 
     }
 
@@ -399,8 +424,8 @@ public class CustomersApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public CustomerResponse getCustomer(String id) throws ApiException {
-        ApiResponse<CustomerResponse> localVarResp = getCustomerWithHttpInfo(id);
+    public CustomerResponse getCustomerById(String id) throws ApiException {
+        ApiResponse<CustomerResponse> localVarResp = getCustomerByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -418,8 +443,8 @@ public class CustomersApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CustomerResponse> getCustomerWithHttpInfo(String id) throws ApiException {
-        okhttp3.Call localVarCall = getCustomerValidateBeforeCall(id, null);
+    public ApiResponse<CustomerResponse> getCustomerByIdWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = getCustomerByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CustomerResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -439,9 +464,9 @@ public class CustomersApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomerAsync(String id, final ApiCallback<CustomerResponse> _callback) throws ApiException {
+    public okhttp3.Call getCustomerByIdAsync(String id, final ApiCallback<CustomerResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustomerValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getCustomerByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CustomerResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -566,6 +591,175 @@ public class CustomersApi {
 
         okhttp3.Call localVarCall = getCustomerCardsValidateBeforeCall(customerId, _callback);
         Type localVarReturnType = new TypeToken<CustomerCardList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCustomers
+     * @param page page number (optional)
+     * @param limit total itens per page (optional)
+     * @param sort ordering of items (optional)
+     * @param id customer identifier (optional)
+     * @param documentType document type (optional)
+     * @param documentNumber document number (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCustomersCall(String page, String limit, String sort, String id, String documentType, String documentNumber, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/customers";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (id != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("id", id));
+        }
+
+        if (documentType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("document.type", documentType));
+        }
+
+        if (documentNumber != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("document.number", documentNumber));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "X-Client-ID", "X-Api-Key" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCustomersValidateBeforeCall(String page, String limit, String sort, String id, String documentType, String documentNumber, final ApiCallback _callback) throws ApiException {
+        return getCustomersCall(page, limit, sort, id, documentType, documentNumber, _callback);
+
+    }
+
+    /**
+     * List customers
+     * 
+     * @param page page number (optional)
+     * @param limit total itens per page (optional)
+     * @param sort ordering of items (optional)
+     * @param id customer identifier (optional)
+     * @param documentType document type (optional)
+     * @param documentNumber document number (optional)
+     * @return CustomerList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public CustomerList getCustomers(String page, String limit, String sort, String id, String documentType, String documentNumber) throws ApiException {
+        ApiResponse<CustomerList> localVarResp = getCustomersWithHttpInfo(page, limit, sort, id, documentType, documentNumber);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List customers
+     * 
+     * @param page page number (optional)
+     * @param limit total itens per page (optional)
+     * @param sort ordering of items (optional)
+     * @param id customer identifier (optional)
+     * @param documentType document type (optional)
+     * @param documentNumber document number (optional)
+     * @return ApiResponse&lt;CustomerList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CustomerList> getCustomersWithHttpInfo(String page, String limit, String sort, String id, String documentType, String documentNumber) throws ApiException {
+        okhttp3.Call localVarCall = getCustomersValidateBeforeCall(page, limit, sort, id, documentType, documentNumber, null);
+        Type localVarReturnType = new TypeToken<CustomerList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List customers (asynchronously)
+     * 
+     * @param page page number (optional)
+     * @param limit total itens per page (optional)
+     * @param sort ordering of items (optional)
+     * @param id customer identifier (optional)
+     * @param documentType document type (optional)
+     * @param documentNumber document number (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCustomersAsync(String page, String limit, String sort, String id, String documentType, String documentNumber, final ApiCallback<CustomerList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCustomersValidateBeforeCall(page, limit, sort, id, documentType, documentNumber, _callback);
+        Type localVarReturnType = new TypeToken<CustomerList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -698,175 +892,6 @@ public class CustomersApi {
         return localVarCall;
     }
     /**
-     * Build call for listCustomers
-     * @param page page number (optional)
-     * @param limit total itens per page (optional)
-     * @param sort ordering of items (optional)
-     * @param id customer identifier (optional)
-     * @param documentType document type (optional)
-     * @param documentNumber document number (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCustomersCall(String page, String limit, String sort, String id, String documentType, String documentNumber, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/customers";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (page != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (sort != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
-        }
-
-        if (id != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("id", id));
-        }
-
-        if (documentType != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("document.type", documentType));
-        }
-
-        if (documentNumber != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("document.number", documentNumber));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "X-Client-ID", "X-Api-Key" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCustomersValidateBeforeCall(String page, String limit, String sort, String id, String documentType, String documentNumber, final ApiCallback _callback) throws ApiException {
-        return listCustomersCall(page, limit, sort, id, documentType, documentNumber, _callback);
-
-    }
-
-    /**
-     * List customers
-     * 
-     * @param page page number (optional)
-     * @param limit total itens per page (optional)
-     * @param sort ordering of items (optional)
-     * @param id customer identifier (optional)
-     * @param documentType document type (optional)
-     * @param documentNumber document number (optional)
-     * @return CustomerList
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public CustomerList listCustomers(String page, String limit, String sort, String id, String documentType, String documentNumber) throws ApiException {
-        ApiResponse<CustomerList> localVarResp = listCustomersWithHttpInfo(page, limit, sort, id, documentType, documentNumber);
-        return localVarResp.getData();
-    }
-
-    /**
-     * List customers
-     * 
-     * @param page page number (optional)
-     * @param limit total itens per page (optional)
-     * @param sort ordering of items (optional)
-     * @param id customer identifier (optional)
-     * @param documentType document type (optional)
-     * @param documentNumber document number (optional)
-     * @return ApiResponse&lt;CustomerList&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CustomerList> listCustomersWithHttpInfo(String page, String limit, String sort, String id, String documentType, String documentNumber) throws ApiException {
-        okhttp3.Call localVarCall = listCustomersValidateBeforeCall(page, limit, sort, id, documentType, documentNumber, null);
-        Type localVarReturnType = new TypeToken<CustomerList>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * List customers (asynchronously)
-     * 
-     * @param page page number (optional)
-     * @param limit total itens per page (optional)
-     * @param sort ordering of items (optional)
-     * @param id customer identifier (optional)
-     * @param documentType document type (optional)
-     * @param documentNumber document number (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCustomersAsync(String page, String limit, String sort, String id, String documentType, String documentNumber, final ApiCallback<CustomerList> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listCustomersValidateBeforeCall(page, limit, sort, id, documentType, documentNumber, _callback);
-        Type localVarReturnType = new TypeToken<CustomerList>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for updateCustomer
      * @param id Customer ID (required)
      * @param updateCustomerRequest  (required)
@@ -906,6 +931,7 @@ public class CustomersApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -945,6 +971,7 @@ public class CustomersApi {
      * 
      * @param id Customer ID (required)
      * @param updateCustomerRequest  (required)
+     * @return CustomerResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -952,8 +979,9 @@ public class CustomersApi {
         <tr><td> 200 </td><td> The record has been successfully updated. </td><td>  -  </td></tr>
      </table>
      */
-    public void updateCustomer(String id, UpdateCustomerRequest updateCustomerRequest) throws ApiException {
-        updateCustomerWithHttpInfo(id, updateCustomerRequest);
+    public CustomerResponse updateCustomer(String id, UpdateCustomerRequest updateCustomerRequest) throws ApiException {
+        ApiResponse<CustomerResponse> localVarResp = updateCustomerWithHttpInfo(id, updateCustomerRequest);
+        return localVarResp.getData();
     }
 
     /**
@@ -961,7 +989,7 @@ public class CustomersApi {
      * 
      * @param id Customer ID (required)
      * @param updateCustomerRequest  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;CustomerResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -969,9 +997,10 @@ public class CustomersApi {
         <tr><td> 200 </td><td> The record has been successfully updated. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateCustomerWithHttpInfo(String id, UpdateCustomerRequest updateCustomerRequest) throws ApiException {
+    public ApiResponse<CustomerResponse> updateCustomerWithHttpInfo(String id, UpdateCustomerRequest updateCustomerRequest) throws ApiException {
         okhttp3.Call localVarCall = updateCustomerValidateBeforeCall(id, updateCustomerRequest, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CustomerResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -988,10 +1017,11 @@ public class CustomersApi {
         <tr><td> 200 </td><td> The record has been successfully updated. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCustomerAsync(String id, UpdateCustomerRequest updateCustomerRequest, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateCustomerAsync(String id, UpdateCustomerRequest updateCustomerRequest, final ApiCallback<CustomerResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateCustomerValidateBeforeCall(id, updateCustomerRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CustomerResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

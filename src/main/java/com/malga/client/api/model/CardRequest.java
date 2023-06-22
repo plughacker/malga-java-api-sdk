@@ -46,11 +46,19 @@ import com.malga.client.JSON;
 /**
  * CardRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-22T19:10:47.032351-03:00[America/Sao_Paulo]")
 public class CardRequest {
   public static final String SERIALIZED_NAME_TOKEN_ID = "tokenId";
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
   private String tokenId;
+
+  public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
+  @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
+  private String merchantId;
+
+  public static final String SERIALIZED_NAME_CVV_CHECK = "cvvCheck";
+  @SerializedName(SERIALIZED_NAME_CVV_CHECK)
+  private Boolean cvvCheck;
 
   public CardRequest() {
   }
@@ -74,6 +82,50 @@ public class CardRequest {
 
   public void setTokenId(String tokenId) {
     this.tokenId = tokenId;
+  }
+
+
+  public CardRequest merchantId(String merchantId) {
+    
+    this.merchantId = merchantId;
+    return this;
+  }
+
+   /**
+   * merchant identification used in card validation
+   * @return merchantId
+  **/
+  @javax.annotation.Nullable
+
+  public String getMerchantId() {
+    return merchantId;
+  }
+
+
+  public void setMerchantId(String merchantId) {
+    this.merchantId = merchantId;
+  }
+
+
+  public CardRequest cvvCheck(Boolean cvvCheck) {
+    
+    this.cvvCheck = cvvCheck;
+    return this;
+  }
+
+   /**
+   * validate cvv using zero dollar authorization from provider
+   * @return cvvCheck
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getCvvCheck() {
+    return cvvCheck;
+  }
+
+
+  public void setCvvCheck(Boolean cvvCheck) {
+    this.cvvCheck = cvvCheck;
   }
 
   /**
@@ -131,13 +183,15 @@ public class CardRequest {
       return false;
     }
     CardRequest cardRequest = (CardRequest) o;
-    return Objects.equals(this.tokenId, cardRequest.tokenId)&&
+    return Objects.equals(this.tokenId, cardRequest.tokenId) &&
+        Objects.equals(this.merchantId, cardRequest.merchantId) &&
+        Objects.equals(this.cvvCheck, cardRequest.cvvCheck)&&
         Objects.equals(this.additionalProperties, cardRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tokenId, additionalProperties);
+    return Objects.hash(tokenId, merchantId, cvvCheck, additionalProperties);
   }
 
   @Override
@@ -145,6 +199,8 @@ public class CardRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CardRequest {\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
+    sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
+    sb.append("    cvvCheck: ").append(toIndentedString(cvvCheck)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -169,6 +225,8 @@ public class CardRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("tokenId");
+    openapiFields.add("merchantId");
+    openapiFields.add("cvvCheck");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -196,6 +254,9 @@ public class CardRequest {
       }
       if (!jsonObj.get("tokenId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tokenId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tokenId").toString()));
+      }
+      if ((jsonObj.get("merchantId") != null && !jsonObj.get("merchantId").isJsonNull()) && !jsonObj.get("merchantId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `merchantId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("merchantId").toString()));
       }
   }
 

@@ -47,7 +47,7 @@ import com.malga.client.JSON;
 /**
  * ErrorResponseError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-22T19:10:47.032351-03:00[America/Sao_Paulo]")
 public class ErrorResponseError {
   /**
    * Gets or Sets type
@@ -60,7 +60,9 @@ public class ErrorResponseError {
     
     INVALID_REQUEST_ERROR("invalid_request_error"),
     
-    CARD_DECLINED("card_declined");
+    CARD_DECLINED("card_declined"),
+    
+    CONFLICT("conflict");
 
     private String value;
 
@@ -104,6 +106,10 @@ public class ErrorResponseError {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
+
   public static final String SERIALIZED_NAME_DECLINED_CODE = "declinedCode";
   @SerializedName(SERIALIZED_NAME_DECLINED_CODE)
   private String declinedCode;
@@ -138,6 +144,28 @@ public class ErrorResponseError {
 
   public void setType(TypeEnum type) {
     this.type = type;
+  }
+
+
+  public ErrorResponseError code(String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * Código de retorno da erro
+   * @return code
+  **/
+  @javax.annotation.Nullable
+
+  public String getCode() {
+    return code;
+  }
+
+
+  public void setCode(String code) {
+    this.code = code;
   }
 
 
@@ -262,6 +290,7 @@ public class ErrorResponseError {
     }
     ErrorResponseError errorResponseError = (ErrorResponseError) o;
     return Objects.equals(this.type, errorResponseError.type) &&
+        Objects.equals(this.code, errorResponseError.code) &&
         Objects.equals(this.declinedCode, errorResponseError.declinedCode) &&
         Objects.equals(this.message, errorResponseError.message) &&
         Objects.equals(this.details, errorResponseError.details)&&
@@ -270,7 +299,7 @@ public class ErrorResponseError {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, declinedCode, message, details, additionalProperties);
+    return Objects.hash(type, code, declinedCode, message, details, additionalProperties);
   }
 
   @Override
@@ -278,6 +307,7 @@ public class ErrorResponseError {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorResponseError {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    declinedCode: ").append(toIndentedString(declinedCode)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
@@ -305,6 +335,7 @@ public class ErrorResponseError {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("type");
+    openapiFields.add("code");
     openapiFields.add("declinedCode");
     openapiFields.add("message");
     openapiFields.add("details");
@@ -335,6 +366,9 @@ public class ErrorResponseError {
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
       if ((jsonObj.get("declinedCode") != null && !jsonObj.get("declinedCode").isJsonNull()) && !jsonObj.get("declinedCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `declinedCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("declinedCode").toString()));

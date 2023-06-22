@@ -318,7 +318,7 @@ public class WebhooksApi {
         return localVarCall;
     }
     /**
-     * Build call for getWebhook
+     * Build call for getWebhookById
      * @param id Webhook ID (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -331,7 +331,7 @@ public class WebhooksApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebhookCall(String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWebhookByIdCall(String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -377,13 +377,13 @@ public class WebhooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getWebhookValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getWebhookByIdValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getWebhook(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getWebhookById(Async)");
         }
 
-        return getWebhookCall(id, _callback);
+        return getWebhookByIdCall(id, _callback);
 
     }
 
@@ -401,8 +401,8 @@ public class WebhooksApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public WebhookResponse getWebhook(String id) throws ApiException {
-        ApiResponse<WebhookResponse> localVarResp = getWebhookWithHttpInfo(id);
+    public WebhookResponse getWebhookById(String id) throws ApiException {
+        ApiResponse<WebhookResponse> localVarResp = getWebhookByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -420,8 +420,8 @@ public class WebhooksApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WebhookResponse> getWebhookWithHttpInfo(String id) throws ApiException {
-        okhttp3.Call localVarCall = getWebhookValidateBeforeCall(id, null);
+    public ApiResponse<WebhookResponse> getWebhookByIdWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = getWebhookByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<WebhookResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -441,15 +441,15 @@ public class WebhooksApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebhookAsync(String id, final ApiCallback<WebhookResponse> _callback) throws ApiException {
+    public okhttp3.Call getWebhookByIdAsync(String id, final ApiCallback<WebhookResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getWebhookValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getWebhookByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<WebhookResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for listWebhooks
+     * Build call for getWebhooks
      * @param page page number (optional)
      * @param limit total itens per page (optional)
      * @param _callback Callback for upload/download progress
@@ -463,7 +463,7 @@ public class WebhooksApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listWebhooksCall(String page, String limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWebhooksCall(String page, String limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -516,8 +516,8 @@ public class WebhooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listWebhooksValidateBeforeCall(String page, String limit, final ApiCallback _callback) throws ApiException {
-        return listWebhooksCall(page, limit, _callback);
+    private okhttp3.Call getWebhooksValidateBeforeCall(String page, String limit, final ApiCallback _callback) throws ApiException {
+        return getWebhooksCall(page, limit, _callback);
 
     }
 
@@ -536,8 +536,8 @@ public class WebhooksApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public WebhookList listWebhooks(String page, String limit) throws ApiException {
-        ApiResponse<WebhookList> localVarResp = listWebhooksWithHttpInfo(page, limit);
+    public WebhookList getWebhooks(String page, String limit) throws ApiException {
+        ApiResponse<WebhookList> localVarResp = getWebhooksWithHttpInfo(page, limit);
         return localVarResp.getData();
     }
 
@@ -556,8 +556,8 @@ public class WebhooksApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WebhookList> listWebhooksWithHttpInfo(String page, String limit) throws ApiException {
-        okhttp3.Call localVarCall = listWebhooksValidateBeforeCall(page, limit, null);
+    public ApiResponse<WebhookList> getWebhooksWithHttpInfo(String page, String limit) throws ApiException {
+        okhttp3.Call localVarCall = getWebhooksValidateBeforeCall(page, limit, null);
         Type localVarReturnType = new TypeToken<WebhookList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -578,9 +578,9 @@ public class WebhooksApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listWebhooksAsync(String page, String limit, final ApiCallback<WebhookList> _callback) throws ApiException {
+    public okhttp3.Call getWebhooksAsync(String page, String limit, final ApiCallback<WebhookList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listWebhooksValidateBeforeCall(page, limit, _callback);
+        okhttp3.Call localVarCall = getWebhooksValidateBeforeCall(page, limit, _callback);
         Type localVarReturnType = new TypeToken<WebhookList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

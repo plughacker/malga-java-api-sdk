@@ -217,143 +217,7 @@ public class ChargesApi {
         return localVarCall;
     }
     /**
-     * Build call for changeStatusTransaction
-     * @param id id of the charge you want to change in the sandbox (required)
-     * @param updateChargeStatusRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call changeStatusTransactionCall(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = updateChargeStatusRequest;
-
-        // create path and map variables
-        String localVarPath = "/v1/charges/{id}"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "X-Client-ID", "X-Api-Key" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call changeStatusTransactionValidateBeforeCall(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling changeStatusTransaction(Async)");
-        }
-
-        return changeStatusTransactionCall(id, updateChargeStatusRequest, _callback);
-
-    }
-
-    /**
-     * Change the status of a charge in the sandbox environment
-     * 
-     * @param id id of the charge you want to change in the sandbox (required)
-     * @param updateChargeStatusRequest  (optional)
-     * @return ChargeResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ChargeResponse changeStatusTransaction(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest) throws ApiException {
-        ApiResponse<ChargeResponse> localVarResp = changeStatusTransactionWithHttpInfo(id, updateChargeStatusRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Change the status of a charge in the sandbox environment
-     * 
-     * @param id id of the charge you want to change in the sandbox (required)
-     * @param updateChargeStatusRequest  (optional)
-     * @return ApiResponse&lt;ChargeResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ChargeResponse> changeStatusTransactionWithHttpInfo(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest) throws ApiException {
-        okhttp3.Call localVarCall = changeStatusTransactionValidateBeforeCall(id, updateChargeStatusRequest, null);
-        Type localVarReturnType = new TypeToken<ChargeResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Change the status of a charge in the sandbox environment (asynchronously)
-     * 
-     * @param id id of the charge you want to change in the sandbox (required)
-     * @param updateChargeStatusRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call changeStatusTransactionAsync(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest, final ApiCallback<ChargeResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = changeStatusTransactionValidateBeforeCall(id, updateChargeStatusRequest, _callback);
-        Type localVarReturnType = new TypeToken<ChargeResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for charge
+     * Build call for createCharge
      * @param chargeRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -366,7 +230,7 @@ public class ChargesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call chargeCall(ChargeRequest chargeRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createChargeCall(ChargeRequest chargeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -412,8 +276,8 @@ public class ChargesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call chargeValidateBeforeCall(ChargeRequest chargeRequest, final ApiCallback _callback) throws ApiException {
-        return chargeCall(chargeRequest, _callback);
+    private okhttp3.Call createChargeValidateBeforeCall(ChargeRequest chargeRequest, final ApiCallback _callback) throws ApiException {
+        return createChargeCall(chargeRequest, _callback);
 
     }
 
@@ -431,8 +295,8 @@ public class ChargesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ChargeResponse charge(ChargeRequest chargeRequest) throws ApiException {
-        ApiResponse<ChargeResponse> localVarResp = chargeWithHttpInfo(chargeRequest);
+    public ChargeResponse createCharge(ChargeRequest chargeRequest) throws ApiException {
+        ApiResponse<ChargeResponse> localVarResp = createChargeWithHttpInfo(chargeRequest);
         return localVarResp.getData();
     }
 
@@ -450,8 +314,8 @@ public class ChargesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChargeResponse> chargeWithHttpInfo(ChargeRequest chargeRequest) throws ApiException {
-        okhttp3.Call localVarCall = chargeValidateBeforeCall(chargeRequest, null);
+    public ApiResponse<ChargeResponse> createChargeWithHttpInfo(ChargeRequest chargeRequest) throws ApiException {
+        okhttp3.Call localVarCall = createChargeValidateBeforeCall(chargeRequest, null);
         Type localVarReturnType = new TypeToken<ChargeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -471,147 +335,10 @@ public class ChargesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call chargeAsync(ChargeRequest chargeRequest, final ApiCallback<ChargeResponse> _callback) throws ApiException {
+    public okhttp3.Call createChargeAsync(ChargeRequest chargeRequest, final ApiCallback<ChargeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = chargeValidateBeforeCall(chargeRequest, _callback);
+        okhttp3.Call localVarCall = createChargeValidateBeforeCall(chargeRequest, _callback);
         Type localVarReturnType = new TypeToken<ChargeResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getCharge
-     * @param page page number (optional)
-     * @param limit total itens per page (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getChargeCall(String page, String limit, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/charges";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (page != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "X-Client-ID", "X-Api-Key" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getChargeValidateBeforeCall(String page, String limit, final ApiCallback _callback) throws ApiException {
-        return getChargeCall(page, limit, _callback);
-
-    }
-
-    /**
-     * List charges
-     * 
-     * @param page page number (optional)
-     * @param limit total itens per page (optional)
-     * @return ChargeList
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ChargeList getCharge(String page, String limit) throws ApiException {
-        ApiResponse<ChargeList> localVarResp = getChargeWithHttpInfo(page, limit);
-        return localVarResp.getData();
-    }
-
-    /**
-     * List charges
-     * 
-     * @param page page number (optional)
-     * @param limit total itens per page (optional)
-     * @return ApiResponse&lt;ChargeList&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ChargeList> getChargeWithHttpInfo(String page, String limit) throws ApiException {
-        okhttp3.Call localVarCall = getChargeValidateBeforeCall(page, limit, null);
-        Type localVarReturnType = new TypeToken<ChargeList>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * List charges (asynchronously)
-     * 
-     * @param page page number (optional)
-     * @param limit total itens per page (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getChargeAsync(String page, String limit, final ApiCallback<ChargeList> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getChargeValidateBeforeCall(page, limit, _callback);
-        Type localVarReturnType = new TypeToken<ChargeList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -747,7 +474,280 @@ public class ChargesApi {
         return localVarCall;
     }
     /**
-     * Build call for refundCharge
+     * Build call for getCharges
+     * @param page page number (optional)
+     * @param limit total itens per page (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getChargesCall(String page, String limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/charges";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "X-Client-ID", "X-Api-Key" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getChargesValidateBeforeCall(String page, String limit, final ApiCallback _callback) throws ApiException {
+        return getChargesCall(page, limit, _callback);
+
+    }
+
+    /**
+     * List charges
+     * 
+     * @param page page number (optional)
+     * @param limit total itens per page (optional)
+     * @return ChargeList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ChargeList getCharges(String page, String limit) throws ApiException {
+        ApiResponse<ChargeList> localVarResp = getChargesWithHttpInfo(page, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List charges
+     * 
+     * @param page page number (optional)
+     * @param limit total itens per page (optional)
+     * @return ApiResponse&lt;ChargeList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ChargeList> getChargesWithHttpInfo(String page, String limit) throws ApiException {
+        okhttp3.Call localVarCall = getChargesValidateBeforeCall(page, limit, null);
+        Type localVarReturnType = new TypeToken<ChargeList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List charges (asynchronously)
+     * 
+     * @param page page number (optional)
+     * @param limit total itens per page (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getChargesAsync(String page, String limit, final ApiCallback<ChargeList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getChargesValidateBeforeCall(page, limit, _callback);
+        Type localVarReturnType = new TypeToken<ChargeList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateChargeStatus
+     * @param id id of the charge you want to change in the sandbox (required)
+     * @param updateChargeStatusRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateChargeStatusCall(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateChargeStatusRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/charges/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "X-Client-ID", "X-Api-Key" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateChargeStatusValidateBeforeCall(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling updateChargeStatus(Async)");
+        }
+
+        return updateChargeStatusCall(id, updateChargeStatusRequest, _callback);
+
+    }
+
+    /**
+     * Change the status of a charge in the sandbox environment
+     * 
+     * @param id id of the charge you want to change in the sandbox (required)
+     * @param updateChargeStatusRequest  (optional)
+     * @return ChargeResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ChargeResponse updateChargeStatus(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest) throws ApiException {
+        ApiResponse<ChargeResponse> localVarResp = updateChargeStatusWithHttpInfo(id, updateChargeStatusRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Change the status of a charge in the sandbox environment
+     * 
+     * @param id id of the charge you want to change in the sandbox (required)
+     * @param updateChargeStatusRequest  (optional)
+     * @return ApiResponse&lt;ChargeResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ChargeResponse> updateChargeStatusWithHttpInfo(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateChargeStatusValidateBeforeCall(id, updateChargeStatusRequest, null);
+        Type localVarReturnType = new TypeToken<ChargeResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Change the status of a charge in the sandbox environment (asynchronously)
+     * 
+     * @param id id of the charge you want to change in the sandbox (required)
+     * @param updateChargeStatusRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateChargeStatusAsync(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest, final ApiCallback<ChargeResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateChargeStatusValidateBeforeCall(id, updateChargeStatusRequest, _callback);
+        Type localVarReturnType = new TypeToken<ChargeResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for voidCharge
      * @param id Charge ID (required)
      * @param voidRequest  (optional)
      * @param _callback Callback for upload/download progress
@@ -761,7 +761,7 @@ public class ChargesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call refundChargeCall(String id, VoidRequest voidRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call voidChargeCall(String id, VoidRequest voidRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -808,13 +808,13 @@ public class ChargesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call refundChargeValidateBeforeCall(String id, VoidRequest voidRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call voidChargeValidateBeforeCall(String id, VoidRequest voidRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling refundCharge(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling voidCharge(Async)");
         }
 
-        return refundChargeCall(id, voidRequest, _callback);
+        return voidChargeCall(id, voidRequest, _callback);
 
     }
 
@@ -833,8 +833,8 @@ public class ChargesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ChargeResponse refundCharge(String id, VoidRequest voidRequest) throws ApiException {
-        ApiResponse<ChargeResponse> localVarResp = refundChargeWithHttpInfo(id, voidRequest);
+    public ChargeResponse voidCharge(String id, VoidRequest voidRequest) throws ApiException {
+        ApiResponse<ChargeResponse> localVarResp = voidChargeWithHttpInfo(id, voidRequest);
         return localVarResp.getData();
     }
 
@@ -853,8 +853,8 @@ public class ChargesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChargeResponse> refundChargeWithHttpInfo(String id, VoidRequest voidRequest) throws ApiException {
-        okhttp3.Call localVarCall = refundChargeValidateBeforeCall(id, voidRequest, null);
+    public ApiResponse<ChargeResponse> voidChargeWithHttpInfo(String id, VoidRequest voidRequest) throws ApiException {
+        okhttp3.Call localVarCall = voidChargeValidateBeforeCall(id, voidRequest, null);
         Type localVarReturnType = new TypeToken<ChargeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -875,9 +875,9 @@ public class ChargesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call refundChargeAsync(String id, VoidRequest voidRequest, final ApiCallback<ChargeResponse> _callback) throws ApiException {
+    public okhttp3.Call voidChargeAsync(String id, VoidRequest voidRequest, final ApiCallback<ChargeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = refundChargeValidateBeforeCall(id, voidRequest, _callback);
+        okhttp3.Call localVarCall = voidChargeValidateBeforeCall(id, voidRequest, _callback);
         Type localVarReturnType = new TypeToken<ChargeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

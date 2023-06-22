@@ -38,7 +38,7 @@ public class ChargesApiTest extends BaseApiTest{
         ChargesApi chargesApi = new ChargesApi(this.getDefaulClientApi());
 
         ChargeRequest chargeRequest = this.createCardChargeRequest();
-        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+        ChargeResponse chargeResponse = chargesApi.createCharge(chargeRequest);
 
         assertNotNull(chargeResponse.getId());
 
@@ -66,7 +66,7 @@ public class ChargesApiTest extends BaseApiTest{
         ChargeRequest chargeRequest = this.createCardChargeRequest();
         chargeRequest.capture(true);
 
-        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+        ChargeResponse chargeResponse = chargesApi.createCharge(chargeRequest);
 
         assertNotNull(chargeResponse.getId());
 
@@ -82,7 +82,7 @@ public class ChargesApiTest extends BaseApiTest{
         ChargeRequest chargeRequest = this.createCardChargeRequest();
         chargeRequest.capture(true);
 
-        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+        ChargeResponse chargeResponse = chargesApi.createCharge(chargeRequest);
 
         ChargeResponse chargeResponseById = chargesApi.getChargeByid(chargeResponse.getId());
         assertNotNull(chargeResponseById.getId());
@@ -110,7 +110,7 @@ public class ChargesApiTest extends BaseApiTest{
 
         ChargeRequest chargeRequest = this.createCardChargeRequest();
 
-        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+        ChargeResponse chargeResponse = chargesApi.createCharge(chargeRequest);
         assertEquals(ChargeResponse.StatusEnum.PRE_AUTHORIZED, chargeResponse.getStatus());
 
         ChargeResponse chargeCaptureResponse = chargesApi.captureCharge(chargeResponse.getId(), (new CaptureRequest()).amount(100));
@@ -129,10 +129,10 @@ public class ChargesApiTest extends BaseApiTest{
 
         ChargeRequest chargeRequest = this.createCardChargeRequest();
 
-        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+        ChargeResponse chargeResponse = chargesApi.createCharge(chargeRequest);
         assertEquals(ChargeResponse.StatusEnum.PRE_AUTHORIZED, chargeResponse.getStatus());
 
-        ChargeResponse chargeCaptureResponse = chargesApi.refundCharge(chargeResponse.getId(), (new VoidRequest()).amount(100));
+        ChargeResponse chargeCaptureResponse = chargesApi.voidCharge(chargeResponse.getId(), (new VoidRequest()).amount(100));
         assertNotNull(chargeCaptureResponse.getId());
 
         assertEquals(900, chargeCaptureResponse.getAmount());
@@ -148,7 +148,7 @@ public class ChargesApiTest extends BaseApiTest{
 
         ChargeRequest chargeRequest = this.createCardChargeNotAuthorizedRequest();
 
-        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+        ChargeResponse chargeResponse = chargesApi.createCharge(chargeRequest);
         assertEquals(ChargeResponse.StatusEnum.FAILED, chargeResponse.getStatus());
     }
 
@@ -159,9 +159,7 @@ public class ChargesApiTest extends BaseApiTest{
 
         ChargeRequest chargeRequest = this.createPixChargeRequest();
 
-        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
-
-        System.out.println(chargeResponse.toString());
+        ChargeResponse chargeResponse = chargesApi.createCharge(chargeRequest);
 
         assertNotNull(chargeResponse.getId());
 
@@ -190,9 +188,7 @@ public class ChargesApiTest extends BaseApiTest{
 
         ChargeRequest chargeRequest = this.createBoletoChargeRequest();
 
-        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
-
-        System.out.println(chargeResponse.toString());
+        ChargeResponse chargeResponse = chargesApi.createCharge(chargeRequest);
 
         assertNotNull(chargeResponse.getId());
 
@@ -213,6 +209,5 @@ public class ChargesApiTest extends BaseApiTest{
 
         assertEquals(ChargeResponse.StatusEnum.PENDING, chargeResponse.getStatus());
     }
-
 
 }

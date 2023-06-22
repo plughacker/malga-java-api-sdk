@@ -16,22 +16,17 @@ package com.malga.client.api;
 import com.malga.client.ApiException;
 import com.malga.client.api.model.AuthRequest;
 import com.malga.client.api.model.AuthResponse;
-import com.malga.client.api.model.ErrorResponse;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for ClientTokenApi
  */
-@Disabled
-public class ClientTokenApiTest {
+public class ClientTokenApiTest extends BaseApiTest{
 
-    private final ClientTokenApi api = new ClientTokenApi();
+
 
     /**
      * Create public key for client-side integration
@@ -40,9 +35,14 @@ public class ClientTokenApiTest {
      */
     @Test
     public void createAuthTokenTest() throws ApiException {
-        AuthRequest authRequest = null;
-        AuthResponse response = api.createAuthToken(authRequest);
-        // TODO: test validations
+        ClientTokenApi clientTokenApi = new ClientTokenApi(this.getDefaulClientApi());
+        AuthRequest authRequest = ((new AuthRequest())
+                .expires(3600)
+                .scope(List.of(AuthRequest.ScopeEnum.TOKENS))
+        );
+        AuthResponse authResponse = clientTokenApi.createClientToken(authRequest);
+
+        Assertions.assertNotNull(authResponse.getPublicKey());
     }
 
 }

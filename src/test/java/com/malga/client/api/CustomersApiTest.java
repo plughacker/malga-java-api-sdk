@@ -14,17 +14,21 @@
 package com.malga.client.api;
 
 import com.malga.client.ApiException;
-import com.malga.client.api.model.*;
-import org.junit.jupiter.api.Disabled;
+import com.malga.client.ApiResponse;
+import com.malga.client.api.model.CustomerRequest;
+import com.malga.client.api.model.CustomerResponse;
+import com.malga.client.api.model.ErrorResponse;
+import com.malga.client.api.model.ErrorResponseError;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * API tests for CustomersApi
  */
-@Disabled
 public class CustomersApiTest extends BaseApiTest{
-
-    private final CustomersApi api = new CustomersApi();
 
     /**
      * Create new customer
@@ -33,9 +37,55 @@ public class CustomersApiTest extends BaseApiTest{
      */
     @Test
     public void createCustomerTest() throws ApiException {
-        CustomerRequest customerRequest = null;
-        api.createCustomer(customerRequest);
-        // TODO: test validations
+        CustomerRequest customerRequest = this.getCustomerRequest();
+
+        CustomersApi customersApi = new CustomersApi(this.getDefaulClientApi());
+
+        CustomerResponse customerResponse = customersApi.createCustomer(customerRequest, true);
+
+        assertNotNull(customerResponse.getId());
+        assertNotNull(customerResponse.getCreatedAt());
+
+        assertEquals("should be customer name", customerResponse.getName());
+        assertEquals("97055503019", customerResponse.getDocument().getNumber());
+        assertEquals("cpf", customerResponse.getDocument().getType());
+        assertEquals("BR", customerResponse.getDocument().getCountry());
+        assertEquals("shouldbe@email.com", customerResponse.getEmail());
+        assertEquals("21999999999", customerResponse.getPhoneNumber());
+        assertEquals("BR", customerResponse.getAddress().getCountry());
+        assertEquals("Rio de Janeiro", customerResponse.getAddress().getCity());
+        assertEquals("should be complement", customerResponse.getAddress().getComplement());
+        assertEquals("Leblon", customerResponse.getAddress().getDistrict());
+        assertEquals("RJ", customerResponse.getAddress().getState());
+        assertEquals("Rua A", customerResponse.getAddress().getStreet());
+        assertEquals("123", customerResponse.getAddress().getStreetNumber());
+        assertEquals("12345678", customerResponse.getAddress().getZipCode());
+    }
+
+    /**
+     * Create new customer
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createCustomerConflictTest() throws IOException {
+        CustomerRequest customerRequest = this.getCustomerRequest();
+
+        CustomersApi customersApi = new CustomersApi(this.getDefaulClientApi());
+
+        ApiException exception = assertThrows(ApiException.class, () -> {
+            customersApi.createCustomer(customerRequest, false);
+        });
+
+        assertEquals(409, exception.getCode());
+
+        ErrorResponse error = ErrorResponse.fromJson(exception.getResponseBody());
+
+        assertEquals("Document number #97055503019 already exists.", error.getError().getMessage());
+        assertEquals("409", error.getError().getCode());
+        assertEquals(ErrorResponseError.TypeEnum.CONFLICT, error.getError().getType());
+
+
     }
 
     /**
@@ -45,9 +95,13 @@ public class CustomersApiTest extends BaseApiTest{
      */
     @Test
     public void deleteCustomerTest() throws ApiException {
-        String id = null;
-        api.deleteCustomer(id);
-        // TODO: test validations
+        CustomerRequest customerRequest = this.getCustomerRequest();
+
+        CustomersApi customersApi = new CustomersApi(this.getDefaulClientApi());
+
+        CustomerResponse customerResponse = customersApi.createCustomer(customerRequest, true);
+        ApiResponse deteleResponse = customersApi.deleteCustomerWithHttpInfo(customerResponse.getId());
+        assertEquals(200, deteleResponse.getStatusCode());
     }
 
     /**
@@ -57,64 +111,52 @@ public class CustomersApiTest extends BaseApiTest{
      */
     @Test
     public void getCustomerTest() throws ApiException {
-        String id = null;
-        CustomerResponse response = api.getCustomer(id);
-        // TODO: test validations
-    }
+        CustomerRequest customerRequest = this.getCustomerRequest();
 
-    /**
-     * List customer cards
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getCustomerCardsTest() throws ApiException {
-        String customerId = null;
-        CustomerCardList response = api.getCustomerCards(customerId);
-        // TODO: test validations
-    }
+        CustomersApi customersApi = new CustomersApi(this.getDefaulClientApi());
 
-    /**
-     * Add credit card to customers
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void linkCardTest() throws ApiException {
-        String customerId = null;
-        LinkCardRequest linkCardRequest = null;
-        api.linkCard(customerId, linkCardRequest);
-        // TODO: test validations
-    }
+        CustomerResponse createResponse = customersApi.createCustomer(customerRequest, true);
+        CustomerResponse customerResponse = customersApi.getCustomerById(createResponse.getId());
 
-    /**
-     * List customers
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void listCustomersTest() throws ApiException {
-        String page = null;
-        String limit = null;
-        String sort = null;
-        String id = null;
-        String documentType = null;
-        String documentNumber = null;
-        CustomerList response = api.listCustomers(page, limit, sort, id, documentType, documentNumber);
-        // TODO: test validations
+        assertEquals("should be customer name", customerResponse.getName());
+        assertEquals("97055503019", customerResponse.getDocument().getNumber());
+        assertEquals("cpf", customerResponse.getDocument().getType());
+        assertEquals("BR", customerResponse.getDocument().getCountry());
+        assertEquals("shouldbe@email.com", customerResponse.getEmail());
+        assertEquals("21999999999", customerResponse.getPhoneNumber());
+        assertEquals("BR", customerResponse.getAddress().getCountry());
+        assertEquals("Rio de Janeiro", customerResponse.getAddress().getCity());
+        assertEquals("should be complement", customerResponse.getAddress().getComplement());
+        assertEquals("Leblon", customerResponse.getAddress().getDistrict());
+        assertEquals("RJ", customerResponse.getAddress().getState());
+        assertEquals("Rua A", customerResponse.getAddress().getStreet());
+        assertEquals("123", customerResponse.getAddress().getStreetNumber());
+        assertEquals("12345678", customerResponse.getAddress().getZipCode());
     }
-
-    /**
-     * Update customer
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void updateCustomerTest() throws ApiException {
-        String id = null;
-        UpdateCustomerRequest updateCustomerRequest = null;
-        api.updateCustomer(id, updateCustomerRequest);
-        // TODO: test validations
-    }
+//
+//    /**
+//     * List customer cards
+//     *
+//     * @throws ApiException if the Api call fails
+//     */
+//    @Test
+//    public void getCustomerCardsTest() throws ApiException {
+//        String customerId = null;
+//        CustomerCardList response = api.getCustomerCards(customerId);
+//        // TODO: test validations
+//    }
+//
+//    /**
+//     * Add credit card to customers
+//     *
+//     * @throws ApiException if the Api call fails
+//     */
+//    @Test
+//    public void linkCardTest() throws ApiException {
+//        String customerId = null;
+//        LinkCardRequest linkCardRequest = null;
+//        api.linkCard(customerId, linkCardRequest);
+//        // TODO: test validations
+//    }
 
 }

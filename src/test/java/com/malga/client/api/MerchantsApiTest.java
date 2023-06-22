@@ -20,11 +20,6 @@ import com.malga.client.api.model.MerchantResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * API tests for MerchantsApi
  */
@@ -78,7 +73,7 @@ public class MerchantsApiTest {
     public void listMerchantsTest() throws ApiException {
         String page = null;
         String limit = null;
-        MerchantList response = api.listMerchants(page, limit);
+        MerchantList response = api.getMerchants(page, limit);
         // TODO: test validations
     }
 

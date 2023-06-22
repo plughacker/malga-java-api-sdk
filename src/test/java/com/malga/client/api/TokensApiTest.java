@@ -14,24 +14,20 @@
 package com.malga.client.api;
 
 import com.malga.client.ApiException;
-import com.malga.client.api.model.ErrorResponse;
+import com.malga.client.api.model.AuthRequest;
+import com.malga.client.api.model.AuthResponse;
 import com.malga.client.api.model.TokenRequest;
 import com.malga.client.api.model.TokenResponse;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * API tests for TokensApi
  */
-@Disabled
-public class TokensApiTest {
-
-    private final TokensApi api = new TokensApi();
+public class TokensApiTest extends BaseApiTest{
 
     /**
      * Create new card token
@@ -40,9 +36,20 @@ public class TokensApiTest {
      */
     @Test
     public void createTokenTest() throws ApiException {
-        TokenRequest tokenRequest = null;
-        TokenResponse response = api.createToken(tokenRequest);
-        // TODO: test validations
+        ClientTokenApi clientTokenApi = new ClientTokenApi(this.getDefaulClientApi());
+        AuthRequest authRequest = ((new AuthRequest())
+                .expires(3600)
+                .scope(List.of(AuthRequest.ScopeEnum.TOKENS))
+        );
+        AuthResponse authResponse = clientTokenApi.createClientToken(authRequest);
+
+        TokensApi tokenApi = new TokensApi(this.getDefaulClientApi(authResponse.getPublicKey()));
+
+        TokenRequest tokenRequest = this.createTokenRequest();
+
+        TokenResponse tokenResponse = tokenApi.createToken(tokenRequest);
+
+        assertNotNull(tokenResponse.getTokenId());
     }
 
 }

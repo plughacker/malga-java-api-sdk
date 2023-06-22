@@ -440,7 +440,7 @@ public class MerchantsApi {
         return localVarCall;
     }
     /**
-     * Build call for listMerchants
+     * Build call for getMerchants
      * @param page page number (optional)
      * @param limit total itens per page (optional)
      * @param _callback Callback for upload/download progress
@@ -452,7 +452,7 @@ public class MerchantsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMerchantsCall(String page, String limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMerchantsCall(String page, String limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -505,8 +505,8 @@ public class MerchantsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMerchantsValidateBeforeCall(String page, String limit, final ApiCallback _callback) throws ApiException {
-        return listMerchantsCall(page, limit, _callback);
+    private okhttp3.Call getMerchantsValidateBeforeCall(String page, String limit, final ApiCallback _callback) throws ApiException {
+        return getMerchantsCall(page, limit, _callback);
 
     }
 
@@ -523,8 +523,8 @@ public class MerchantsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public MerchantList listMerchants(String page, String limit) throws ApiException {
-        ApiResponse<MerchantList> localVarResp = listMerchantsWithHttpInfo(page, limit);
+    public MerchantList getMerchants(String page, String limit) throws ApiException {
+        ApiResponse<MerchantList> localVarResp = getMerchantsWithHttpInfo(page, limit);
         return localVarResp.getData();
     }
 
@@ -541,8 +541,8 @@ public class MerchantsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MerchantList> listMerchantsWithHttpInfo(String page, String limit) throws ApiException {
-        okhttp3.Call localVarCall = listMerchantsValidateBeforeCall(page, limit, null);
+    public ApiResponse<MerchantList> getMerchantsWithHttpInfo(String page, String limit) throws ApiException {
+        okhttp3.Call localVarCall = getMerchantsValidateBeforeCall(page, limit, null);
         Type localVarReturnType = new TypeToken<MerchantList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -561,9 +561,9 @@ public class MerchantsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMerchantsAsync(String page, String limit, final ApiCallback<MerchantList> _callback) throws ApiException {
+    public okhttp3.Call getMerchantsAsync(String page, String limit, final ApiCallback<MerchantList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listMerchantsValidateBeforeCall(page, limit, _callback);
+        okhttp3.Call localVarCall = getMerchantsValidateBeforeCall(page, limit, _callback);
         Type localVarReturnType = new TypeToken<MerchantList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

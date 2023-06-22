@@ -22,6 +22,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,10 +49,10 @@ import com.malga.client.JSON;
 /**
  * AuthResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-21T21:25:35.057162-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-22T19:10:47.032351-03:00[America/Sao_Paulo]")
 public class AuthResponse {
   /**
-   * determina o escopo de endpoints que a chave terá acesso
+   * Gets or Sets scope
    */
   @JsonAdapter(ScopeEnum.Adapter.class)
   public enum ScopeEnum {
@@ -102,7 +104,7 @@ public class AuthResponse {
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
-  private ScopeEnum scope;
+  private List<ScopeEnum> scope = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
@@ -116,12 +118,24 @@ public class AuthResponse {
   @SerializedName(SERIALIZED_NAME_PUBLIC_KEY)
   private String publicKey;
 
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
+
   public AuthResponse() {
   }
 
-  public AuthResponse scope(ScopeEnum scope) {
+  public AuthResponse scope(List<ScopeEnum> scope) {
     
     this.scope = scope;
+    return this;
+  }
+
+  public AuthResponse addScopeItem(ScopeEnum scopeItem) {
+    if (this.scope == null) {
+      this.scope = new ArrayList<>();
+    }
+    this.scope.add(scopeItem);
     return this;
   }
 
@@ -131,12 +145,12 @@ public class AuthResponse {
   **/
   @javax.annotation.Nullable
 
-  public ScopeEnum getScope() {
+  public List<ScopeEnum> getScope() {
     return scope;
   }
 
 
-  public void setScope(ScopeEnum scope) {
+  public void setScope(List<ScopeEnum> scope) {
     this.scope = scope;
   }
 
@@ -206,6 +220,28 @@ public class AuthResponse {
     this.publicKey = publicKey;
   }
 
+
+  public AuthResponse createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Data de criação da chave
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -264,13 +300,14 @@ public class AuthResponse {
     return Objects.equals(this.scope, authResponse.scope) &&
         Objects.equals(this.expires, authResponse.expires) &&
         Objects.equals(this.clientId, authResponse.clientId) &&
-        Objects.equals(this.publicKey, authResponse.publicKey)&&
+        Objects.equals(this.publicKey, authResponse.publicKey) &&
+        Objects.equals(this.createdAt, authResponse.createdAt)&&
         Objects.equals(this.additionalProperties, authResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, expires, clientId, publicKey, additionalProperties);
+    return Objects.hash(scope, expires, clientId, publicKey, createdAt, additionalProperties);
   }
 
   @Override
@@ -281,6 +318,7 @@ public class AuthResponse {
     sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
     sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
     sb.append("    publicKey: ").append(toIndentedString(publicKey)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -308,6 +346,7 @@ public class AuthResponse {
     openapiFields.add("expires");
     openapiFields.add("clientId");
     openapiFields.add("publicKey");
+    openapiFields.add("createdAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -325,14 +364,18 @@ public class AuthResponse {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AuthResponse is not found in the empty JSON string", AuthResponse.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be an array in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
       if ((jsonObj.get("clientId") != null && !jsonObj.get("clientId").isJsonNull()) && !jsonObj.get("clientId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clientId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientId").toString()));
       }
       if ((jsonObj.get("publicKey") != null && !jsonObj.get("publicKey").isJsonNull()) && !jsonObj.get("publicKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `publicKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("publicKey").toString()));
+      }
+      if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
       }
   }
 

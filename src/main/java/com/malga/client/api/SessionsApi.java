@@ -320,7 +320,7 @@ public class SessionsApi {
         return localVarCall;
     }
     /**
-     * Build call for getSession
+     * Build call for getSessionById
      * @param id Session ID (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -331,7 +331,7 @@ public class SessionsApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSessionCall(UUID id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSessionByIdCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -377,13 +377,13 @@ public class SessionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSessionValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSessionByIdValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getSession(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSessionById(Async)");
         }
 
-        return getSessionCall(id, _callback);
+        return getSessionByIdCall(id, _callback);
 
     }
 
@@ -399,8 +399,8 @@ public class SessionsApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public SessionResponse getSession(UUID id) throws ApiException {
-        ApiResponse<SessionResponse> localVarResp = getSessionWithHttpInfo(id);
+    public SessionResponse getSessionById(UUID id) throws ApiException {
+        ApiResponse<SessionResponse> localVarResp = getSessionByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -416,8 +416,8 @@ public class SessionsApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionResponse> getSessionWithHttpInfo(UUID id) throws ApiException {
-        okhttp3.Call localVarCall = getSessionValidateBeforeCall(id, null);
+    public ApiResponse<SessionResponse> getSessionByIdWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = getSessionByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<SessionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -435,9 +435,9 @@ public class SessionsApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSessionAsync(UUID id, final ApiCallback<SessionResponse> _callback) throws ApiException {
+    public okhttp3.Call getSessionByIdAsync(UUID id, final ApiCallback<SessionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getSessionValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSessionByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<SessionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -689,7 +689,7 @@ public class SessionsApi {
         return localVarCall;
     }
     /**
-     * Build call for patchSession
+     * Build call for updateSession
      * @param id Session ID (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -700,7 +700,7 @@ public class SessionsApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchSessionCall(UUID id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateSessionCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -746,13 +746,13 @@ public class SessionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchSessionValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateSessionValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchSession(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling updateSession(Async)");
         }
 
-        return patchSessionCall(id, _callback);
+        return updateSessionCall(id, _callback);
 
     }
 
@@ -768,8 +768,8 @@ public class SessionsApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public SessionResponse patchSession(UUID id) throws ApiException {
-        ApiResponse<SessionResponse> localVarResp = patchSessionWithHttpInfo(id);
+    public SessionResponse updateSession(UUID id) throws ApiException {
+        ApiResponse<SessionResponse> localVarResp = updateSessionWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -785,8 +785,8 @@ public class SessionsApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionResponse> patchSessionWithHttpInfo(UUID id) throws ApiException {
-        okhttp3.Call localVarCall = patchSessionValidateBeforeCall(id, null);
+    public ApiResponse<SessionResponse> updateSessionWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = updateSessionValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<SessionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -804,9 +804,9 @@ public class SessionsApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchSessionAsync(UUID id, final ApiCallback<SessionResponse> _callback) throws ApiException {
+    public okhttp3.Call updateSessionAsync(UUID id, final ApiCallback<SessionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchSessionValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = updateSessionValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<SessionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

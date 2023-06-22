@@ -14,50 +14,44 @@
 package com.malga.client.api;
 
 import com.malga.client.ApiException;
-import com.malga.client.api.model.CardList;
 import com.malga.client.api.model.CardRequest;
 import com.malga.client.api.model.CardResponse;
-import com.malga.client.api.model.ErrorResponse;
-import org.junit.jupiter.api.Disabled;
+import com.malga.client.api.model.TokenRequest;
+import com.malga.client.api.model.TokenResponse;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 /**
  * API tests for CardsApi
  */
-@Disabled
-public class CardsApiTest {
+public class CardsApiTest extends BaseApiTest{
 
-    private final CardsApi api = new CardsApi();
-
-    /**
-     * Get card details
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getCardByIdTest() throws ApiException {
-        String id = null;
-        CardResponse response = api.getCardById(id);
-        // TODO: test validations
-    }
-
-    /**
-     * List cards
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getCardsTest() throws ApiException {
-        String page = null;
-        String limit = null;
-        CardList response = api.getCards(page, limit);
-        // TODO: test validations
-    }
+//    /**
+//     * Get card details
+//     *
+//     * @throws ApiException if the Api call fails
+//     */
+//    @Test
+//    public void getCardByIdTest() throws ApiException {
+//        String id = null;
+//        CardResponse response = api.getCardById(id);
+//        // TODO: test validations
+//    }
+//
+//    /**
+//     * List cards
+//     *
+//     * @throws ApiException if the Api call fails
+//     */
+//    @Test
+//    public void getCardsTest() throws ApiException {
+//        String page = null;
+//        String limit = null;
+//        CardList response = api.getCards(page, limit);
+//        // TODO: test validations
+//    }
 
     /**
      * Create a new card from card token
@@ -66,9 +60,28 @@ public class CardsApiTest {
      */
     @Test
     public void saveCardTest() throws ApiException {
-        CardRequest cardRequest = null;
-        CardResponse response = api.saveCard(cardRequest);
-        // TODO: test validations
+        TokensApi tokenApi = new TokensApi(this.getDefaulClientApi());
+        TokenRequest tokenRequest = this.createTokenRequest();
+        TokenResponse tokenResponse = tokenApi.createToken(tokenRequest);
+
+        CardsApi cardApi = new CardsApi(this.getDefaulClientApi());
+        CardRequest cardRequest = ((new CardRequest())
+                .tokenId(tokenResponse.getTokenId())
+                .merchantId(System.getenv("MERCHANT_ID"))
+                .cvvCheck(true)
+        );
+
+        CardResponse cardResponse = cardApi.createCard(cardRequest);
+
+        assertNotNull(cardResponse.getId());
+        assertNotNull(cardResponse.getCreatedAt());
+        assertEquals(CardResponse.BrandEnum.VISA, cardResponse.getBrand());
+        assertEquals(true, cardResponse.getCvvChecked());
+        assertEquals("12", cardResponse.getExpirationMonth());
+        assertEquals("2025", cardResponse.getExpirationYear());
+        assertEquals("492956", cardResponse.getFirst6digits());
+        assertEquals("7814", cardResponse.getLast4digits());
+        assertEquals(CardResponse.StatusEnum.ACTIVE, cardResponse.getStatus());
     }
 
 }
