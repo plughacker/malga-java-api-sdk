@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group 'com.malga'
+group 'io.malga'
 version '0.1.0'
 
 repositories {
@@ -17,7 +17,7 @@ ext {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = 'com.malga'
+            groupId = 'io.malga'
             artifactId = 'malga-java-api-sdk'
             version = '0.1.0'
 

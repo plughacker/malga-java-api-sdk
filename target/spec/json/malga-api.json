@@ -30,10 +30,7 @@
   }, {
     "name" : "Webhooks",
     "description" : "\nMalga uses the webhooks service to notify your system about events occurring in our platform. Through webhooks you can update your system whenever an important event happens, such as updating the status of charges to confirm or cancel a certain payment."
-  }, {
-    "name" : "Merchants",
-    "description" : "\nThrough the merchant’s APIs, it is possible to create and configure sub-accounts on Malga. A sub account, or merchant, is a registry of a commercial business you have with one of Malga's integrated payment providers. "
-  } ],
+  }],
   "x-tagGroups" : [ {
     "name" : "API Key",
     "tags" : [ "Client-token" ]
@@ -46,9 +43,6 @@
   }, {
     "name" : "Notification and events",
     "tags" : [ "Webhooks" ]
-  }, {
-    "name" : "Providers",
-    "tags" : [ "Merchants" ]
   } ],
   "paths" : {
     "/v1/auth" : {
@@ -341,18 +335,21 @@
               "examples" : {
                 "card" : {
                   "summary" : "Credit card example",
-                  "value" : null,
-                  "$ref" : "#/components/examples/ChargeCardRequest/value"
+                  "value" : {
+                    "$ref": "#/components/examples/ChargeCardRequest/value"
+                  }
                 },
                 "pix" : {
                   "summary" : "PIX example",
-                  "value" : null,
-                  "$ref" : "#/components/examples/ChargePixRequest/value"
+                  "value" : {
+                    "$ref": "#/components/examples/ChargePixRequest/value"
+                  }
                 },
                 "boleto" : {
                   "summary" : "Boleto example",
-                  "value" : null,
-                  "$ref" : "#/components/examples/ChargeBoletoRequest/value"
+                  "value" : {
+                    "$ref" : "#/components/examples/ChargeBoletoRequest/value"
+                  }
                 }
               }
             }
@@ -804,6 +801,70 @@
         "tags" : [ "Sessions" ]
       }
     },
+    "/v1/sessions/{id}/charge": {
+      "post": {
+        "summary": "Pay session",
+        "operationId": "paySession",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "description": "Session ID",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionChargeRequest"
+              },
+              "examples": [
+                {
+                  "$ref": "#/components/examples/ChargeCardRequest"
+                },
+                {
+                  "$ref": "#/components/examples/ChargePixRequest"
+                },
+                {
+                  "$ref": "#/components/examples/ChargeBoletoRequest"
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionChargeResponse"
+                },
+                "examples": [
+                  {
+                    "$ref": "#/components/examples/SessionChargeCardResponse"
+                  },
+                  {
+                    "$ref": "#/components/examples/SessionChargePixResponse"
+                  },
+                  {
+                    "$ref": "#/components/examples/SessionChargeBoletoResponse"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "Sessions"
+        ]
+      }
+    },
     "/v1/sessions/{id}/cancel" : {
       "post" : {
         "summary" : "Cancel session",
@@ -892,129 +953,6 @@
           }
         },
         "tags" : [ "Sessions" ]
-      }
-    },
-    "/v1/merchants" : {
-      "post" : {
-        "summary" : "Create new merchant",
-        "operationId" : "createMerchant",
-        "parameters" : [ ],
-        "requestBody" : {
-          "required" : true,
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/MerchantRequest"
-              },
-              "example" : {
-                "$ref" : "#/components/examples/MerchantRequest/value"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "201" : {
-            "description" : "Created",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/MerchantResponse"
-                },
-                "example" : {
-                  "$ref" : "#/components/examples/MerchantResponse/value"
-                }
-              }
-            }
-          }
-        },
-        "tags" : [ "Merchants" ]
-      },
-      "get" : {
-        "summary" : "List merchants",
-        "operationId" : "getMerchants",
-        "parameters" : [ {
-          "in" : "query",
-          "name" : "page",
-          "schema" : {
-            "type" : "string"
-          },
-          "required" : false,
-          "description" : "page number"
-        }, {
-          "in" : "query",
-          "name" : "limit",
-          "schema" : {
-            "type" : "string"
-          },
-          "required" : false,
-          "description" : "total itens per page"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/MerchantList"
-                },
-                "example" : {
-                  "$ref" : "#/components/examples/MerchantList/value"
-                }
-              }
-            }
-          }
-        },
-        "tags" : [ "Merchants" ]
-      }
-    },
-    "/v1/merchants/{id}" : {
-      "get" : {
-        "operationId" : "getMerchantById",
-        "summary" : "Get merchant details",
-        "parameters" : [ {
-          "name" : "id",
-          "required" : true,
-          "description" : "Merchant ID",
-          "in" : "path",
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/MerchantResponse"
-                },
-                "example" : {
-                  "$ref" : "#/components/examples/MerchantResponse/value"
-                }
-              }
-            }
-          }
-        },
-        "tags" : [ "Merchants" ]
-      },
-      "delete" : {
-        "summary" : "Delete merchant",
-        "operationId" : "deleteMerchant",
-        "parameters" : [ {
-          "name" : "id",
-          "required" : true,
-          "in" : "path",
-          "description" : "Merchant ID",
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "204" : {
-            "description" : ""
-          }
-        },
-        "tags" : [ "Merchants" ]
       }
     },
     "/v1/customers" : {
@@ -1992,6 +1930,149 @@
           "language" : {
             "type" : "string",
             "description" : "Default company language"
+          }
+        }
+      },
+      "SessionChargeRequest": {
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Customer identification"
+          },
+          "paymentMethod": {
+            "description": "Payment method to be used",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PaymentMethodCard"
+              },
+              {
+                "$ref": "#/components/schemas/PaymentMethodPix"
+              },
+              {
+                "$ref": "#/components/schemas/PaymentMethodBoleto"
+              }
+            ]
+          },
+          "paymentSource": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SourceTypeCard"
+              },
+              {
+                "$ref": "#/components/schemas/SourceTypeCardOneShot"
+              },
+              {
+                "$ref": "#/components/schemas/SourceTypeToken"
+              },
+              {
+                "$ref": "#/components/schemas/SourceTypeCustomer"
+              },
+              {
+                "$ref": "#/components/schemas/SourceTypeCustomerOneShot"
+              }
+            ]
+          },
+          "fraudAnalysis": {
+            "description": "Additional parameters for fraud analysis, required by provider's anti-fraud",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FraudAnalysisRequest"
+              }
+            ]
+          }
+        },
+        "required": [
+          "paymentMethod",
+          "paymentSource"
+        ]
+      },
+      "SessionChargeResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ChargeResponse ID"
+          },
+          "clientId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Client identification on Malga"
+          },
+          "merchantId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Merchant identification used in charge"
+          },
+          "description": {
+            "type": "string",
+            "description": "Short description"
+          },
+          "orderId": {
+            "type": "string",
+            "description": "Unique identification of order in your side to help future conciliation"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Created date"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Transaction amount in cents, example 100 to charge R$ 1.00"
+          },
+          "originalAmount": {
+            "type": "number",
+            "description": "Transaction original amount in cents, example 100 to charge R$ 1.00"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency code to be used in charge, ISO 4217 format (see table of types)",
+            "default": "BRL"
+          },
+          "statementDescriptor": {
+            "type": "string",
+            "description": "Description to be displayed on the buyer's bank statement"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "created",
+              "paid",
+              "canceled",
+              "voided"
+            ],
+            "description": "Session status"
+          },
+          "paymentMethod": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PaymentMethodCard"
+              },
+              {
+                "$ref": "#/components/schemas/PaymentMethodPixResponse"
+              },
+              {
+                "$ref": "#/components/schemas/PaymentMethodBoletoResponse"
+              }
+            ]
+          },
+          "paymentSource": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SourceTypeCard"
+              },
+              {
+                "$ref": "#/components/schemas/SourceTypeToken"
+              },
+              {
+                "$ref": "#/components/schemas/SourceTypeCustomer"
+              }
+            ]
+          },
+          "transactionRequests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionRequest"
+            }
           }
         }
       },
@@ -3191,459 +3272,7 @@
         },
         "required" : [ "type" ]
       },
-      "CredentialPagarme" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "PAGARME" ]
-          },
-          "apiKey" : {
-            "type" : "string",
-            "description" : "Credencial de uso da sua conta na Pagarme"
-          }
-        },
-        "required" : [ "type", "apiKey" ]
-      },
-      "CredentialPagSeguro" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "PAGSEGURO" ]
-          },
-          "token" : {
-            "type" : "string",
-            "description" : "Token de uso na API V4 da pagseguro"
-          },
-          "email" : {
-            "type" : "string",
-            "description" : "Email do usuário da conta principal da paseguro"
-          }
-        },
-        "required" : [ "type", "token", "email" ]
-      },
-      "CredentialCielo" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "CIELO" ]
-          },
-          "merchantKey" : {
-            "type" : "string",
-            "description" : "Credential for using your Cielo account"
-          },
-          "merchantId" : {
-            "type" : "string",
-            "description" : "Credential for using your Cielo account"
-          }
-        },
-        "required" : [ "type", "merchantKey", "merchantId" ]
-      },
-      "CredentialBS2" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "BS2" ]
-          },
-          "clientKey" : {
-            "type" : "string",
-            "description" : "Credencial de uso da sua conta no BS2"
-          },
-          "clientSecret" : {
-            "type" : "string",
-            "description" : "Credencial de uso da sua conta no BS2"
-          },
-          "pixKey" : {
-            "type" : "string",
-            "description" : "Chave pix da sua conta no BS2"
-          }
-        },
-        "required" : [ "type", "clientKey", "clientSecret", "pixKey" ]
-      },
-      "CredentialBS2_BOLETO" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "BS2_BOLETO" ]
-          },
-          "clientKey" : {
-            "type" : "string",
-            "description" : "BS2 client key"
-          },
-          "clientSecret" : {
-            "type" : "string",
-            "description" : "BS2 client secret"
-          },
-          "refreshToken" : {
-            "type" : "string",
-            "description" : "BS2 refresh Token"
-          }
-        },
-        "required" : [ "type", "clientKey", "clientSecret", "refreshToken" ]
-      },
-      "CredentialBB" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "BB" ]
-          },
-          "authBasic" : {
-            "type" : "string",
-            "description" : "Credencial de uso da sua conta no Banco do Brasil"
-          },
-          "devAppKey" : {
-            "type" : "string",
-            "description" : "Credencial de uso da sua conta no Banco do Brasil"
-          },
-          "pixKey" : {
-            "type" : "string",
-            "description" : "Chave Pix da da sua conta no Banco do Brasil"
-          }
-        },
-        "required" : [ "type", "authBasic", "devAppKey", "pixKey" ]
-      },
-      "CredentialBraintree" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "BRAINTREE" ]
-          },
-          "merchantId" : {
-            "type" : "string",
-            "description" : "Merchant Id of your Braintree account"
-          },
-          "publicKey" : {
-            "type" : "string",
-            "description" : "Public Key of your Braintree account"
-          },
-          "privateKey" : {
-            "type" : "string",
-            "description" : "Private Key of your Braintree account"
-          }
-        },
-        "required" : [ "type", "merchantId", "publicKey", "privateKey" ]
-      },
-      "CredentialKlap" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "KLAP" ]
-          },
-          "apiKey" : {
-            "type" : "string",
-            "description" : "API key of your Klap account"
-          },
-          "commerceId" : {
-            "type" : "string",
-            "description" : "Commerce ID of your Klap account"
-          },
-          "keyComponent1" : {
-            "type" : "string",
-            "description" : "Key component 1 of your Klap account"
-          },
-          "keyComponent2" : {
-            "type" : "string",
-            "description" : "Key component 2 of your Klap account"
-          }
-        },
-        "required" : [ "type", "apiKey", "CommerceId", "keyComponent1", "keyComponent2" ]
-      },
-      "CredentialZoop" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "ZOOP" ]
-          },
-          "marketplaceId" : {
-            "type" : "string",
-            "description" : "Identificador do marketplace id na zoop"
-          },
-          "sellerId" : {
-            "type" : "string",
-            "description" : "Identificador do seller id na zoop"
-          },
-          "apiKey" : {
-            "type" : "string",
-            "description" : "Chave secreta de acesso a api da zoop"
-          }
-        },
-        "required" : [ "marketplaceId", "sellerId", "apiKey" ]
-      },
-      "CredentialRede" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "REDE" ]
-          },
-          "merchantId" : {
-            "type" : "string",
-            "description" : "Identificador do estabelecimento na rede"
-          },
-          "apiKey" : {
-            "type" : "string",
-            "description" : "Chave secreta de acesso a api da rede"
-          }
-        },
-        "required" : [ "merchantId", "apiKey" ]
-      },
-      "CredentialMercadoPago" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "MERCADO_PAGO" ]
-          },
-          "accessToken" : {
-            "type" : "string",
-            "description" : "API access key"
-          }
-        },
-        "required" : [ "type", "accessToken" ]
-      },
-      "CredentialStripe" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "STRIPE" ]
-          },
-          "secretKey" : {
-            "type" : "string",
-            "description" : "Chave secreta de acesso a api da stripe"
-          }
-        },
-        "required" : [ "secretKey" ]
-      },
-      "CredentialClearsale" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "CLEARSALE" ]
-          },
-          "name" : {
-            "type" : "string",
-            "description" : "Name for clearsale API login"
-          },
-          "password" : {
-            "type" : "string",
-            "description" : "Secret password for clearsale API login"
-          }
-        },
-        "required" : [ "type", "name", "password" ]
-      },
-      "ClearsaleOptions" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "ANTIFRAUD" ]
-          },
-          "captureOnError" : {
-            "type" : "boolean",
-            "description" : "Captures the transaction if the antifraud provider returns an error"
-          },
-          "refundOnError" : {
-            "type" : "boolean",
-            "description" : "Refunds the transaction if the antifraud provider returns an error"
-          }
-        },
-        "required" : [ "type" ]
-      },
-      "CredentialNuPay" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "NUPAY" ]
-          },
-          "merchantApiToken" : {
-            "type" : "string",
-            "description" : "NuPay's API Token"
-          },
-          "merchantApiKey" : {
-            "type" : "string",
-            "description" : "NuPay's API Key"
-          }
-        },
-        "required" : [ "type", "merchantApiToken", "merchantApiKey" ]
-      },
-      "NuPayOptions" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "NUPAY" ]
-          },
-          "merchantName" : {
-            "type" : "string",
-            "description" : "Merchant name to be used in NuPay transactions"
-          },
-          "storeName" : {
-            "type" : "string",
-            "description" : "Store name to be used in NuPay transactions"
-          }
-        },
-        "required" : [ "type" ]
-      },
-      "CredentialAdyen" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "ADYEN" ]
-          },
-          "apiKey" : {
-            "type" : "string",
-            "description" : "Adyen API key"
-          },
-          "liveUrlPrefix" : {
-            "type" : "string",
-            "description" : "Adyen live URL prefix"
-          },
-          "webhookHmacKey" : {
-            "type" : "string",
-            "description" : "HMAC key for webhook validation"
-          },
-          "merchantAccount" : {
-            "type" : "string",
-            "description" : "Adyen Merchant Account"
-          }
-        },
-        "required" : [ "type", "apiKey", "liveUrlPrefix", "merchantAccount" ]
-      },
-      "CredentialGetnet" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "GETNET" ]
-          },
-          "clientId" : {
-            "type" : "string",
-            "description" : "Getnet client ID"
-          },
-          "clientSecret" : {
-            "type" : "string",
-            "description" : "Getnet client secret"
-          },
-          "sellerId" : {
-            "type" : "string",
-            "description" : "Getnet seller ID"
-          }
-        },
-        "required" : [ "type", "clientId", "clientSecret", "sellerId" ]
-      },
-      "CredentialBraspag" : {
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "BRASPAG" ]
-          },
-          "clientSecret" : {
-            "type" : "string",
-            "description" : "Credential for using your Braspag account"
-          },
-          "merchantId" : {
-            "type" : "string",
-            "description" : "Store identifier at Braspag"
-          },
-          "merchantKey" : {
-            "type" : "string",
-            "description" : "Public key for dual authentication at Braspag"
-          }
-        },
-        "required" : [ "type", "clientSecret", "merchantId", "merchantKey" ]
-      },
-      "ProviderRequest" : {
-        "properties" : {
-          "name" : {
-            "type" : "string",
-            "description" : "nome opcional de identificação do provedor"
-          },
-          "priority" : {
-            "type" : "number",
-            "description" : "define a prioridade do provedor no roteamento da transação, (usar 1 para o prioritário)"
-          },
-          "credentials" : {
-            "oneOf" : [ {
-              "$ref" : "#/components/schemas/CredentialPagSeguro"
-            }, {
-              "$ref" : "#/components/schemas/CredentialPagarme"
-            }, {
-              "$ref" : "#/components/schemas/CredentialCielo"
-            }, {
-              "$ref" : "#/components/schemas/CredentialBS2"
-            }, {
-              "$ref" : "#/components/schemas/CredentialBS2_BOLETO"
-            }, {
-              "$ref" : "#/components/schemas/CredentialBB"
-            }, {
-              "$ref" : "#/components/schemas/CredentialBraintree"
-            }, {
-              "$ref" : "#/components/schemas/CredentialKlap"
-            }, {
-              "$ref" : "#/components/schemas/CredentialZoop"
-            }, {
-              "$ref" : "#/components/schemas/CredentialStripe"
-            }, {
-              "$ref" : "#/components/schemas/CredentialRede"
-            }, {
-              "$ref" : "#/components/schemas/CredentialMercadoPago"
-            }, {
-              "$ref" : "#/components/schemas/CredentialClearsale"
-            }, {
-              "$ref" : "#/components/schemas/CredentialNuPay"
-            }, {
-              "$ref" : "#/components/schemas/CredentialAdyen"
-            }, {
-              "$ref" : "#/components/schemas/CredentialGetnet"
-            }, {
-              "$ref" : "#/components/schemas/CredentialBraspag"
-            } ]
-          },
-          "options" : {
-            "oneOf" : [ {
-              "$ref" : "#/components/schemas/ClearsaleOptions"
-            }, {
-              "$ref" : "#/components/schemas/NuPayOptions"
-            } ]
-          }
-        },
-        "required" : [ "name", "priority", "credentials" ]
-      },
-      "MerchantRequest" : {
-        "properties" : {
-          "mcc" : {
-            "type" : "string",
-            "description" : "código de segmento do lojista no adquirente, solicite ao seu provedor caso não saiba qual o seu Merchant Category Code."
-          },
-          "providers" : {
-            "$ref" : "#/components/schemas/ProviderRequest"
-          }
-        },
-        "required" : [ "clientId", "mcc", "status" ]
-      },
-      "MerchantResponse" : {
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string",
-            "description" : "dentificador do merchant"
-          },
-          "createdAt" : {
-            "type" : "string",
-            "description" : "data de criação"
-          },
-          "clientId" : {
-            "type" : "string",
-            "description" : "identificador do client"
-          },
-          "mcc" : {
-            "type" : "string",
-            "description" : "codigo mcc do cadatro do lojista no adquirente"
-          },
-          "status" : {
-            "type" : "string",
-            "enum" : [ "active", "deleted", "pending" ],
-            "description" : "status do merchant"
-          },
-          "providers" : {
-            "$ref" : "#/components/schemas/ProviderRequest"
-          }
-        }
-      },
+
       "SplitRules" : {
         "type" : "array",
         "items" : {
@@ -3674,18 +3303,6 @@
               "$ref" : "#/components/schemas/SplitRulesFaresSchema",
               "description" : "Informações sobre as taxas que serão cobradas do recebedor - Apenas para sellers com provedor Braspag"
             }
-          }
-        }
-      },
-      "MerchantList" : {
-        "properties" : {
-          "meta" : {
-            "type" : "object",
-            "$ref" : "#/components/schemas/MetaPagination"
-          },
-          "items" : {
-            "type" : "array",
-            "$ref" : "#/components/schemas/MerchantResponse"
           }
         }
       },
@@ -4815,107 +4432,6 @@
             "streetNumber" : "205",
             "complement" : "Apto 203"
           }
-        }
-      },
-      "MerchantResponse" : {
-        "value" : {
-          "id" : "69aea152-ba70-49a3-a31c-044ac1651146",
-          "updatedAt" : "2021-03-12T15:57:20.239Z",
-          "createdAt" : "2021-03-12T15:57:20.239Z",
-          "clientId" : "523afbe7-36dc-4654-9dba-e7167d0e5e2d",
-          "mcc" : "4040",
-          "status" : true,
-          "providers" : [ {
-            "id" : "72cc1ff1-5f6e-4eb2-9cc5-6a3a85525e4b",
-            "updatedAt" : "2021-03-12T15:57:20.239Z",
-            "createdAt" : "2021-03-12T15:57:20.239Z",
-            "name" : "PagSeguro",
-            "priority" : 1,
-            "credentials" : {
-              "type" : "PAGSEGURO",
-              "token" : "1B2B32530CA23412AB63843240F5633",
-              "email" : "email@gmail.com"
-            }
-          }, {
-            "id" : "2cf5c350-ee26-4557-a47d-9efe1765df51",
-            "updatedAt" : "2021-03-12T15:57:20.239Z",
-            "createdAt" : "2021-03-12T15:57:20.239Z",
-            "deletedAt" : null,
-            "idempotencyKey" : null,
-            "requestId" : null,
-            "name" : "pagarme",
-            "priority" : 2,
-            "credentials" : {
-              "type" : "PAGARME",
-              "apiKey" : "ak_test_Kaa8pfXJ3WOUdCsMQiRYuV66rJZLuA"
-            }
-          } ]
-        }
-      },
-      "MerchantList" : {
-        "value" : {
-          "meta" : {
-            "itemCount" : 10,
-            "totalItems" : 20,
-            "itemsPerPage" : 10,
-            "totalPages" : 5,
-            "currentPage" : 2
-          },
-          "items" : [ {
-            "id" : "69aea152-ba70-49a3-a31c-044ac1651146",
-            "updatedAt" : "2021-03-12T15:57:20.239Z",
-            "createdAt" : "2021-03-12T15:57:20.239Z",
-            "clientId" : "523afbe7-36dc-4654-9dba-e7167d0e5e2d",
-            "mcc" : "4040",
-            "status" : true,
-            "providers" : [ {
-              "id" : "72cc1ff1-5f6e-4eb2-9cc5-6a3a85525e4b",
-              "updatedAt" : "2021-03-12T15:57:20.239Z",
-              "createdAt" : "2021-03-12T15:57:20.239Z",
-              "name" : "PagSeguro",
-              "priority" : 1,
-              "credentials" : {
-                "type" : "PAGSEGURO",
-                "token" : "1B2B32530CA2464F8AB63843240F5633",
-                "email" : "email@gmail.com"
-              }
-            }, {
-              "id" : "2cf5c350-ee26-4557-a47d-9efe1765df51",
-              "updatedAt" : "2021-03-12T15:57:20.239Z",
-              "createdAt" : "2021-03-12T15:57:20.239Z",
-              "deletedAt" : null,
-              "idempotencyKey" : null,
-              "requestId" : null,
-              "name" : "pagarme",
-              "priority" : 2,
-              "credentials" : {
-                "type" : "PAGARME",
-                "apiKey" : "ak_test_Kaa8pfXJ3WOUdCsMQiRYuV66rJZLuA"
-              }
-            } ]
-          } ]
-        }
-      },
-      "MerchantRequest" : {
-        "value" : {
-          "mcc" : "4040",
-          "status" : true,
-          "providers" : [ {
-            "name" : "PagSeguro",
-            "priority" : 1,
-            "credentials" : {
-              "type" : "PAGSEGURO",
-              "token" : "1B2B32530CA24641324AB63843240F5633",
-              "email" : "email@gmail.com"
-            }
-          }, {
-            "name" : "pagarme",
-            "priority" : 2,
-            "credentials" : {
-              "type" : "PAGARME",
-              "apiKey" : "ak_test_Kaa8pf3142dCsMQiRYuV66rJZLuA"
-            }
-          } ]
         }
       },
       "LinkCardRequest" : {

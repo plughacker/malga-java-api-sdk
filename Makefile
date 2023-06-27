@@ -5,7 +5,7 @@ openapi-generator-cli:=java -jar $(openapi-generator-jar)
 
 generator:=java
 library:=okhttp-gson
-src_dir:=src/main/java/com/malga/client
+src_dir:=src/main/java/io/malga/client
 output:=target/out
 spec:=malga-api
 
@@ -20,8 +20,8 @@ models: target/spec $(openapi-generator-jar)
     		--ignore-file-override ./.openapi-generator-ignore \
     		--skip-validate-spec \
     		--library $(library) \
-    		--model-package $(subst /,.,com.malga.client.api.model) \
-    		--api-package com.malga.client.api \
+    		--model-package $(subst /,.,io.malga.client.api.model) \
+    		--api-package io.malga.client.api \
     		--api-name-suffix Api \
     		--global-property modelDocs=false \
     		--global-property modelTests=false \
