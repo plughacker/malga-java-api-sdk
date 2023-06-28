@@ -83,10 +83,11 @@ $(openapi-generator-jar):
 
 clean:
 	rm -rf $(output)
-	git checkout $(models)
-	git clean -f -d $(models)
+	rm -rf target/spec
+	rm -rf target/templates
+	rm -f target/openapi-generator-cli.jar
 
-target/spec:
+target/spec: $(openapi-generator-jar)
 	git clone https://github.com/plughacker/malga-openapi.git target/spec
 
 # Extract templates

@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.malga.model.sessions.SessionItemObject;
 import io.malga.model.sessions.SessionResponsePaymentMethods;
-import io.malga.model.sessions.UserSettings;
+import io.malga.model.sessions.SessionSettingsResponseSettings;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ import io.malga.model.sessions.JSON;
 /**
  * SessionSettingsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T18:26:54.583148-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:14.399550-03:00[America/Sao_Paulo]")
 public class SessionSettingsResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -182,7 +182,7 @@ public class SessionSettingsResponse {
 
   public static final String SERIALIZED_NAME_SETTINGS = "settings";
   @SerializedName(SERIALIZED_NAME_SETTINGS)
-  private UserSettings settings;
+  private SessionSettingsResponseSettings settings;
 
   public SessionSettingsResponse() {
   }
@@ -613,7 +613,7 @@ public class SessionSettingsResponse {
   }
 
 
-  public SessionSettingsResponse settings(UserSettings settings) {
+  public SessionSettingsResponse settings(SessionSettingsResponseSettings settings) {
     
     this.settings = settings;
     return this;
@@ -625,12 +625,12 @@ public class SessionSettingsResponse {
   **/
   @javax.annotation.Nullable
 
-  public UserSettings getSettings() {
+  public SessionSettingsResponseSettings getSettings() {
     return settings;
   }
 
 
-  public void setSettings(UserSettings settings) {
+  public void setSettings(SessionSettingsResponseSettings settings) {
     this.settings = settings;
   }
 
@@ -860,6 +860,10 @@ public class SessionSettingsResponse {
       }
       if ((jsonObj.get("publicKey") != null && !jsonObj.get("publicKey").isJsonNull()) && !jsonObj.get("publicKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `publicKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("publicKey").toString()));
+      }
+      // validate the optional field `settings`
+      if (jsonObj.get("settings") != null && !jsonObj.get("settings").isJsonNull()) {
+        SessionSettingsResponseSettings.validateJsonObject(jsonObj.getAsJsonObject("settings"));
       }
   }
 

@@ -49,7 +49,7 @@ import io.malga.model.charges.JSON;
 /**
  * FraudAnalysisRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T18:26:40.217680-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:02.961685-03:00[America/Sao_Paulo]")
 public class FraudAnalysisRequest {
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)

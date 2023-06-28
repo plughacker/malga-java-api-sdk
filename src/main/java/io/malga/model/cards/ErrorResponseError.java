@@ -47,7 +47,7 @@ import io.malga.model.cards.JSON;
 /**
  * ErrorResponseError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T18:26:44.792132-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:07.703252-03:00[America/Sao_Paulo]")
 public class ErrorResponseError {
   /**
    * Gets or Sets type

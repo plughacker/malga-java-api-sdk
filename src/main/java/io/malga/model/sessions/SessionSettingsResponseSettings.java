@@ -46,10 +46,10 @@ import java.util.Set;
 import io.malga.model.sessions.JSON;
 
 /**
- * UserSettings
+ * Company settings
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:14.399550-03:00[America/Sao_Paulo]")
-public class UserSettings {
+public class SessionSettingsResponseSettings {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private UUID id;
@@ -110,10 +110,10 @@ public class UserSettings {
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
   private String language;
 
-  public UserSettings() {
+  public SessionSettingsResponseSettings() {
   }
 
-  public UserSettings id(UUID id) {
+  public SessionSettingsResponseSettings id(UUID id) {
     
     this.id = id;
     return this;
@@ -135,7 +135,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings email(String email) {
+  public SessionSettingsResponseSettings email(String email) {
     
     this.email = email;
     return this;
@@ -157,7 +157,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings phone(String phone) {
+  public SessionSettingsResponseSettings phone(String phone) {
     
     this.phone = phone;
     return this;
@@ -179,7 +179,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings statementDescription(String statementDescription) {
+  public SessionSettingsResponseSettings statementDescription(String statementDescription) {
     
     this.statementDescription = statementDescription;
     return this;
@@ -201,7 +201,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings logo(URI logo) {
+  public SessionSettingsResponseSettings logo(URI logo) {
     
     this.logo = logo;
     return this;
@@ -223,7 +223,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings mainColor(String mainColor) {
+  public SessionSettingsResponseSettings mainColor(String mainColor) {
     
     this.mainColor = mainColor;
     return this;
@@ -245,7 +245,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings secondaryColor(String secondaryColor) {
+  public SessionSettingsResponseSettings secondaryColor(String secondaryColor) {
     
     this.secondaryColor = secondaryColor;
     return this;
@@ -267,7 +267,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings attentionColor(String attentionColor) {
+  public SessionSettingsResponseSettings attentionColor(String attentionColor) {
     
     this.attentionColor = attentionColor;
     return this;
@@ -289,7 +289,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings errorColor(String errorColor) {
+  public SessionSettingsResponseSettings errorColor(String errorColor) {
     
     this.errorColor = errorColor;
     return this;
@@ -311,7 +311,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings successColor(String successColor) {
+  public SessionSettingsResponseSettings successColor(String successColor) {
     
     this.successColor = successColor;
     return this;
@@ -333,7 +333,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings backgroundColor(String backgroundColor) {
+  public SessionSettingsResponseSettings backgroundColor(String backgroundColor) {
     
     this.backgroundColor = backgroundColor;
     return this;
@@ -355,7 +355,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings companyName(String companyName) {
+  public SessionSettingsResponseSettings companyName(String companyName) {
     
     this.companyName = companyName;
     return this;
@@ -377,7 +377,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings clientId(String clientId) {
+  public SessionSettingsResponseSettings clientId(String clientId) {
     
     this.clientId = clientId;
     return this;
@@ -399,7 +399,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings documentNumber(String documentNumber) {
+  public SessionSettingsResponseSettings documentNumber(String documentNumber) {
     
     this.documentNumber = documentNumber;
     return this;
@@ -421,7 +421,7 @@ public class UserSettings {
   }
 
 
-  public UserSettings language(String language) {
+  public SessionSettingsResponseSettings language(String language) {
     
     this.language = language;
     return this;
@@ -455,9 +455,9 @@ public class UserSettings {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the UserSettings instance itself
+   * @return the SessionSettingsResponseSettings instance itself
    */
-  public UserSettings putAdditionalProperty(String key, Object value) {
+  public SessionSettingsResponseSettings putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -496,23 +496,23 @@ public class UserSettings {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserSettings userSettings = (UserSettings) o;
-    return Objects.equals(this.id, userSettings.id) &&
-        Objects.equals(this.email, userSettings.email) &&
-        Objects.equals(this.phone, userSettings.phone) &&
-        Objects.equals(this.statementDescription, userSettings.statementDescription) &&
-        Objects.equals(this.logo, userSettings.logo) &&
-        Objects.equals(this.mainColor, userSettings.mainColor) &&
-        Objects.equals(this.secondaryColor, userSettings.secondaryColor) &&
-        Objects.equals(this.attentionColor, userSettings.attentionColor) &&
-        Objects.equals(this.errorColor, userSettings.errorColor) &&
-        Objects.equals(this.successColor, userSettings.successColor) &&
-        Objects.equals(this.backgroundColor, userSettings.backgroundColor) &&
-        Objects.equals(this.companyName, userSettings.companyName) &&
-        Objects.equals(this.clientId, userSettings.clientId) &&
-        Objects.equals(this.documentNumber, userSettings.documentNumber) &&
-        Objects.equals(this.language, userSettings.language)&&
-        Objects.equals(this.additionalProperties, userSettings.additionalProperties);
+    SessionSettingsResponseSettings sessionSettingsResponseSettings = (SessionSettingsResponseSettings) o;
+    return Objects.equals(this.id, sessionSettingsResponseSettings.id) &&
+        Objects.equals(this.email, sessionSettingsResponseSettings.email) &&
+        Objects.equals(this.phone, sessionSettingsResponseSettings.phone) &&
+        Objects.equals(this.statementDescription, sessionSettingsResponseSettings.statementDescription) &&
+        Objects.equals(this.logo, sessionSettingsResponseSettings.logo) &&
+        Objects.equals(this.mainColor, sessionSettingsResponseSettings.mainColor) &&
+        Objects.equals(this.secondaryColor, sessionSettingsResponseSettings.secondaryColor) &&
+        Objects.equals(this.attentionColor, sessionSettingsResponseSettings.attentionColor) &&
+        Objects.equals(this.errorColor, sessionSettingsResponseSettings.errorColor) &&
+        Objects.equals(this.successColor, sessionSettingsResponseSettings.successColor) &&
+        Objects.equals(this.backgroundColor, sessionSettingsResponseSettings.backgroundColor) &&
+        Objects.equals(this.companyName, sessionSettingsResponseSettings.companyName) &&
+        Objects.equals(this.clientId, sessionSettingsResponseSettings.clientId) &&
+        Objects.equals(this.documentNumber, sessionSettingsResponseSettings.documentNumber) &&
+        Objects.equals(this.language, sessionSettingsResponseSettings.language)&&
+        Objects.equals(this.additionalProperties, sessionSettingsResponseSettings.additionalProperties);
   }
 
   @Override
@@ -523,7 +523,7 @@ public class UserSettings {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserSettings {\n");
+    sb.append("class SessionSettingsResponseSettings {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
@@ -586,12 +586,12 @@ public class UserSettings {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to UserSettings
+  * @throws IOException if the JSON Object is invalid with respect to SessionSettingsResponseSettings
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!UserSettings.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UserSettings is not found in the empty JSON string", UserSettings.openapiRequiredFields.toString()));
+        if (!SessionSettingsResponseSettings.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SessionSettingsResponseSettings is not found in the empty JSON string", SessionSettingsResponseSettings.openapiRequiredFields.toString()));
         }
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
@@ -645,16 +645,16 @@ public class UserSettings {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UserSettings.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UserSettings' and its subtypes
+       if (!SessionSettingsResponseSettings.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SessionSettingsResponseSettings' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UserSettings> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UserSettings.class));
+       final TypeAdapter<SessionSettingsResponseSettings> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SessionSettingsResponseSettings.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UserSettings>() {
+       return (TypeAdapter<T>) new TypeAdapter<SessionSettingsResponseSettings>() {
            @Override
-           public void write(JsonWriter out, UserSettings value) throws IOException {
+           public void write(JsonWriter out, SessionSettingsResponseSettings value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -677,11 +677,11 @@ public class UserSettings {
            }
 
            @Override
-           public UserSettings read(JsonReader in) throws IOException {
+           public SessionSettingsResponseSettings read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             UserSettings instance = thisAdapter.fromJsonTree(jsonObj);
+             SessionSettingsResponseSettings instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -708,21 +708,21 @@ public class UserSettings {
   }
 
  /**
-  * Create an instance of UserSettings given an JSON string
+  * Create an instance of SessionSettingsResponseSettings given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of UserSettings
-  * @throws IOException if the JSON string is invalid with respect to UserSettings
+  * @return An instance of SessionSettingsResponseSettings
+  * @throws IOException if the JSON string is invalid with respect to SessionSettingsResponseSettings
   */
-  public static UserSettings fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UserSettings.class);
+  public static SessionSettingsResponseSettings fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SessionSettingsResponseSettings.class);
   }
 
   public static Gson getGson() {
     return JSON.getGson();
   }
 
-/** * Convert an instance of UserSettings to an JSON string
+/** * Convert an instance of SessionSettingsResponseSettings to an JSON string
   *
   * @return JSON string
   */

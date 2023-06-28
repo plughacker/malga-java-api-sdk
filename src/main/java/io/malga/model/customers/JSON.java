@@ -97,6 +97,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new io.malga.model.customers.CustomerCardList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.malga.model.customers.CustomerCardListItemsInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.malga.model.customers.CustomerList.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.malga.model.customers.CustomerListItemsInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.malga.model.customers.CustomerRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.malga.model.customers.CustomerRequestAddress.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.malga.model.customers.CustomerRequestDocument.CustomTypeAdapterFactory());

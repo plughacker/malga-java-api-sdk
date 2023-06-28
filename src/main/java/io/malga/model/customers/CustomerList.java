@@ -20,9 +20,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.malga.model.customers.CustomerResponse;
+import io.malga.model.customers.CustomerListItemsInner;
 import io.malga.model.customers.MetaPagination;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,7 +50,7 @@ import io.malga.model.customers.JSON;
 /**
  * CustomerList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T18:26:48.977638-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:10.807934-03:00[America/Sao_Paulo]")
 public class CustomerList {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -56,7 +58,7 @@ public class CustomerList {
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
-  private CustomerResponse items;
+  private List<CustomerListItemsInner> items = new ArrayList<>();
 
   public CustomerList() {
   }
@@ -83,9 +85,17 @@ public class CustomerList {
   }
 
 
-  public CustomerList items(CustomerResponse items) {
+  public CustomerList items(List<CustomerListItemsInner> items) {
     
     this.items = items;
+    return this;
+  }
+
+  public CustomerList addItemsItem(CustomerListItemsInner itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
     return this;
   }
 
@@ -95,12 +105,12 @@ public class CustomerList {
   **/
   @javax.annotation.Nullable
 
-  public CustomerResponse getItems() {
+  public List<CustomerListItemsInner> getItems() {
     return items;
   }
 
 
-  public void setItems(CustomerResponse items) {
+  public void setItems(List<CustomerListItemsInner> items) {
     this.items = items;
   }
 
@@ -217,9 +227,19 @@ public class CustomerList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerList is not found in the empty JSON string", CustomerList.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `items`
       if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
-        CustomerResponse.validateJsonObject(jsonObj.getAsJsonObject("items"));
+        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+        if (jsonArrayitems != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `items` to be an array in the JSON string but got `%s`", jsonObj.get("items").toString()));
+          }
+
+          // validate the optional field `items` (array)
+          for (int i = 0; i < jsonArrayitems.size(); i++) {
+            CustomerListItemsInner.validateJsonObject(jsonArrayitems.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

@@ -46,11 +46,15 @@ import io.malga.model.cards.JSON;
 /**
  * CardResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T18:26:44.792132-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:07.703252-03:00[America/Sao_Paulo]")
 public class CardResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+  public static final String SERIALIZED_NAME_CLIENT_ID = "clientId";
+  @SerializedName(SERIALIZED_NAME_CLIENT_ID)
+  private String clientId;
 
   public static final String SERIALIZED_NAME_EXPIRATION_MONTH = "expirationMonth";
   @SerializedName(SERIALIZED_NAME_EXPIRATION_MONTH)
@@ -194,10 +198,6 @@ public class CardResponse {
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private String createdAt;
 
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private String updatedAt;
-
   public static final String SERIALIZED_NAME_CUSTOMER_ID = "customerId";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_ID)
   private String customerId;
@@ -224,6 +224,28 @@ public class CardResponse {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public CardResponse clientId(String clientId) {
+    
+    this.clientId = clientId;
+    return this;
+  }
+
+   /**
+   * client identification on Malga
+   * @return clientId
+  **/
+  @javax.annotation.Nullable
+
+  public String getClientId() {
+    return clientId;
+  }
+
+
+  public void setClientId(String clientId) {
+    this.clientId = clientId;
   }
 
 
@@ -425,28 +447,6 @@ public class CardResponse {
   }
 
 
-  public CardResponse updatedAt(String updatedAt) {
-    
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * Data de atualização do cartão
-   * @return updatedAt
-  **/
-  @javax.annotation.Nullable
-
-  public String getUpdatedAt() {
-    return updatedAt;
-  }
-
-
-  public void setUpdatedAt(String updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-
   public CardResponse customerId(String customerId) {
     
     this.customerId = customerId;
@@ -524,6 +524,7 @@ public class CardResponse {
     }
     CardResponse cardResponse = (CardResponse) o;
     return Objects.equals(this.id, cardResponse.id) &&
+        Objects.equals(this.clientId, cardResponse.clientId) &&
         Objects.equals(this.expirationMonth, cardResponse.expirationMonth) &&
         Objects.equals(this.expirationYear, cardResponse.expirationYear) &&
         Objects.equals(this.brand, cardResponse.brand) &&
@@ -533,14 +534,13 @@ public class CardResponse {
         Objects.equals(this.last4digits, cardResponse.last4digits) &&
         Objects.equals(this.status, cardResponse.status) &&
         Objects.equals(this.createdAt, cardResponse.createdAt) &&
-        Objects.equals(this.updatedAt, cardResponse.updatedAt) &&
         Objects.equals(this.customerId, cardResponse.customerId)&&
         Objects.equals(this.additionalProperties, cardResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, expirationMonth, expirationYear, brand, cvvChecked, fingerprint, first6digits, last4digits, status, createdAt, updatedAt, customerId, additionalProperties);
+    return Objects.hash(id, clientId, expirationMonth, expirationYear, brand, cvvChecked, fingerprint, first6digits, last4digits, status, createdAt, customerId, additionalProperties);
   }
 
   @Override
@@ -548,6 +548,7 @@ public class CardResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class CardResponse {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
     sb.append("    expirationMonth: ").append(toIndentedString(expirationMonth)).append("\n");
     sb.append("    expirationYear: ").append(toIndentedString(expirationYear)).append("\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
@@ -557,7 +558,6 @@ public class CardResponse {
     sb.append("    last4digits: ").append(toIndentedString(last4digits)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -583,6 +583,7 @@ public class CardResponse {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
+    openapiFields.add("clientId");
     openapiFields.add("expirationMonth");
     openapiFields.add("expirationYear");
     openapiFields.add("brand");
@@ -592,7 +593,6 @@ public class CardResponse {
     openapiFields.add("last4digits");
     openapiFields.add("status");
     openapiFields.add("createdAt");
-    openapiFields.add("updatedAt");
     openapiFields.add("customerId");
 
     // a set of required properties/fields (JSON key names)
@@ -613,6 +613,9 @@ public class CardResponse {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("clientId") != null && !jsonObj.get("clientId").isJsonNull()) && !jsonObj.get("clientId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clientId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientId").toString()));
       }
       if ((jsonObj.get("expirationMonth") != null && !jsonObj.get("expirationMonth").isJsonNull()) && !jsonObj.get("expirationMonth").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `expirationMonth` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expirationMonth").toString()));
@@ -637,9 +640,6 @@ public class CardResponse {
       }
       if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
-      }
-      if ((jsonObj.get("updatedAt") != null && !jsonObj.get("updatedAt").isJsonNull()) && !jsonObj.get("updatedAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `updatedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updatedAt").toString()));
       }
       if ((jsonObj.get("customerId") != null && !jsonObj.get("customerId").isJsonNull()) && !jsonObj.get("customerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `customerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customerId").toString()));

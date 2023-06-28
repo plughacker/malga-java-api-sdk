@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.malga.model.customers.CustomerRequestAddress;
+import io.malga.model.customers.CustomerRequestDocument;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -45,26 +46,112 @@ import java.util.Set;
 import io.malga.model.customers.JSON;
 
 /**
- * UpdateCustomerRequest
+ * CustomerListItemsInner
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:10.807934-03:00[America/Sao_Paulo]")
-public class UpdateCustomerRequest {
+public class CustomerListItemsInner {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
+
+  public static final String SERIALIZED_NAME_CLIENT_ID = "clientId";
+  @SerializedName(SERIALIZED_NAME_CLIENT_ID)
+  private String clientId;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_EMAIL = "email";
+  @SerializedName(SERIALIZED_NAME_EMAIL)
+  private String email;
 
   public static final String SERIALIZED_NAME_PHONE_NUMBER = "phoneNumber";
   @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
   private String phoneNumber;
 
+  public static final String SERIALIZED_NAME_DOCUMENT = "document";
+  @SerializedName(SERIALIZED_NAME_DOCUMENT)
+  private CustomerRequestDocument document;
+
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
   private CustomerRequestAddress address;
 
-  public UpdateCustomerRequest() {
+  public CustomerListItemsInner() {
   }
 
-  public UpdateCustomerRequest name(String name) {
+  public CustomerListItemsInner id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * identificador do customer
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public CustomerListItemsInner createdAt(String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * data de criação
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public CustomerListItemsInner clientId(String clientId) {
+    
+    this.clientId = clientId;
+    return this;
+  }
+
+   /**
+   * identificador do client
+   * @return clientId
+  **/
+  @javax.annotation.Nullable
+
+  public String getClientId() {
+    return clientId;
+  }
+
+
+  public void setClientId(String clientId) {
+    this.clientId = clientId;
+  }
+
+
+  public CustomerListItemsInner name(String name) {
     
     this.name = name;
     return this;
@@ -86,14 +173,36 @@ public class UpdateCustomerRequest {
   }
 
 
-  public UpdateCustomerRequest phoneNumber(String phoneNumber) {
+  public CustomerListItemsInner email(String email) {
+    
+    this.email = email;
+    return this;
+  }
+
+   /**
+   * email do usuario
+   * @return email
+  **/
+  @javax.annotation.Nullable
+
+  public String getEmail() {
+    return email;
+  }
+
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+
+  public CustomerListItemsInner phoneNumber(String phoneNumber) {
     
     this.phoneNumber = phoneNumber;
     return this;
   }
 
    /**
-   * telefone de contato do usuario
+   * telefones de contato do usuario
    * @return phoneNumber
   **/
   @javax.annotation.Nullable
@@ -108,7 +217,29 @@ public class UpdateCustomerRequest {
   }
 
 
-  public UpdateCustomerRequest address(CustomerRequestAddress address) {
+  public CustomerListItemsInner document(CustomerRequestDocument document) {
+    
+    this.document = document;
+    return this;
+  }
+
+   /**
+   * Get document
+   * @return document
+  **/
+  @javax.annotation.Nullable
+
+  public CustomerRequestDocument getDocument() {
+    return document;
+  }
+
+
+  public void setDocument(CustomerRequestDocument document) {
+    this.document = document;
+  }
+
+
+  public CustomerListItemsInner address(CustomerRequestAddress address) {
     
     this.address = address;
     return this;
@@ -142,9 +273,9 @@ public class UpdateCustomerRequest {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the UpdateCustomerRequest instance itself
+   * @return the CustomerListItemsInner instance itself
    */
-  public UpdateCustomerRequest putAdditionalProperty(String key, Object value) {
+  public CustomerListItemsInner putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -183,24 +314,34 @@ public class UpdateCustomerRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpdateCustomerRequest updateCustomerRequest = (UpdateCustomerRequest) o;
-    return Objects.equals(this.name, updateCustomerRequest.name) &&
-        Objects.equals(this.phoneNumber, updateCustomerRequest.phoneNumber) &&
-        Objects.equals(this.address, updateCustomerRequest.address)&&
-        Objects.equals(this.additionalProperties, updateCustomerRequest.additionalProperties);
+    CustomerListItemsInner customerListItemsInner = (CustomerListItemsInner) o;
+    return Objects.equals(this.id, customerListItemsInner.id) &&
+        Objects.equals(this.createdAt, customerListItemsInner.createdAt) &&
+        Objects.equals(this.clientId, customerListItemsInner.clientId) &&
+        Objects.equals(this.name, customerListItemsInner.name) &&
+        Objects.equals(this.email, customerListItemsInner.email) &&
+        Objects.equals(this.phoneNumber, customerListItemsInner.phoneNumber) &&
+        Objects.equals(this.document, customerListItemsInner.document) &&
+        Objects.equals(this.address, customerListItemsInner.address)&&
+        Objects.equals(this.additionalProperties, customerListItemsInner.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, phoneNumber, address, additionalProperties);
+    return Objects.hash(id, createdAt, clientId, name, email, phoneNumber, document, address, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpdateCustomerRequest {\n");
+    sb.append("class CustomerListItemsInner {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
+    sb.append("    document: ").append(toIndentedString(document)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -225,8 +366,13 @@ public class UpdateCustomerRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("id");
+    openapiFields.add("createdAt");
+    openapiFields.add("clientId");
     openapiFields.add("name");
+    openapiFields.add("email");
     openapiFields.add("phoneNumber");
+    openapiFields.add("document");
     openapiFields.add("address");
 
     // a set of required properties/fields (JSON key names)
@@ -237,19 +383,35 @@ public class UpdateCustomerRequest {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to UpdateCustomerRequest
+  * @throws IOException if the JSON Object is invalid with respect to CustomerListItemsInner
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!UpdateCustomerRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateCustomerRequest is not found in the empty JSON string", UpdateCustomerRequest.openapiRequiredFields.toString()));
+        if (!CustomerListItemsInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerListItemsInner is not found in the empty JSON string", CustomerListItemsInner.openapiRequiredFields.toString()));
         }
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
+      }
+      if ((jsonObj.get("clientId") != null && !jsonObj.get("clientId").isJsonNull()) && !jsonObj.get("clientId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clientId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientId").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
+      if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
+      }
       if ((jsonObj.get("phoneNumber") != null && !jsonObj.get("phoneNumber").isJsonNull()) && !jsonObj.get("phoneNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNumber").toString()));
+      }
+      // validate the optional field `document`
+      if (jsonObj.get("document") != null && !jsonObj.get("document").isJsonNull()) {
+        CustomerRequestDocument.validateJsonObject(jsonObj.getAsJsonObject("document"));
       }
       // validate the optional field `address`
       if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
@@ -261,16 +423,16 @@ public class UpdateCustomerRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpdateCustomerRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpdateCustomerRequest' and its subtypes
+       if (!CustomerListItemsInner.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CustomerListItemsInner' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpdateCustomerRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateCustomerRequest.class));
+       final TypeAdapter<CustomerListItemsInner> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CustomerListItemsInner.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UpdateCustomerRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<CustomerListItemsInner>() {
            @Override
-           public void write(JsonWriter out, UpdateCustomerRequest value) throws IOException {
+           public void write(JsonWriter out, CustomerListItemsInner value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -293,11 +455,11 @@ public class UpdateCustomerRequest {
            }
 
            @Override
-           public UpdateCustomerRequest read(JsonReader in) throws IOException {
+           public CustomerListItemsInner read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             UpdateCustomerRequest instance = thisAdapter.fromJsonTree(jsonObj);
+             CustomerListItemsInner instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -324,21 +486,21 @@ public class UpdateCustomerRequest {
   }
 
  /**
-  * Create an instance of UpdateCustomerRequest given an JSON string
+  * Create an instance of CustomerListItemsInner given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of UpdateCustomerRequest
-  * @throws IOException if the JSON string is invalid with respect to UpdateCustomerRequest
+  * @return An instance of CustomerListItemsInner
+  * @throws IOException if the JSON string is invalid with respect to CustomerListItemsInner
   */
-  public static UpdateCustomerRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpdateCustomerRequest.class);
+  public static CustomerListItemsInner fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CustomerListItemsInner.class);
   }
 
   public static Gson getGson() {
     return JSON.getGson();
   }
 
-/** * Convert an instance of UpdateCustomerRequest to an JSON string
+/** * Convert an instance of CustomerListItemsInner to an JSON string
   *
   * @return JSON string
   */

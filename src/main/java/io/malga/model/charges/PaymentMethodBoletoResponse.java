@@ -46,7 +46,7 @@ import io.malga.model.charges.JSON;
 /**
  * PaymentMethodBoletoResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T18:26:40.217680-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:02.961685-03:00[America/Sao_Paulo]")
 public class PaymentMethodBoletoResponse {
   /**
    * método da cobrança via Boleto, o source deve ser um customer válido
