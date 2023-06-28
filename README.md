@@ -49,67 +49,67 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 // Import classes:
-import com.malga.client.ApiClient;
-import com.malga.client.ApiException;
-import com.malga.client.Configuration;
-import com.malga.client.auth.*;
-import com.malga.client.models.*;
-import com.malga.client.api.ChargesApi;
+
+import io.malga.client.ApiClient;
+import io.malga.client.ApiException;
+import io.malga.client.Configuration;
+import io.malga.client.models.charge.*;
+import io.malga.client.service.charges.ChargesApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://sandbox-api.malga.io");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://sandbox-api.malga.io");
 
-    // Configure API key authorization: X-Client-ID
-    ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-ID");
-    clientID.setApiKey("YOUR CLIENT ID");
+        // Configure API key authorization: X-Client-ID
+        ApiKeyAuth clientID = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-ID");
+        clientID.setApiKey("YOUR CLIENT ID");
 
-    // Configure API key authorization: X-Api-Key
-    ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("X-Api-Key");
-    apiKey.setApiKey("YOUR API KEY");
+        // Configure API key authorization: X-Api-Key
+        ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("X-Api-Key");
+        apiKey.setApiKey("YOUR API KEY");
 
-    ChargesApi chargesApi = new ChargesApi(defaultClient);
+        ChargesApi chargesApi = new ChargesApi(defaultClient);
 
-    ChargeRequest chargeRequest = createCardChargeRequest();
-    ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+        ChargeRequest chargeRequest = createCardChargeRequest();
+        ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
 
-    SourceTypeCard cardOneShot = ((new SourceTypeCard())
-            .sourceType("card")
-            .card((new TokenRequest())
-                    .cardExpirationDate("12/2025")
-                    .cardHolderName("John Doe")
-                    .cardNumber("4929564637987814")
-                    .cardCvv("410")
-            ));
+        SourceTypeCard cardOneShot = ((new SourceTypeCard())
+                .sourceType("card")
+                .card((new TokenRequest())
+                        .cardExpirationDate("12/2025")
+                        .cardHolderName("John Doe")
+                        .cardNumber("4929564637987814")
+                        .cardCvv("410")
+                ));
 
-    PaymentMethodCard paymentMethodCard =  (new PaymentMethodCard())
-            .paymentType(PaymentMethodCard.PaymentTypeEnum.CREDIT)
-            .installments(1);
+        PaymentMethodCard paymentMethodCard = (new PaymentMethodCard())
+                .paymentType(PaymentMethodCard.PaymentTypeEnum.CREDIT)
+                .installments(1);
 
-    ChargeRequest chargeRequest (new ChargeRequest())
-            .capture(false)
-            .statementDescriptor("should be statement descriptor")
-            .merchantId("YOUR MERCHANT ID")
-            .amount(1000)
-            .orderId("1234567890")
-            .capture(false)
-            .paymentSource((new ChargeRequestPaymentSource(cardOneShot)))
-            .paymentMethod((new ChargeRequestPaymentMethod(paymentMethodCard)));
-    
-    ChargesApi chargesApi = new ChargesApi(defaultClient);
+        ChargeRequest chargeRequest(new ChargeRequest())
+                .capture(false)
+                .statementDescriptor("should be statement descriptor")
+                .merchantId("YOUR MERCHANT ID")
+                .amount(1000)
+                .orderId("1234567890")
+                .capture(false)
+                .paymentSource((new ChargeRequestPaymentSource(cardOneShot)))
+                .paymentMethod((new ChargeRequestPaymentMethod(paymentMethodCard)));
 
-    try {
-      ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
-      System.out.println(chargeResponse);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling CardsApi#getCardById");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ChargesApi chargesApi = new ChargesApi(defaultClient);
+
+        try {
+            ChargeResponse chargeResponse = chargesApi.charge(chargeRequest);
+            System.out.println(chargeResponse);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CardsApi#getCardById");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 
 ```
