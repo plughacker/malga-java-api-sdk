@@ -50,11 +50,11 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 // Import classes:
 
-import ApiClient;
-import ApiException;
-import Configuration;
-import com.malga.client.models.*;
-import ChargesApi;
+import io.malga.client.ApiClient;
+import io.malga.client.ApiException;
+import io.malga.client.Configuration;
+import io.malga.client.models.charge.*;
+import io.malga.client.service.charges.ChargesApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -87,7 +87,7 @@ public class Example {
                 .paymentType(PaymentMethodCard.PaymentTypeEnum.CREDIT)
                 .installments(1);
 
-        ChargeRequest chargeRequest (new ChargeRequest())
+        ChargeRequest chargeRequest(new ChargeRequest())
                 .capture(false)
                 .statementDescriptor("should be statement descriptor")
                 .merchantId("YOUR MERCHANT ID")
