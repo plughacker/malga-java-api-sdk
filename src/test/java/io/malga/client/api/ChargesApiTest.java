@@ -14,7 +14,8 @@
 package io.malga.client.api;
 
 import io.malga.client.ApiException;
-import io.malga.client.api.model.*;
+import io.malga.model.charges.*;
+import io.malga.service.charges.ChargesApi;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +40,7 @@ public class ChargesApiTest extends BaseApiTest{
         ChargesApi chargesApi = new ChargesApi(this.getDefaulClientApi());
 
         ChargeRequest chargeRequest = this.createCardChargeRequest();
+
         ChargeResponse chargeResponse = chargesApi.createCharge(chargeRequest);
 
         assertNotNull(chargeResponse.getId());

@@ -2,8 +2,12 @@ package io.malga.client.api;
 
 import io.malga.client.ApiClient;
 import io.malga.client.Configuration;
-import io.malga.client.api.model.*;
 import io.malga.client.auth.ApiKeyAuth;
+import io.malga.model.cards.TokenRequest;
+import io.malga.model.charges.*;
+import io.malga.model.customers.CustomerRequest;
+import io.malga.model.customers.CustomerRequestAddress;
+import io.malga.model.customers.CustomerRequestDocument;
 
 public class BaseApiTest {
 
@@ -42,8 +46,8 @@ public class BaseApiTest {
     }
 
     protected ChargeRequest createPixChargeRequest(){
-        SourceTypeCustomerCustomer customer = ((new SourceTypeCustomerCustomer())
-                .address((new CustomerRequestAddress())
+        SourceTypeCustomerOneShotCustomer customer = ((new SourceTypeCustomerOneShotCustomer())
+                .address((new SourceTypeCustomerOneShotCustomerAddress())
                         .country("BR")
                         .city("Rio de Janeiro")
                         .complement("should be complement")
@@ -53,7 +57,7 @@ public class BaseApiTest {
                         .streetNumber("123")
                         .zipCode("12345678")
                 )
-                .document((new CustomerRequestDocument())
+                .document((new SourceTypeCustomerOneShotCustomerDocument())
                         .country("BR")
                         .type("cpf")
                         .number("97055503019")
@@ -83,8 +87,8 @@ public class BaseApiTest {
     }
 
     protected ChargeRequest createBoletoChargeRequest(){
-        SourceTypeCustomerCustomer customer = ((new SourceTypeCustomerCustomer())
-                .address((new CustomerRequestAddress())
+        SourceTypeCustomerOneShotCustomer customer = ((new SourceTypeCustomerOneShotCustomer())
+                .address((new SourceTypeCustomerOneShotCustomerAddress())
                         .country("BR")
                         .city("Rio de Janeiro")
                         .complement("should be complement")
@@ -94,7 +98,7 @@ public class BaseApiTest {
                         .streetNumber("123")
                         .zipCode("12345678")
                 )
-                .document((new CustomerRequestDocument())
+                .document((new SourceTypeCustomerOneShotCustomerDocument())
                         .country("BR")
                         .type("cpf")
                         .number("97055503019")

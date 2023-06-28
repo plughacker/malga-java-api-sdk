@@ -15,8 +15,7 @@
 hs_err_pid*
 
 # build files
-target/out
-target/openapi-generator-cli.jar
+target
 .gradle
 build
 

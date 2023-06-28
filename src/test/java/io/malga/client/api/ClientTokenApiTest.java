@@ -14,8 +14,9 @@
 package io.malga.client.api;
 
 import io.malga.client.ApiException;
-import io.malga.client.api.model.AuthRequest;
-import io.malga.client.api.model.AuthResponse;
+import io.malga.model.clienttoken.AuthRequest;
+import io.malga.model.clienttoken.AuthResponse;
+import io.malga.service.clienttoken.ClientTokenApi;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -14,10 +14,12 @@
 package io.malga.client.api;
 
 import io.malga.client.ApiException;
-import io.malga.client.api.model.CardRequest;
-import io.malga.client.api.model.CardResponse;
-import io.malga.client.api.model.TokenRequest;
-import io.malga.client.api.model.TokenResponse;
+import io.malga.model.cards.CardRequest;
+import io.malga.model.cards.CardResponse;
+import io.malga.model.cards.TokenRequest;
+import io.malga.model.cards.TokenResponse;
+import io.malga.service.cards.CardsApi;
+import io.malga.service.cards.TokensApi;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

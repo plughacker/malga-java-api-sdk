@@ -15,10 +15,11 @@ package io.malga.client.api;
 
 import io.malga.client.ApiException;
 import io.malga.client.ApiResponse;
-import io.malga.client.api.model.CustomerRequest;
-import io.malga.client.api.model.CustomerResponse;
-import io.malga.client.api.model.ErrorResponse;
-import io.malga.client.api.model.ErrorResponseError;
+import io.malga.model.customers.CustomerRequest;
+import io.malga.model.customers.CustomerResponse;
+import io.malga.model.customers.ErrorResponse;
+import io.malga.model.customers.ErrorResponseError;
+import io.malga.service.customers.CustomersApi;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
