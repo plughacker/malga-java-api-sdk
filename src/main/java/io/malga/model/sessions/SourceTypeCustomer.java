@@ -46,7 +46,7 @@ import io.malga.model.sessions.JSON;
 /**
  * SourceTypeCustomer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:14.399550-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-30T13:45:52.037616-03:00[America/Sao_Paulo]")
 public class SourceTypeCustomer {
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "sourceType";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)

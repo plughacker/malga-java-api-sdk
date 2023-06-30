@@ -51,7 +51,7 @@ import io.malga.model.sessions.JSON;
 /**
  * Customer device details
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:14.399550-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-30T13:45:52.037616-03:00[America/Sao_Paulo]")
 public class FraudAnalysisRequestDevice {
   public static final String SERIALIZED_NAME_OS = "os";
   @SerializedName(SERIALIZED_NAME_OS)

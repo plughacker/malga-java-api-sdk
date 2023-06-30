@@ -697,6 +697,7 @@ public class ApiClient {
      * @param <T> Type
      * @param response HTTP response
      * @param returnType The type of the Java object
+     * @param gson Gson instance to deserialize JSON
      * @return The deserialized Java object
      * @throws io.malga.client.ApiException If fail to deserialize response body, i.e. cannot read response body
      *   or the Content-Type of the response is not supported.
@@ -840,7 +841,7 @@ public class ApiClient {
     }
 
     /**
-     * {@link #execute(Call, Type)}
+     * {@link #execute(Call, Type, Gson)}
      *
      * @param <T> Type
      * @param call An instance of the Call object
@@ -857,6 +858,7 @@ public class ApiClient {
      * @param returnType The return type used to deserialize HTTP response body
      * @param <T> The return type corresponding to (same with) returnType
      * @param call Call
+     * @param gson Gson instance to deserialize JSON
      * @return ApiResponse object containing response status, headers and
      *   data, which is a Java object deserialized from response body and would be null
      *   when returnType is null.
@@ -873,7 +875,7 @@ public class ApiClient {
     }
 
     /**
-     * {@link #executeAsync(Call, Type, ApiCallback)}
+     * {@link #executeAsync(Call, Type, ApiCallback, Gson)}
      *
      * @param <T> Type
      * @param call An instance of the Call object
@@ -890,7 +892,8 @@ public class ApiClient {
      * @param call The callback to be executed when the API call finishes
      * @param returnType Return type
      * @param callback ApiCallback
-     * @see #execute(Call, Type)
+     * @param gson Gson instance to deserialize JSON
+     * @see #execute(Call, Type, Gson)
      */
     @SuppressWarnings("unchecked")
     public <T> void executeAsync(Call call, final Type returnType, final ApiCallback<T> callback, Gson gson) {
@@ -924,6 +927,7 @@ public class ApiClient {
      * @param response Response
      * @param returnType Return type
      * @return Type
+     * @param gson Gson instance to deserialize JSON
      * @throws ApiException If the response has an unsuccessful status code or
      *                      fail to deserialize the response body
      */

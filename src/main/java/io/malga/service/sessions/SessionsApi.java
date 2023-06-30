@@ -63,11 +63,6 @@ public class SessionsApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call cancelSessionCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -131,11 +126,6 @@ public class SessionsApi {
      * @param id Session ID (required)
      * @return CancelSessionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public CancelSessionResponse cancelSession(UUID id) throws ApiException {
         ApiResponse<CancelSessionResponse> localVarResp = cancelSessionWithHttpInfo(id);
@@ -148,11 +138,6 @@ public class SessionsApi {
      * @param id Session ID (required)
      * @return ApiResponse&lt;CancelSessionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<CancelSessionResponse> cancelSessionWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = cancelSessionValidateBeforeCall(id, null);
@@ -167,11 +152,6 @@ public class SessionsApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call cancelSessionAsync(UUID id, final ApiCallback<CancelSessionResponse> _callback) throws ApiException {
 
@@ -186,13 +166,6 @@ public class SessionsApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call createSessionCall(SessionRequest sessionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -251,13 +224,6 @@ public class SessionsApi {
      * @param sessionRequest  (optional)
      * @return SessionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public SessionResponse createSession(SessionRequest sessionRequest) throws ApiException {
         ApiResponse<SessionResponse> localVarResp = createSessionWithHttpInfo(sessionRequest);
@@ -270,13 +236,6 @@ public class SessionsApi {
      * @param sessionRequest  (optional)
      * @return ApiResponse&lt;SessionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<SessionResponse> createSessionWithHttpInfo(SessionRequest sessionRequest) throws ApiException {
         okhttp3.Call localVarCall = createSessionValidateBeforeCall(sessionRequest, null);
@@ -291,13 +250,6 @@ public class SessionsApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call createSessionAsync(SessionRequest sessionRequest, final ApiCallback<SessionResponse> _callback) throws ApiException {
 
@@ -312,11 +264,6 @@ public class SessionsApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getSessionByIdCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -380,11 +327,6 @@ public class SessionsApi {
      * @param id Session ID (required)
      * @return SessionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public SessionResponse getSessionById(UUID id) throws ApiException {
         ApiResponse<SessionResponse> localVarResp = getSessionByIdWithHttpInfo(id);
@@ -397,11 +339,6 @@ public class SessionsApi {
      * @param id Session ID (required)
      * @return ApiResponse&lt;SessionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<SessionResponse> getSessionByIdWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = getSessionByIdValidateBeforeCall(id, null);
@@ -416,11 +353,6 @@ public class SessionsApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getSessionByIdAsync(UUID id, final ApiCallback<SessionResponse> _callback) throws ApiException {
 
@@ -435,11 +367,6 @@ public class SessionsApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getSessionHistoryCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -503,11 +430,6 @@ public class SessionsApi {
      * @param id Session ID (required)
      * @return List&lt;SessionHistoryItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public List<SessionHistoryItem> getSessionHistory(UUID id) throws ApiException {
         ApiResponse<List<SessionHistoryItem>> localVarResp = getSessionHistoryWithHttpInfo(id);
@@ -520,11 +442,6 @@ public class SessionsApi {
      * @param id Session ID (required)
      * @return ApiResponse&lt;List&lt;SessionHistoryItem&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<List<SessionHistoryItem>> getSessionHistoryWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = getSessionHistoryValidateBeforeCall(id, null);
@@ -539,11 +456,6 @@ public class SessionsApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getSessionHistoryAsync(UUID id, final ApiCallback<List<SessionHistoryItem>> _callback) throws ApiException {
 
@@ -558,11 +470,6 @@ public class SessionsApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getSessionWithSettingsCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -626,11 +533,6 @@ public class SessionsApi {
      * @param id Session ID (required)
      * @return SessionSettingsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public SessionSettingsResponse getSessionWithSettings(UUID id) throws ApiException {
         ApiResponse<SessionSettingsResponse> localVarResp = getSessionWithSettingsWithHttpInfo(id);
@@ -643,11 +545,6 @@ public class SessionsApi {
      * @param id Session ID (required)
      * @return ApiResponse&lt;SessionSettingsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<SessionSettingsResponse> getSessionWithSettingsWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = getSessionWithSettingsValidateBeforeCall(id, null);
@@ -662,11 +559,6 @@ public class SessionsApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getSessionWithSettingsAsync(UUID id, final ApiCallback<SessionSettingsResponse> _callback) throws ApiException {
 
@@ -682,13 +574,6 @@ public class SessionsApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call paySessionCall(UUID id, SessionChargeRequest sessionChargeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -754,13 +639,6 @@ public class SessionsApi {
      * @param sessionChargeRequest  (optional)
      * @return SessionChargeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public SessionChargeResponse paySession(UUID id, SessionChargeRequest sessionChargeRequest) throws ApiException {
         ApiResponse<SessionChargeResponse> localVarResp = paySessionWithHttpInfo(id, sessionChargeRequest);
@@ -774,13 +652,6 @@ public class SessionsApi {
      * @param sessionChargeRequest  (optional)
      * @return ApiResponse&lt;SessionChargeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<SessionChargeResponse> paySessionWithHttpInfo(UUID id, SessionChargeRequest sessionChargeRequest) throws ApiException {
         okhttp3.Call localVarCall = paySessionValidateBeforeCall(id, sessionChargeRequest, null);
@@ -796,13 +667,6 @@ public class SessionsApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call paySessionAsync(UUID id, SessionChargeRequest sessionChargeRequest, final ApiCallback<SessionChargeResponse> _callback) throws ApiException {
 
@@ -817,11 +681,6 @@ public class SessionsApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call updateSessionCall(UUID id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -885,11 +744,6 @@ public class SessionsApi {
      * @param id Session ID (required)
      * @return SessionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public SessionResponse updateSession(UUID id) throws ApiException {
         ApiResponse<SessionResponse> localVarResp = updateSessionWithHttpInfo(id);
@@ -902,11 +756,6 @@ public class SessionsApi {
      * @param id Session ID (required)
      * @return ApiResponse&lt;SessionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<SessionResponse> updateSessionWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = updateSessionValidateBeforeCall(id, null);
@@ -921,11 +770,6 @@ public class SessionsApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call updateSessionAsync(UUID id, final ApiCallback<SessionResponse> _callback) throws ApiException {
 

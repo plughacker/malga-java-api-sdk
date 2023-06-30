@@ -81,13 +81,6 @@ public class ClientTokenApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call createClientTokenCall(AuthRequest authRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -151,13 +144,6 @@ public class ClientTokenApi {
      * @param authRequest Creat authentication token (required)
      * @return AuthResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public AuthResponse createClientToken(AuthRequest authRequest) throws ApiException {
         ApiResponse<AuthResponse> localVarResp = createClientTokenWithHttpInfo(authRequest);
@@ -170,13 +156,6 @@ public class ClientTokenApi {
      * @param authRequest Creat authentication token (required)
      * @return ApiResponse&lt;AuthResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<AuthResponse> createClientTokenWithHttpInfo(AuthRequest authRequest) throws ApiException {
         okhttp3.Call localVarCall = createClientTokenValidateBeforeCall(authRequest, null);
@@ -191,13 +170,6 @@ public class ClientTokenApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call createClientTokenAsync(AuthRequest authRequest, final ApiCallback<AuthResponse> _callback) throws ApiException {
 

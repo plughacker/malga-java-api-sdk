@@ -87,13 +87,6 @@ public class ChargesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call captureChargeCall(String id, CaptureRequest captureRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -159,13 +152,6 @@ public class ChargesApi {
      * @param captureRequest  (optional)
      * @return ChargeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ChargeResponse captureCharge(String id, CaptureRequest captureRequest) throws ApiException {
         ApiResponse<ChargeResponse> localVarResp = captureChargeWithHttpInfo(id, captureRequest);
@@ -179,13 +165,6 @@ public class ChargesApi {
      * @param captureRequest  (optional)
      * @return ApiResponse&lt;ChargeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<ChargeResponse> captureChargeWithHttpInfo(String id, CaptureRequest captureRequest) throws ApiException {
         okhttp3.Call localVarCall = captureChargeValidateBeforeCall(id, captureRequest, null);
@@ -201,13 +180,6 @@ public class ChargesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call captureChargeAsync(String id, CaptureRequest captureRequest, final ApiCallback<ChargeResponse> _callback) throws ApiException {
 
@@ -222,13 +194,6 @@ public class ChargesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call createChargeCall(ChargeRequest chargeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -287,13 +252,6 @@ public class ChargesApi {
      * @param chargeRequest  (optional)
      * @return ChargeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ChargeResponse createCharge(ChargeRequest chargeRequest) throws ApiException {
         ApiResponse<ChargeResponse> localVarResp = createChargeWithHttpInfo(chargeRequest);
@@ -306,13 +264,6 @@ public class ChargesApi {
      * @param chargeRequest  (optional)
      * @return ApiResponse&lt;ChargeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<ChargeResponse> createChargeWithHttpInfo(ChargeRequest chargeRequest) throws ApiException {
         okhttp3.Call localVarCall = createChargeValidateBeforeCall(chargeRequest, null);
@@ -327,13 +278,6 @@ public class ChargesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call createChargeAsync(ChargeRequest chargeRequest, final ApiCallback<ChargeResponse> _callback) throws ApiException {
 
@@ -348,13 +292,6 @@ public class ChargesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getChargeByidCall(String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -418,13 +355,6 @@ public class ChargesApi {
      * @param id Charge ID (required)
      * @return ChargeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ChargeResponse getChargeByid(String id) throws ApiException {
         ApiResponse<ChargeResponse> localVarResp = getChargeByidWithHttpInfo(id);
@@ -437,13 +367,6 @@ public class ChargesApi {
      * @param id Charge ID (required)
      * @return ApiResponse&lt;ChargeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<ChargeResponse> getChargeByidWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = getChargeByidValidateBeforeCall(id, null);
@@ -458,13 +381,6 @@ public class ChargesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getChargeByidAsync(String id, final ApiCallback<ChargeResponse> _callback) throws ApiException {
 
@@ -480,13 +396,6 @@ public class ChargesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getChargesCall(String page, String limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -553,13 +462,6 @@ public class ChargesApi {
      * @param limit total itens per page (optional)
      * @return ChargeList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ChargeList getCharges(String page, String limit) throws ApiException {
         ApiResponse<ChargeList> localVarResp = getChargesWithHttpInfo(page, limit);
@@ -573,13 +475,6 @@ public class ChargesApi {
      * @param limit total itens per page (optional)
      * @return ApiResponse&lt;ChargeList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<ChargeList> getChargesWithHttpInfo(String page, String limit) throws ApiException {
         okhttp3.Call localVarCall = getChargesValidateBeforeCall(page, limit, null);
@@ -595,13 +490,6 @@ public class ChargesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getChargesAsync(String page, String limit, final ApiCallback<ChargeList> _callback) throws ApiException {
 
@@ -617,13 +505,6 @@ public class ChargesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call updateChargeStatusCall(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -689,13 +570,6 @@ public class ChargesApi {
      * @param updateChargeStatusRequest  (optional)
      * @return ChargeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ChargeResponse updateChargeStatus(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest) throws ApiException {
         ApiResponse<ChargeResponse> localVarResp = updateChargeStatusWithHttpInfo(id, updateChargeStatusRequest);
@@ -709,13 +583,6 @@ public class ChargesApi {
      * @param updateChargeStatusRequest  (optional)
      * @return ApiResponse&lt;ChargeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<ChargeResponse> updateChargeStatusWithHttpInfo(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest) throws ApiException {
         okhttp3.Call localVarCall = updateChargeStatusValidateBeforeCall(id, updateChargeStatusRequest, null);
@@ -731,13 +598,6 @@ public class ChargesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call updateChargeStatusAsync(UUID id, UpdateChargeStatusRequest updateChargeStatusRequest, final ApiCallback<ChargeResponse> _callback) throws ApiException {
 
@@ -753,13 +613,6 @@ public class ChargesApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call voidChargeCall(String id, VoidRequest voidRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -825,13 +678,6 @@ public class ChargesApi {
      * @param voidRequest  (optional)
      * @return ChargeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ChargeResponse voidCharge(String id, VoidRequest voidRequest) throws ApiException {
         ApiResponse<ChargeResponse> localVarResp = voidChargeWithHttpInfo(id, voidRequest);
@@ -845,13 +691,6 @@ public class ChargesApi {
      * @param voidRequest  (optional)
      * @return ApiResponse&lt;ChargeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<ChargeResponse> voidChargeWithHttpInfo(String id, VoidRequest voidRequest) throws ApiException {
         okhttp3.Call localVarCall = voidChargeValidateBeforeCall(id, voidRequest, null);
@@ -867,13 +706,6 @@ public class ChargesApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call voidChargeAsync(String id, VoidRequest voidRequest, final ApiCallback<ChargeResponse> _callback) throws ApiException {
 

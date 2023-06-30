@@ -46,7 +46,7 @@ import io.malga.model.customers.JSON;
 /**
  * LinkCardRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:10.807934-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-30T13:45:48.271029-03:00[America/Sao_Paulo]")
 public class LinkCardRequest {
   public static final String SERIALIZED_NAME_CARD_ID = "cardId";
   @SerializedName(SERIALIZED_NAME_CARD_ID)

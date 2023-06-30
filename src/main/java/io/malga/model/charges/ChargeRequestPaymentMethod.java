@@ -60,7 +60,7 @@ import com.google.gson.JsonParseException;
 
 import io.malga.model.charges.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:17:02.961685-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-30T13:45:38.593774-03:00[America/Sao_Paulo]")
 public class ChargeRequestPaymentMethod extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ChargeRequestPaymentMethod.class.getName());
 

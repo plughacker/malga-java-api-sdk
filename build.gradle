@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
+    id 'signing'
 }
 
 group 'io.malga'
@@ -8,6 +9,15 @@ version '0.1.0'
 
 repositories {
     mavenCentral()
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
 }
 
 ext {
@@ -19,7 +29,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'io.malga'
             artifactId = 'malga-java-api-sdk'
-            version = '0.1.0'
+            version = project.version
 
             from components.java
             versionMapping {
@@ -30,6 +40,7 @@ publishing {
                     fromResolutionResult()
                 }
             }
+
             pom {
                 name = "Malga Java Api SDK"
                 description = "Malga Api Client for java"
@@ -55,12 +66,32 @@ publishing {
             }
         }
     }
-//    repositories {
-//        maven {
-//            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-//            name = "Central Repository OSSRH"
-//        }
-//    }
+
+    repositories {
+        maven {
+            if(project.version.endsWith('-SNAPSHOT')) {
+                url = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+            } else {
+                url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+            }
+
+            credentials {
+                username = ossrhUsername
+                password = ossrhPassword
+            }
+        }
+    }
+
+}
+
+signing {
+    sign publishing.publications.maven
+}
+
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
 }
 
 dependencies {

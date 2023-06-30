@@ -47,7 +47,7 @@ import io.malga.model.clienttoken.JSON;
 /**
  * ErrorResponseError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-28T20:16:58.572370-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-30T13:45:34.598887-03:00[America/Sao_Paulo]")
 public class ErrorResponseError {
   /**
    * Gets or Sets type
