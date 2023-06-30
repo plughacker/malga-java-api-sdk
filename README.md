@@ -3,43 +3,49 @@
 Malga’s API SDK.
 
 - API version: 0.5
-- Build date: 2023-06-20T10:56:56.342947-03:00[America/Sao_Paulo]
+- SDK version: 0.1.0
+
+For more information, refer to our [documentation](https://docs.malga.io/).
 
 ## Requirements
 
-Building the API client library requires:
-1. Java 1.8+
-2. Maven (3.8.3+)/Gradle (7.2+)
+Using the API client library requires:
+
+* [Malga test account](https://dashboard.malga.io/)
+* [API key](https://docs.malga.io/docs/getting-started/credentials).
+* Java 11 or higher
+* Maven (3.8.3+)/Gradle (7.2+)
 
 ## Authentication
 
-Authentication schemes defined for the API:
-### X-Client-ID
+Malga’s API services are protected through access keys. You can manage your access keys through your dashboard.
 
-- **Type**: API key
-- **API key parameter name**: X-Client-Id
-- **Location**: HTTP header
+It is important to store your keys privately and safely since they have modification privileges in your account. Do not share your keys, do not leave them fixed in your code, and do not store them on your version control server. We recommend using secret environment variables to make the key available to your application.
 
-### X-Api-Key
+Authentication for all API calls is done through HTTP headers, requiring you to enter your Malga client identifier and secret access key.
 
-- **Type**: API key
-- **API key parameter name**: X-Api-Key
-- **Location**: HTTP header
+## X-Client-ID
+
+| Security Scheme Type | API Key |
+|-----------------------|-----------|
+| Header parameter name | `X-Client-ID` |
+
+## X-Api-Key
+
+| Security Scheme Type | API Key |
+|-----------------------|-----------|
+| Header parameter name | `X-Api-Key` |
 
 ## Installation
 
-### Gradle users
-
 Add this dependency to your project's build file:
 
-```groovy
-  repositories {
-    mavenCentral() 
-  }
-
-  dependencies {
-     implementation "org.malga:malga-java-api-sdk:0.5"
-  }
+```
+    <dependency>
+        <groupId>io.malga</groupId>
+        <artifactId>malga-java-api-sdk</artifactId>
+        <version>0.1.0</version>
+    </dependency>
 ```
 
 ## Getting Started
@@ -118,3 +124,12 @@ public class Example {
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
+## Support
+
+If you have a feature request, or spotted a bug or a technical problem, [create an issue here](https://github.com/plughacker/malga-java-api-sdk/issues/new/choose).
+
+For other questions, contact our Support Team
+
+## Licence
+
+This repository is available under the [Apache 2 license](https://github.com/plughacker/malga-java-api-sdk/blob/main/LICENSE).

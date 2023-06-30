@@ -86,14 +86,6 @@ public class CustomersApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Conflict document number already exists </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call createCustomerCall(CustomerRequest customerRequest, Boolean force, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -162,14 +154,6 @@ public class CustomersApi {
      * @param force Force customer create avoiding confit when document number already exists (optional)
      * @return CustomerResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Conflict document number already exists </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public CustomerResponse createCustomer(CustomerRequest customerRequest, Boolean force) throws ApiException {
         ApiResponse<CustomerResponse> localVarResp = createCustomerWithHttpInfo(customerRequest, force);
@@ -183,14 +167,6 @@ public class CustomersApi {
      * @param force Force customer create avoiding confit when document number already exists (optional)
      * @return ApiResponse&lt;CustomerResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Conflict document number already exists </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<CustomerResponse> createCustomerWithHttpInfo(CustomerRequest customerRequest, Boolean force) throws ApiException {
         okhttp3.Call localVarCall = createCustomerValidateBeforeCall(customerRequest, force, null);
@@ -206,14 +182,6 @@ public class CustomersApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Conflict document number already exists </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call createCustomerAsync(CustomerRequest customerRequest, Boolean force, final ApiCallback<CustomerResponse> _callback) throws ApiException {
 
@@ -228,11 +196,6 @@ public class CustomersApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call deleteCustomerCall(String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -294,11 +257,6 @@ public class CustomersApi {
      * 
      * @param id Custome ID (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-     </table>
      */
     public void deleteCustomer(String id) throws ApiException {
         deleteCustomerWithHttpInfo(id);
@@ -310,11 +268,6 @@ public class CustomersApi {
      * @param id Custome ID (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<Void> deleteCustomerWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = deleteCustomerValidateBeforeCall(id, null);
@@ -328,11 +281,6 @@ public class CustomersApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call deleteCustomerAsync(String id, final ApiCallback<Void> _callback) throws ApiException {
 
@@ -346,13 +294,6 @@ public class CustomersApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getCustomerByIdCall(String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -416,13 +357,6 @@ public class CustomersApi {
      * @param id Customer ID (required)
      * @return CustomerResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public CustomerResponse getCustomerById(String id) throws ApiException {
         ApiResponse<CustomerResponse> localVarResp = getCustomerByIdWithHttpInfo(id);
@@ -435,13 +369,6 @@ public class CustomersApi {
      * @param id Customer ID (required)
      * @return ApiResponse&lt;CustomerResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<CustomerResponse> getCustomerByIdWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = getCustomerByIdValidateBeforeCall(id, null);
@@ -456,13 +383,6 @@ public class CustomersApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getCustomerByIdAsync(String id, final ApiCallback<CustomerResponse> _callback) throws ApiException {
 
@@ -477,11 +397,6 @@ public class CustomersApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getCustomerCardsCall(String customerId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -545,11 +460,6 @@ public class CustomersApi {
      * @param customerId Customer ID (required)
      * @return CustomerCardList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
      */
     public CustomerCardList getCustomerCards(String customerId) throws ApiException {
         ApiResponse<CustomerCardList> localVarResp = getCustomerCardsWithHttpInfo(customerId);
@@ -562,11 +472,6 @@ public class CustomersApi {
      * @param customerId Customer ID (required)
      * @return ApiResponse&lt;CustomerCardList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<CustomerCardList> getCustomerCardsWithHttpInfo(String customerId) throws ApiException {
         okhttp3.Call localVarCall = getCustomerCardsValidateBeforeCall(customerId, null);
@@ -581,11 +486,6 @@ public class CustomersApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getCustomerCardsAsync(String customerId, final ApiCallback<CustomerCardList> _callback) throws ApiException {
 
@@ -605,13 +505,6 @@ public class CustomersApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getCustomersCall(String page, String limit, String sort, String id, String documentType, String documentNumber, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -698,13 +591,6 @@ public class CustomersApi {
      * @param documentNumber document number (optional)
      * @return CustomerList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public CustomerList getCustomers(String page, String limit, String sort, String id, String documentType, String documentNumber) throws ApiException {
         ApiResponse<CustomerList> localVarResp = getCustomersWithHttpInfo(page, limit, sort, id, documentType, documentNumber);
@@ -722,13 +608,6 @@ public class CustomersApi {
      * @param documentNumber document number (optional)
      * @return ApiResponse&lt;CustomerList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<CustomerList> getCustomersWithHttpInfo(String page, String limit, String sort, String id, String documentType, String documentNumber) throws ApiException {
         okhttp3.Call localVarCall = getCustomersValidateBeforeCall(page, limit, sort, id, documentType, documentNumber, null);
@@ -748,13 +627,6 @@ public class CustomersApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getCustomersAsync(String page, String limit, String sort, String id, String documentType, String documentNumber, final ApiCallback<CustomerList> _callback) throws ApiException {
 
@@ -770,11 +642,6 @@ public class CustomersApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The card has been linked successfully. </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call linkCardCall(String customerId, LinkCardRequest linkCardRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -843,11 +710,6 @@ public class CustomersApi {
      * @param customerId Customer ID (required)
      * @param linkCardRequest  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The card has been linked successfully. </td><td>  -  </td></tr>
-     </table>
      */
     public void linkCard(String customerId, LinkCardRequest linkCardRequest) throws ApiException {
         linkCardWithHttpInfo(customerId, linkCardRequest);
@@ -860,11 +722,6 @@ public class CustomersApi {
      * @param linkCardRequest  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The card has been linked successfully. </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<Void> linkCardWithHttpInfo(String customerId, LinkCardRequest linkCardRequest) throws ApiException {
         okhttp3.Call localVarCall = linkCardValidateBeforeCall(customerId, linkCardRequest, null);
@@ -879,11 +736,6 @@ public class CustomersApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The card has been linked successfully. </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call linkCardAsync(String customerId, LinkCardRequest linkCardRequest, final ApiCallback<Void> _callback) throws ApiException {
 
@@ -898,11 +750,6 @@ public class CustomersApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The record has been successfully updated. </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call updateCustomerCall(String id, UpdateCustomerRequest updateCustomerRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -973,11 +820,6 @@ public class CustomersApi {
      * @param updateCustomerRequest  (required)
      * @return CustomerResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The record has been successfully updated. </td><td>  -  </td></tr>
-     </table>
      */
     public CustomerResponse updateCustomer(String id, UpdateCustomerRequest updateCustomerRequest) throws ApiException {
         ApiResponse<CustomerResponse> localVarResp = updateCustomerWithHttpInfo(id, updateCustomerRequest);
@@ -991,11 +833,6 @@ public class CustomersApi {
      * @param updateCustomerRequest  (required)
      * @return ApiResponse&lt;CustomerResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The record has been successfully updated. </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<CustomerResponse> updateCustomerWithHttpInfo(String id, UpdateCustomerRequest updateCustomerRequest) throws ApiException {
         okhttp3.Call localVarCall = updateCustomerValidateBeforeCall(id, updateCustomerRequest, null);
@@ -1011,11 +848,6 @@ public class CustomersApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The record has been successfully updated. </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call updateCustomerAsync(String id, UpdateCustomerRequest updateCustomerRequest, final ApiCallback<CustomerResponse> _callback) throws ApiException {
 

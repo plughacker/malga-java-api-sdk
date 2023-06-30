@@ -81,13 +81,6 @@ public class TokensApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call createTokenCall(TokenRequest tokenRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -151,13 +144,6 @@ public class TokensApi {
      * @param tokenRequest Tokenize credit card (required)
      * @return TokenResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public TokenResponse createToken(TokenRequest tokenRequest) throws ApiException {
         ApiResponse<TokenResponse> localVarResp = createTokenWithHttpInfo(tokenRequest);
@@ -170,13 +156,6 @@ public class TokensApi {
      * @param tokenRequest Tokenize credit card (required)
      * @return ApiResponse&lt;TokenResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public ApiResponse<TokenResponse> createTokenWithHttpInfo(TokenRequest tokenRequest) throws ApiException {
         okhttp3.Call localVarCall = createTokenValidateBeforeCall(tokenRequest, null);
@@ -191,13 +170,6 @@ public class TokensApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call createTokenAsync(TokenRequest tokenRequest, final ApiCallback<TokenResponse> _callback) throws ApiException {
 
